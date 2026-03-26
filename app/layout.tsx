@@ -16,7 +16,7 @@ export default function RootLayout({
     // suppressHydrationWarning prevents React from warning about the
     // data-theme mismatch that occurs when the inline script overrides
     // the server-rendered default before hydration.
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
         {/* Runs before React hydrates — prevents flash of wrong theme */}
         <Script id="theme-init" strategy="beforeInteractive">{`
