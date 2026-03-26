@@ -1,0 +1,104 @@
+@use '../../app/variables' as g;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-card-a90);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  transition: opacity g.$transition;
+
+  &:hover { opacity: 0.85; }
+}
+
+.logoIcon { font-size: 1.4rem; }
+
+// ─── Right side (links + theme toggle) ────────────────────────────────────────
+.right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.link {
+  padding: 8px 16px;
+  border-radius: g.$radius-sm;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color g.$transition, background g.$transition;
+
+  &:hover {
+    color: var(--text);
+    background: var(--bg-input);
+  }
+}
+
+.active {
+  color: var(--primary) !important;
+  background: var(--primary-a12) !important;
+}
+
+// ─── Theme toggle ─────────────────────────────────────────────────────────────
+.themeToggle {
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  border-radius: g.$radius-sm;
+  padding: 3px;
+  gap: 2px;
+  margin-left: 10px;
+}
+
+.themeBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  transition: all g.$transition;
+  white-space: nowrap;
+  line-height: 1;
+
+  &:hover { color: var(--text); }
+}
+
+.themeBtnActive {
+  background: var(--bg-card);
+  color: var(--primary) !important;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+// ─── Responsive: collapse theme labels on small screens ──────────────────────
+.themeBtnLabel {
+  @media (max-width: 500px) { display: none; }
+}

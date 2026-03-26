@@ -1,0 +1,7 @@
+// ─── Structural variables (non-colour — safe for SCSS compile-time use) ───────
+// Colour tokens are defined as CSS custom properties in globals.scss so they
+// can be swapped at runtime by the theme system.
+
+$radius:     12px;
+$radius-sm:  8px;
+$transition: 0.2s ease;
