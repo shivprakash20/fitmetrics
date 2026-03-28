@@ -14,7 +14,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  min-height: 64px;
+  padding: 8px 0;
 }
 
 .logo {
@@ -36,6 +37,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .links {
@@ -43,6 +46,8 @@
   align-items: center;
   gap: 4px;
   list-style: none;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .link {

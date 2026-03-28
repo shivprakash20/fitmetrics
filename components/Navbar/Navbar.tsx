@@ -42,6 +42,30 @@ export default function Navbar() {
                 About
               </Link>
             </li>
+            <li>
+              <Link
+                href="/profile"
+                className={`${styles.link} ${pathname === '/profile' ? styles.active : ''}`}
+              >
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/login"
+                className={`${styles.link} ${pathname === '/login' ? styles.active : ''}`}
+              >
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/register"
+                className={`${styles.link} ${pathname === '/register' ? styles.active : ''}`}
+              >
+                Register
+              </Link>
+            </li>
           </ul>
 
           <div className={styles.themeToggle} role="group" aria-label="Select colour theme">
