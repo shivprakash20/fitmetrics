@@ -2,16 +2,19 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.scss';
 import Navbar from '@/components/Navbar/Navbar';
+import Footer from '@/components/Footer/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { getCurrentUser } from '@/lib/server/auth/session';
 
 export const metadata: Metadata = {
   title: 'FitMetrics — Health Calculators',
   description: 'Calculate BMI, BMR, Ideal Body Weight, Body Fat %, and TDEE using clinically validated formulas.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const user = await getCurrentUser();
   return (
     // suppressHydrationWarning prevents React from warning about the
     // data-theme mismatch that occurs when the inline script overrides
@@ -28,8 +31,9 @@ export default function RootLayout({
           })();
         `}</Script>
         <ThemeProvider>
-          <Navbar />
+          <Navbar user={user ? { firstName: user.firstName } : null} />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

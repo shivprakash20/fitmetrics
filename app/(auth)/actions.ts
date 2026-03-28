@@ -394,7 +394,7 @@ export async function updateProfileAction(formData: FormData) {
 
 export async function logoutAction() {
   await clearSession();
-  redirect('/login');
+  redirect('/calculator');
 }
 
 export async function getProfileForPage() {

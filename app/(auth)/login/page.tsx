@@ -36,12 +36,15 @@ export default async function LoginPage({
               <input id="password" name="password" type="password" className={styles.input} required />
             </div>
 
+            <div className={styles.linkRow}>
+              <Link href="/register" className={styles.link}>Don&apos;t have an account? Register</Link>
+            </div>
+
             <button type="submit" className={styles.submitBtn}>Sign in</button>
           </form>
 
           <div className={styles.linkRow}>
             <Link href="/forgot-password" className={styles.link}>Forgot password?</Link>
-            <Link href="/register" className={styles.link}>Create account</Link>
           </div>
         </section>
       </div>
