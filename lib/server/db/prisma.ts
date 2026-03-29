@@ -1,19 +1,26 @@
 import 'server-only';
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 
 declare global {
   var __fitmetricsPrisma: PrismaClient | undefined;
 }
 
 function createPrismaClient() {
-  const connectionString = process.env.POSTGRES_PRISMA_URL!;
+  const raw = process.env.POSTGRES_PRISMA_URL!;
 
-  const useSSL = connectionString.includes('sslmode=');
-  const adapter = new PrismaPg({
+  // Strip SSL-related params from the connection string so pg-connection-string
+  // doesn't override our explicit ssl config with stricter cert verification.
+  const hasSSL = raw.includes('sslmode=');
+  const connectionString = raw.replace(/[?&](sslmode|uselibpqcompat|pgbouncer)=[^&]*/g, '').replace(/\?&/, '?').replace(/[?&]$/, '');
+
+  const pool = new Pool({
     connectionString,
-    ...(useSSL && { ssl: { rejectUnauthorized: false } }),
+    ...(hasSSL && { ssl: { rejectUnauthorized: false } }),
   });
+
+  const adapter = new PrismaPg(pool);
 
   return new PrismaClient({
     adapter,
