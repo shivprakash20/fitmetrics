@@ -16,7 +16,13 @@ function createPrismaClient() {
   const connectionString =
     process.env.DATABASE_URL ?? 'postgresql://postgres:postgres@localhost:5432/fitmetrics';
 
-  const adapter = new PrismaPg({ connectionString });
+  // Supabase pooler uses a self-signed CA; disable cert verification for pooler URLs.
+  // Direct connections (local) use uselibpqcompat=true in the URL instead.
+  const isPooler = connectionString.includes('pooler.supabase.com');
+  const adapter = new PrismaPg({
+    connectionString,
+    ...(isPooler ? { ssl: { rejectUnauthorized: false } } : {}),
+  });
   return new PrismaClient({
     adapter,
     log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
