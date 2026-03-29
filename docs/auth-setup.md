@@ -13,7 +13,7 @@ This implementation includes:
 
 Copy `.env.example` to `.env` and fill the values:
 
-- `DATABASE_URL`
+- `POSTGRES_PRISMA_URL`
 - `AUTH_SESSION_SECRET`
 - `AUTH_OTP_SECRET`
 - `SMTP_HOST`
