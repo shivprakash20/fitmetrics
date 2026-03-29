@@ -6,32 +6,23 @@ declare global {
   var __fitmetricsPrisma: PrismaClient | undefined;
 }
 
-/**
- * Reuse a single Prisma client in development to avoid too many connections
- * during hot-reload.
- */
 function createPrismaClient() {
-  // Keep a non-empty fallback so pages can render before env is configured.
-  // Real DB operations still require a valid DATABASE_URL at runtime.
-  const connectionString =
-    process.env.DATABASE_URL ?? 'postgresql://postgres:postgres@localhost:5432/fitmetrics';
+  const connectionString = process.env.POSTGRES_PRISMA_URL!;
 
-  // Supabase pooler uses a self-signed CA; disable cert verification for pooler URLs.
-  // Direct connections (local) use uselibpqcompat=true in the URL instead.
-  const isPooler = connectionString.includes('pooler.supabase.com');
+  const useSSL = connectionString.includes('sslmode=');
   const adapter = new PrismaPg({
     connectionString,
-    ...(isPooler ? { ssl: { rejectUnauthorized: false } } : {}),
+    ...(useSSL && { ssl: { rejectUnauthorized: false } }),
   });
+
   return new PrismaClient({
     adapter,
     log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
   });
 }
 
-export const prisma =
-  globalThis.__fitmetricsPrisma ??
-  createPrismaClient();
+// Reuse client across hot-reloads in development to avoid exhausting connections.
+export const prisma = globalThis.__fitmetricsPrisma ?? createPrismaClient();
 
 if (process.env.NODE_ENV !== 'production') {
   globalThis.__fitmetricsPrisma = prisma;
