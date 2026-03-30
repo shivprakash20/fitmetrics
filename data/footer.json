@@ -2,7 +2,7 @@
   "menu": {
     "title": "Menu",
     "links": [
-      { "label": "Calculator", "href": "/calculator" },
+      { "label": "Calculators", "href": "/" },
       { "label": "About",      "href": "/about"      },
       { "label": "Contact Us", "href": "/contact"    },
       { "label": "Profile",    "href": "/profile"    }

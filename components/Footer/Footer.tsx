@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styles from './Footer.module.scss';
 import footer from '@/data/footer.json';
 import type { FooterLink, SocialLink } from '@/lib/data/types';
@@ -41,6 +44,7 @@ function SocialIcon({ platform }: { platform: string }) {
 }
 
 export default function Footer() {
+  const pathname = usePathname();
   const { menu, contact, social, copyright } = footer;
 
   return (
@@ -54,7 +58,13 @@ export default function Footer() {
             <ul className={styles.menuList}>
               {menu.links.map((link: FooterLink) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={styles.menuLink}>{link.label}</Link>
+                  <Link
+                    href={link.href}
+                    className={styles.menuLink}
+                    onClick={link.href === '/' && pathname === '/' ? () => window.scrollTo({ top: 0, behavior: 'smooth' }) : undefined}
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
