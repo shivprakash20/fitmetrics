@@ -2,48 +2,97 @@
   "id": "bodyfat",
   "metadata": {
     "title": "Body Fat Calculator — US Navy Method | FitMetrics",
-    "description": "Estimate your body fat percentage using the US Navy circumference method. No equipment needed — just a tape measure."
+    "description": "Estimate your body fat percentage using the US Navy circumference method (ACE classification). More accurate than BMI — understand your true body composition with just a tape measure."
   },
   "slug": "body-fat",
   "title": "Body Fat Calculator",
   "fullTitle": "Body Fat % — US Navy Method",
   "icon": "💪",
   "iconSrc": "/icons/bodyfat.svg",
-  "tagline": "What percentage of your body is fat?",
-  "shortDesc": "Estimate your body fat percentage using simple measurements — no equipment needed.",
-  "importance": "Body fat percentage is a far more meaningful measure of health and fitness than weight or BMI alone. Tracking it helps you understand whether you are losing fat vs. muscle, assess cardiovascular risk, and fine-tune your training and diet program for real body composition changes.",
-  "description": "Body fat percentage is a more accurate measure of fitness than BMI because it directly quantifies the proportion of fat in your body. The US Navy method estimates this from simple circumference measurements without needing expensive equipment.",
-  "formula": "Male:   495 ÷ (1.0324 − 0.19077×log(waist−neck) + 0.15456×log(height)) − 450\nFemale: 495 ÷ (1.29579 − 0.35004×log(waist+hip−neck) + 0.221×log(height)) − 450",
+  "tagline": "What percentage of your body is actually fat?",
+  "shortDesc": "Estimate your body fat percentage using simple measurements — more informative than BMI alone.",
+  "importance": "Body fat percentage is the most meaningful measure of body composition. Unlike BMI, it directly distinguishes fat mass from lean mass — muscle, bone, and organs. A muscular athlete and a sedentary person can share the same BMI yet have vastly different health profiles. Tracking body fat percentage gives you a clearer picture of cardiovascular risk, hormonal health, and whether your training and nutrition are actually working.",
+  "description": "Body fat percentage is the proportion of your total body weight made up of fat tissue. The US Navy method — developed and validated by Hodgdon & Beckett at the Naval Health Research Center — estimates this from simple circumference measurements using a tape measure, with an accuracy of approximately ±3.5%. Results are classified using the American Council on Exercise (ACE) standard, the most widely used clinical body fat classification in fitness and healthcare.",
+  "formula": "Male:   495 ÷ (1.0324 − 0.19077×log(waist−neck) + 0.15456×log(height)) − 450\nFemale: 495 ÷ (1.29579 − 0.35004×log(waist+hip−neck) + 0.22100×log(height)) − 450\n(All measurements in cm · Hodgdon & Beckett, 1984)",
   "ranges": [
-    { "label": "Athletes (M)", "value": "6 – 13%",  "color": "#2ecc71" },
-    { "label": "Fitness (M)",  "value": "14 – 17%", "color": "#27ae60" },
-    { "label": "Average (M)",  "value": "18 – 24%", "color": "#e67e22" },
-    { "label": "Athletes (F)", "value": "14 – 20%", "color": "#2ecc71" },
-    { "label": "Fitness (F)",  "value": "21 – 24%", "color": "#27ae60" },
-    { "label": "Average (F)",  "value": "25 – 31%", "color": "#e67e22" }
+    { "label": "Essential Fat (M)", "value": "2 – 5%",   "color": "#9b59b6" },
+    { "label": "Athletes (M)",      "value": "6 – 13%",  "color": "#2ecc71" },
+    { "label": "Fitness (M)",       "value": "14 – 17%", "color": "#27ae60" },
+    { "label": "Acceptable (M)",    "value": "18 – 24%", "color": "#e67e22" },
+    { "label": "Obese (M)",         "value": "25%+",     "color": "#e74c3c" },
+    { "label": "Essential Fat (F)", "value": "10 – 13%", "color": "#9b59b6" },
+    { "label": "Athletes (F)",      "value": "14 – 20%", "color": "#2ecc71" },
+    { "label": "Fitness (F)",       "value": "21 – 24%", "color": "#27ae60" },
+    { "label": "Acceptable (F)",    "value": "25 – 31%", "color": "#e67e22" },
+    { "label": "Obese (F)",         "value": "32%+",     "color": "#e74c3c" }
   ],
-  "note": "All measurements should be taken at the widest point. For best accuracy measure in the morning.",
-  "source": "Hodgdon & Beckett, 1984 — Naval Health Research Center",
+  "note": "Measure in the morning before eating. Use a flexible tape measure — not fingers. Waist: at the narrowest point (or navel for the Navy method). Neck: just below the larynx. Hips (women): at the widest point. Take each measurement 2–3 times and use the average for best accuracy.",
+  "source": "Hodgdon & Beckett, 1984 — Naval Health Research Center · ACE Body Fat Classification (American Council on Exercise) · Siri WE, 1956 — Body Composition from Fluid Spaces and Density",
+  "healthRisks": {
+    "title": "Why Your Body Fat Result Matters",
+    "intro": "Body fat percentage reveals what weight and BMI cannot — the actual ratio of fat to lean mass in your body. Research consistently links excess body fat, particularly visceral fat around internal organs, to serious health conditions. Your result is a direct signal worth acting on.",
+    "overweightItems": [
+      {
+        "condition": "Cardiovascular & Metabolic Risk",
+        "desc": "Excess visceral fat releases inflammatory cytokines that raise LDL cholesterol, lower HDL, and drive insulin resistance — the root of cardiovascular disease, type 2 diabetes, and metabolic syndrome. Reducing body fat is one of the most evidence-backed ways to lower all three risks simultaneously."
+      },
+      {
+        "condition": "Hormonal Balance",
+        "desc": "Body fat directly influences estrogen, testosterone, and cortisol production. Excess fat disrupts hormone regulation in both men and women; equally, too little fat (below essential levels) causes hormonal shutdown, amenorrhea, and impaired organ function. Your result shows whether you are in a healthy hormonal range."
+      },
+      {
+        "condition": "The Measure BMI Cannot Give You",
+        "desc": "BMI cannot distinguish a kilogram of muscle from a kilogram of fat. A trained athlete may register as 'overweight' on BMI while having excellent body fat levels. Body fat percentage gives you the accurate picture — whether you are genuinely overfat, underfat, or at optimal composition."
+      }
+    ],
+    "underweightNote": "Essential fat is not optional — it is the minimum required for hormone production, organ protection, and neurological function. For men this is approximately 2–5%, for women 10–13%. Falling below these levels is clinically dangerous. A healthy body fat target is a two-way goal, not just about reducing."
+  },
+  "limitations": {
+    "title": "How to Use Body Fat Most Effectively",
+    "intro": "The Navy method is a practical, accessible estimate — not a clinical measurement. Understanding its limitations helps you get the most accurate readings and interpret your results correctly:",
+    "items": [
+      {
+        "title": "Measure correctly and consistently — technique is everything",
+        "desc": "A 1 cm error in waist or hip measurement can shift your result by 1–2%. Always measure at the same time of day (morning, before eating), use the same tape, and take 2–3 readings averaged together. Consistent technique matters more than any single number."
+      },
+      {
+        "title": "Navy method is an estimate — DEXA is the clinical gold standard",
+        "desc": "The formula carries an accuracy of approximately ±3.5% compared to DEXA (Dual-Energy X-ray Absorptiometry), the gold standard for body composition. Use your result for tracking trends and general guidance. For clinical-grade precision — such as pre-surgery assessment or elite athletic planning — seek DEXA or hydrostatic weighing."
+      },
+      {
+        "title": "Healthy ranges shift with age — don't use a single benchmark",
+        "desc": "Body fat naturally increases with age as muscle mass (sarcopenia) declines. A 45-year-old with 22% body fat is in a different health context than a 25-year-old at the same percentage. Track your result relative to your age group, and prioritise the direction of change over hitting a fixed number."
+      }
+    ]
+  },
   "faq": [
     {
+      "q": "Is body fat percentage more accurate than BMI?",
+      "a": "Yes, for individual assessment. BMI only uses height and weight and cannot distinguish fat from muscle. A muscular athlete may be classified as 'overweight' by BMI while having a healthy or low body fat percentage. Body fat percentage directly measures fat proportion, making it a more informative metric for body composition and health risk."
+    },
+    {
       "q": "What is a healthy body fat percentage?",
-      "a": "For men, 6–13% is athlete-level, 14–17% is fitness, 18–24% is average, and above 25% is high. For women, 14–20% is athlete-level, 21–24% is fitness, 25–31% is average, and above 32% is high. Essential fat (needed for survival) is ~3–5% for men and ~10–13% for women."
+      "a": "Using the ACE classification: for men, 6–13% is athlete-level, 14–17% fitness, 18–24% acceptable, and 25%+ is obese. For women, 14–20% is athlete-level, 21–24% fitness, 25–31% acceptable, and 32%+ is obese. Essential fat — the minimum needed for survival — is 2–5% for men and 10–13% for women. Healthy ranges also shift slightly with age."
+    },
+    {
+      "q": "Why do women have higher body fat percentages than men?",
+      "a": "Women naturally carry more essential fat for hormonal function, reproductive health, and pregnancy. This is physiologically normal — not a sign of poor fitness. The ACE female ranges account for this difference, which is why the thresholds are set higher across all categories compared to men."
+    },
+    {
+      "q": "What is visceral fat and why is it dangerous?",
+      "a": "Visceral fat surrounds internal organs — the liver, pancreas, and intestines — rather than sitting under the skin (subcutaneous fat). It is metabolically active, releasing inflammatory cytokines and hormones that impair insulin sensitivity, raise blood pressure, and elevate cardiovascular risk. High total body fat often correlates with high visceral fat, making your body fat result an indirect signal of visceral fat risk."
     },
     {
       "q": "How accurate is the US Navy method?",
-      "a": "The Navy method has an error margin of approximately ±3–4% compared to DEXA scans (gold standard). It is suitable for general fitness tracking and progress monitoring but not for clinical precision. Consistent measurement technique improves reliability."
-    },
-    {
-      "q": "What is essential body fat and why does it matter?",
-      "a": "Essential fat is the minimum amount of fat required for normal physiological function — hormone production, organ protection, and neurological function. For men it is ~3–5% and for women ~10–13%. Dropping below essential fat is dangerous and life-threatening."
+      "a": "The Navy method has an accuracy of approximately ±3.5% compared to DEXA scans (the gold standard). It is reliable for tracking progress and general fitness assessment. Consistent measurement technique — same time of day, same tape, averaged readings — is the biggest factor in improving reliability between measurements."
     },
     {
       "q": "How often should I measure my body fat?",
-      "a": "Measure monthly for a meaningful trend. Daily measurements are unreliable because body fat readings fluctuate with hydration, food intake, and time of day. For best consistency, always measure at the same time of day, ideally in the morning before eating."
+      "a": "Once a month is generally sufficient to see meaningful trends. Daily measurements are unreliable because readings fluctuate with hydration, food intake, and time of day. For best consistency, always measure in the morning before eating and drinking, using the same technique each time."
     },
     {
-      "q": "Can I lose fat from specific body parts (spot reduction)?",
-      "a": "No. Spot reduction is a myth. Fat loss occurs systemically throughout the body based on genetics and hormones. Targeted exercises strengthen muscles in specific areas but do not burn fat from those areas specifically. A caloric deficit and overall exercise reduce fat everywhere."
+      "q": "Can I lose fat from a specific body part?",
+      "a": "No. Spot reduction is a myth. Fat loss occurs systemically throughout the body based on genetics and hormonal patterns — targeted exercises strengthen muscles in specific areas but do not preferentially burn fat there. A sustained caloric deficit combined with resistance training reduces total body fat percentage over time."
     }
   ]
 }
