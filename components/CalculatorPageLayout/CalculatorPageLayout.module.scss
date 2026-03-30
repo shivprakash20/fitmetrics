@@ -193,6 +193,99 @@
   font-style: italic;
 }
 
+// ─── Activity Guide Section ───────────────────────────────────────────────────
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: g.$radius-sm;
+  padding: 16px 18px;
+  transition: border-color g.$transition, box-shadow g.$transition;
+
+  &:hover {
+    border-color: var(--primary-a40);
+    box-shadow: var(--shadow);
+  }
+
+  @media (min-width: 768px) {
+    padding: 18px 22px;
+    gap: 20px;
+  }
+}
+
+.activityMultiplier {
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  color: var(--primary);
+  background: var(--primary-a12);
+  border-radius: g.$radius-sm;
+  padding: 6px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+    padding: 8px 14px;
+  }
+}
+
+.activityContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.activityLevel {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 0.95rem;
+  }
+}
+
+.activityDesc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 0.85rem;
+  }
+}
+
+.activityExamples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.activityTag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+
 // ─── Health Risks Section ────────────────────────────────────────────────────
 .risksGrid {
   display: grid;

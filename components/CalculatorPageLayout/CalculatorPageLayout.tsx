@@ -10,6 +10,7 @@ type Range = { label: string; value: string; color: string };
 type FAQ = { q: string; a: string };
 type HealthRiskItem = { condition: string; desc: string };
 type LimitationItem = { title: string; desc: string };
+type ActivityItem = { level: string; multiplier: string; desc: string; examples: string[] };
 
 type Props = {
   id: CalculatorType;
@@ -23,6 +24,11 @@ type Props = {
   note: string;
   source: string;
   faq: FAQ[];
+  activityGuide?: {
+    title: string;
+    intro: string;
+    items: ActivityItem[];
+  };
   healthRisks?: {
     title: string;
     intro: string;
@@ -57,7 +63,7 @@ function FAQItem({ q, a }: FAQ) {
 
 export default function CalculatorPageLayout({
   id, iconSrc, title, tagline, description, formula, ranges, note, source, faq,
-  healthRisks, limitations,
+  activityGuide, healthRisks, limitations,
 }: Props) {
   return (
     <main className={styles.main}>
@@ -103,6 +109,30 @@ export default function CalculatorPageLayout({
 
           <p className={styles.source}>Source: {source}</p>
         </section>
+
+        {/* Activity Guide section — optional, currently used by BMR */}
+        {activityGuide && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>{activityGuide.title}</h2>
+            <p className={styles.description}>{activityGuide.intro}</p>
+            <div className={styles.activityList}>
+              {activityGuide.items.map(item => (
+                <div key={item.level} className={styles.activityItem}>
+                  <div className={styles.activityMultiplier}>{item.multiplier}</div>
+                  <div className={styles.activityContent}>
+                    <p className={styles.activityLevel}>{item.level}</p>
+                    <p className={styles.activityDesc}>{item.desc}</p>
+                    <div className={styles.activityExamples}>
+                      {item.examples.map(ex => (
+                        <span key={ex} className={styles.activityTag}>{ex}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Health Risks section — optional, currently used by BMI */}
         {healthRisks && (

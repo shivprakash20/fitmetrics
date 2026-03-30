@@ -32,9 +32,7 @@
     "overweightItems": [
       { "condition": "Cardiovascular Disease",    "desc": "Obesity is a leading driver of heart disease worldwide. Reaching a healthy BMI reduces arterial inflammation, improves cholesterol levels, and significantly lowers the risk of heart attack and stroke." },
       { "condition": "Type 2 Diabetes",           "desc": "Excess visceral fat is the primary modifiable risk factor for type 2 diabetes. Studies show that losing just 5–10% of body weight can delay or prevent onset in at-risk individuals." },
-      { "condition": "Hypertension",              "desc": "Higher body mass directly increases the workload on the heart. Even modest, sustained weight loss produces clinically meaningful reductions in blood pressure." },
-      { "condition": "Certain Cancers",           "desc": "WHO links obesity to at least 13 cancer types including breast, colorectal, and endometrial. Maintaining a healthy weight is one of the most evidence-backed forms of cancer prevention." },
-      { "condition": "Joint & Bone Health",       "desc": "Each kilogram of excess weight places roughly four kilograms of additional stress on the knee joints. Achieving a healthy BMI reliably reduces joint pain, slows cartilage wear, and improves mobility." }
+      { "condition": "Hypertension",              "desc": "Higher body mass directly increases the workload on the heart. Even modest, sustained weight loss produces clinically meaningful reductions in blood pressure." }
     ],
     "underweightNote": "A healthy BMI is a two-way target. Being underweight (BMI < 18.5) is equally important to address — it is associated with reduced bone density, weakened immunity, and nutritional deficiencies. Every step toward the 18.5–24.9 range is a step toward better health."
   },
@@ -51,16 +49,8 @@
         "desc": "Muscle is denser than fat. If you train regularly, your BMI may read 'overweight' while your body fat is low. Pair your result with a body fat percentage measurement for an accurate picture of your composition."
       },
       {
-        "title": "Asian backgrounds: use WHO-adjusted thresholds",
-        "desc": "A 2004 WHO Expert Consultation found that Asian populations face elevated cardiometabolic risk at lower BMI values. WHO recommends 23.0 as the 'increased risk' point and 27.5 as 'high risk' — apply these if relevant to you."
-      },
-      {
         "title": "BMI is a screening start, not a medical verdict",
         "desc": "A BMI result alone cannot diagnose any condition. For a complete picture, your doctor will assess waist circumference, blood pressure, blood glucose, lipid panel, and lifestyle together with your BMI."
-      },
-      {
-        "title": "Track trends, not single readings",
-        "desc": "A single BMI reading is a snapshot. Its real value emerges when tracked over time. Recalculate every 4–6 weeks when actively working on your health, and note the direction of change — that trend is what matters most."
       }
     ]
   },

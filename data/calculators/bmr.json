@@ -2,7 +2,7 @@
   "id": "bmr",
   "metadata": {
     "title": "BMR Calculator — Basal Metabolic Rate | FitMetrics",
-    "description": "Calculate your Basal Metabolic Rate (BMR) using the Mifflin-St Jeor equation. Know exactly how many calories your body burns at rest."
+    "description": "Calculate your Basal Metabolic Rate (BMR) using the Mifflin-St Jeor equation — the most accurate formula for the general population. Discover how many calories your body burns at rest."
   },
   "slug": "bmr",
   "title": "BMR Calculator",
@@ -11,32 +11,119 @@
   "iconSrc": "/icons/bmr.svg",
   "tagline": "How many calories does your body burn doing nothing?",
   "shortDesc": "Discover the calories your body burns at complete rest — the foundation of all calorie planning.",
-  "importance": "Your BMR is the baseline for every nutrition and fitness plan. Whether you want to lose weight, gain muscle, or maintain your current body, understanding how many calories your body needs at rest allows you to make precise dietary adjustments and avoid under- or over-eating.",
-  "description": "BMR is the number of calories your body needs to sustain basic life-sustaining functions at complete rest — breathing, circulation, cell production, and temperature regulation. It forms the foundation for all calorie planning.",
-  "formula": "Male:   10×W + 6.25×H − 5×A + 5\nFemale: 10×W + 6.25×H − 5×A − 161\n(Mifflin-St Jeor Equation)",
-  "ranges": [],
-  "note": "W = weight in kg, H = height in cm, A = age in years. This is the most accurate equation for the general population.",
-  "source": "Mifflin et al., 1990 — American Journal of Clinical Nutrition",
+  "importance": "BMR accounts for 60–70% of all the calories your body burns in a day. It is the single most important number in any nutrition or fitness plan — whether your goal is weight loss, muscle gain, or long-term metabolic health. Knowing your BMR lets you set calorie targets with precision, not guesswork, and ensures you never deprive your body of the energy it needs to function.",
+  "description": "Basal Metabolic Rate (BMR) is the number of calories your body burns at complete rest to sustain essential life functions — breathing, circulation, temperature regulation, and cell production. It represents the minimum caloric floor below which intake should never fall. The Mifflin-St Jeor equation, validated by the American Journal of Clinical Nutrition in 1990, is the most accurate BMR formula for the general population and is the preferred standard used by dietitians and clinicians worldwide.",
+  "formula": "Male:   10×W + 6.25×H − 5×A + 5\nFemale: 10×W + 6.25×H − 5×A − 161\n(Mifflin-St Jeor Equation, 1990)",
+  "ranges": [
+    { "label": "Sedentary",        "value": "BMR × 1.20",  "color": "#5dade2" },
+    { "label": "Lightly Active",   "value": "BMR × 1.375", "color": "#2ecc71" },
+    { "label": "Moderately Active","value": "BMR × 1.55",  "color": "#e67e22" },
+    { "label": "Very Active",      "value": "BMR × 1.725", "color": "#e74c3c" },
+    { "label": "Extra Active",     "value": "BMR × 1.90",  "color": "#922b21" }
+  ],
+  "note": "W = weight in kg, H = height in cm, A = age in years. Multiply your BMR by the appropriate activity factor above to get your Total Daily Energy Expenditure (TDEE) — the actual calories you need each day. Never sustain calorie intake below your BMR without clinical supervision.",
+  "source": "Mifflin MD et al., 1990 — American Journal of Clinical Nutrition · Harris-Benedict Equation (Revised, 1984) · WHO Technical Report on Nutrition and Energy Requirements",
+  "activityGuide": {
+    "title": "Which Activity Level Are You?",
+    "intro": "Most people either underestimate or overestimate their activity level — and the wrong multiplier can throw your daily calorie target off by 200–400 calories. Use these real-world descriptions to identify where you genuinely fall:",
+    "items": [
+      {
+        "level": "Sedentary",
+        "multiplier": "×1.20",
+        "desc": "Little or no planned exercise. Your day is mostly sitting — desk work, driving, light walking between rooms. You don't have a gym routine.",
+        "examples": ["Office worker, no gym", "Student with classroom-only days", "Remote worker with a seated schedule"]
+      },
+      {
+        "level": "Lightly Active",
+        "multiplier": "×1.375",
+        "desc": "Light exercise 1–3 days a week, or a job that keeps you on your feet for part of the day. Think: casual walks, light yoga, or a retail/teaching role.",
+        "examples": ["3× casual 30-min walks per week", "Teacher or nurse on quiet shifts", "Weekend recreational sport only"]
+      },
+      {
+        "level": "Moderately Active",
+        "multiplier": "×1.55",
+        "desc": "Moderate exercise 3–5 days a week with a desk job otherwise. The typical gym-goer — 45–60 min sessions, 4 days a week, seated work the rest of the time.",
+        "examples": ["Gym 4× per week, office job", "Regular cycling or swimming sessions", "Active recreational sport 3–4× per week"]
+      },
+      {
+        "level": "Very Active",
+        "multiplier": "×1.725",
+        "desc": "Hard exercise or sports 6–7 days a week, or a physically demanding job. You train most days with real intensity — this is less common than people assume.",
+        "examples": ["Daily gym training with high intensity", "Construction worker who also exercises", "Competitive amateur athlete"]
+      },
+      {
+        "level": "Extra Active",
+        "multiplier": "×1.90",
+        "desc": "Professional-level training, twice-daily sessions, or an extremely demanding physical job combined with structured exercise. Applies to very few people.",
+        "examples": ["Professional or elite athlete", "Military training combined with sport", "Hard physical labour plus daily gym"]
+      }
+    ]
+  },
+  "healthRisks": {
+    "title": "Why Your BMR Result Matters",
+    "intro": "Your BMR is not just a number — it is a window into your metabolic health. Research consistently links poor BMR awareness to under-eating, over-eating, and long-term metabolic dysfunction. Understanding your BMR gives you the evidence base to make informed decisions about nutrition, activity, and wellbeing.",
+    "overweightItems": [
+      {
+        "condition": "Weight Management Foundation",
+        "desc": "Eating below your BMR triggers the body to break down muscle for energy and slow its metabolic rate — the opposite of healthy weight loss. Your BMR is the caloric floor that keeps any deficit sustainable."
+      },
+      {
+        "condition": "Muscle Mass Preservation",
+        "desc": "Muscle is metabolically active tissue that raises your BMR. Adequate intake at or above BMR — paired with resistance training — protects lean mass during weight loss and supports a stronger metabolism long-term."
+      },
+      {
+        "condition": "Metabolic Decline with Age",
+        "desc": "BMR drops approximately 1–2% per decade after age 20 as muscle mass naturally declines. Knowing your current BMR lets you adapt nutrition early and use strength training to slow — and partially reverse — that decline."
+      }
+    ],
+    "underweightNote": "BMR awareness is equally important whether you are trying to lose, gain, or maintain weight. Under-fuelling is as harmful as over-fuelling — both disrupt hormonal balance, metabolic rate, and long-term health. Use your BMR as your reference point in every direction."
+  },
+  "limitations": {
+    "title": "How to Use BMR Most Effectively",
+    "intro": "BMR is a powerful foundation, not an absolute figure. It is an estimate based on population-level equations — your true BMR may vary. Understanding how to apply it correctly ensures your calorie planning is both accurate and sustainable:",
+    "items": [
+      {
+        "title": "Multiply by your activity level to find real calorie needs",
+        "desc": "BMR alone reflects rest. Your actual daily calorie need (TDEE) is BMR multiplied by your activity level: 1.2 for sedentary up to 1.9 for extra active. Always use TDEE — not BMR — as the basis for any weight loss or gain target."
+      },
+      {
+        "title": "Account for muscle mass — it changes the result",
+        "desc": "Muscle burns more calories at rest than fat. Two people of the same weight, height, and age can have meaningfully different BMRs due to body composition. If you train regularly, pair your BMR with a body fat reading for greater accuracy."
+      },
+      {
+        "title": "BMR is a starting point, not a fixed truth",
+        "desc": "The formula is an estimate based on population averages. Hormonal conditions, medications, and body composition changes can shift your actual BMR. Recalculate every few months or after significant changes to your body or lifestyle."
+      }
+    ]
+  },
   "faq": [
     {
-      "q": "What does BMR mean in simple terms?",
-      "a": "BMR (Basal Metabolic Rate) is the number of calories your body burns just to stay alive — breathing, pumping blood, regulating temperature — even if you lie still all day and do nothing."
+      "q": "What is BMR in simple terms?",
+      "a": "BMR (Basal Metabolic Rate) is the number of calories your body burns just to stay alive — breathing, pumping blood, regulating temperature, and producing cells — even if you lie still all day. It is the minimum caloric floor your body needs to function."
+    },
+    {
+      "q": "What formula does this calculator use?",
+      "a": "This calculator uses the Mifflin-St Jeor equation (1990), published in the American Journal of Clinical Nutrition. It is considered the most accurate BMR formula for the general population and is the current preferred standard among dietitians and clinicians. The revised Harris-Benedict equation (1984) was the prior standard; Mifflin-St Jeor outperforms it in accuracy for modern, diverse populations."
     },
     {
       "q": "Is it safe to eat below my BMR?",
-      "a": "No. Consistently eating below your BMR deprives your body of the energy it needs for vital organ functions. This can lead to muscle loss, nutritional deficiencies, fatigue, and metabolic slowdown. Never go below your BMR without medical supervision."
+      "a": "No. Consistently eating below your BMR deprives your body of the energy needed for vital organ functions. This leads to muscle breakdown, metabolic slowdown, nutritional deficiencies, fatigue, and hormonal disruption. Never sustain a calorie intake below your BMR without medical supervision."
+    },
+    {
+      "q": "What is the difference between BMR and TDEE?",
+      "a": "BMR is the calories your body burns at complete rest. TDEE (Total Daily Energy Expenditure) adds the calories burned through physical activity by multiplying your BMR by an activity factor (1.2 for sedentary up to 1.9 for extra active). TDEE is the number to use for any calorie goal — BMR is just the starting point."
     },
     {
       "q": "Does BMR decrease with age?",
-      "a": "Yes. BMR typically decreases by 1–2% per decade after age 20, primarily because muscle mass (which is metabolically active) tends to decline with age. Resistance training can help slow this decline."
+      "a": "Yes. BMR typically decreases 1–2% per decade after age 20, primarily because muscle mass — which is metabolically active — tends to decline with age. Resistance training is the most evidence-backed way to slow this decline. Adequate protein intake (1.2–1.6 g/kg of body weight) also helps preserve muscle and metabolic rate."
     },
     {
-      "q": "How can I increase my BMR?",
-      "a": "Building lean muscle mass through strength training is the most effective way to raise BMR, as muscle tissue burns more calories at rest than fat. Staying well-hydrated, getting enough sleep, and eating adequate protein also help."
+      "q": "How can I raise my BMR?",
+      "a": "Building lean muscle through strength training is the most effective method — muscle burns more calories at rest than fat. Other supporting factors include adequate sleep (7–9 hours), sufficient protein intake, staying well-hydrated, and avoiding very low-calorie crash diets that signal the body to down-regulate metabolism."
     },
     {
-      "q": "Why is the Mifflin-St Jeor equation used?",
-      "a": "The Mifflin-St Jeor equation (1990) is considered the most accurate BMR formula for the general population in multiple validation studies. It outperforms older formulas like Harris-Benedict in accuracy for modern, diverse populations."
+      "q": "How accurate are BMR calculators?",
+      "a": "Mifflin-St Jeor estimates are accurate within ±10% for most healthy adults. Accuracy varies with body composition (highly muscular or obese individuals may see larger deviations), hormonal conditions, and medications. Indirect calorimetry — measuring gas exchange in a clinical setting — provides the most precise measurement if greater accuracy is needed."
     }
   ]
 }
