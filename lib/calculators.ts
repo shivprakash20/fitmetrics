@@ -24,10 +24,14 @@ export function calcBMI(input: BMIInput): BMIResult {
   let category: string;
   let color: string;
 
-  if (bmi < 18.5)      { category = 'Underweight'; color = '#3498db'; }
-  else if (bmi < 25)   { category = 'Normal weight'; color = '#2ecc71'; }
-  else if (bmi < 30)   { category = 'Overweight'; color = '#e67e22'; }
-  else                 { category = 'Obese'; color = '#e74c3c'; }
+  if (bmi < 16)        { category = 'Severe Thinness';   color = '#2980b9'; }
+  else if (bmi < 17)   { category = 'Moderate Thinness'; color = '#3498db'; }
+  else if (bmi < 18.5) { category = 'Mild Thinness';     color = '#5dade2'; }
+  else if (bmi < 25)   { category = 'Normal weight';     color = '#2ecc71'; }
+  else if (bmi < 30)   { category = 'Pre-obesity';       color = '#e67e22'; }
+  else if (bmi < 35)   { category = 'Obesity Class I';   color = '#e74c3c'; }
+  else if (bmi < 40)   { category = 'Obesity Class II';  color = '#c0392b'; }
+  else                 { category = 'Obesity Class III'; color = '#922b21'; }
 
   return { bmi: +bmi.toFixed(1), category, color };
 }

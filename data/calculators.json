@@ -8,7 +8,7 @@
       "id": "bmi",
       "metadata": {
         "title": "BMI Calculator — Body Mass Index | FitMetrics",
-        "description": "Calculate your Body Mass Index (BMI) using the WHO standard formula. Find out if you are underweight, normal weight, overweight, or obese."
+        "description": "Calculate your Body Mass Index (BMI) using the WHO standard formula. Understand your weight category and associated health risks based on international guidelines."
       },
       "slug": "bmi",
       "title": "BMI Calculator",
@@ -16,38 +16,88 @@
       "icon": "⚖️",
       "iconSrc": "/icons/bmi.svg",
       "tagline": "Are you at a healthy weight for your height?",
-      "shortDesc": "Check if your weight is healthy relative to your height using the WHO standard formula.",
-      "importance": "BMI is the most widely used screening tool by doctors and health professionals worldwide. Knowing your BMI helps you understand your weight category, assess risk for conditions like diabetes, hypertension, and heart disease, and set realistic fitness goals.",
-      "description": "BMI is a simple screening tool that estimates whether a person has a healthy body weight relative to their height. It is widely used by health professionals as a first step to assess potential weight-related health risks.",
-      "formula": "BMI = weight (kg) ÷ height² (m)",
+      "shortDesc": "Check if your weight is in a healthy range using the WHO international standard classification.",
+      "importance": "BMI is the most widely used screening tool by doctors, dietitians, and public health professionals worldwide. As of 2022, WHO data shows 2.5 billion adults (43%) are overweight and 890 million (16%) are living with obesity — numbers that have more than doubled since 1990. Knowing your BMI is the first step in identifying potential weight-related health risks such as type 2 diabetes, hypertension, and cardiovascular disease.",
+      "description": "Body Mass Index (BMI) is a screening measure that estimates whether a person has a healthy body weight relative to their height. The formula was standardised by WHO in 1997 and remains the international benchmark for population-level weight assessment. It is a screening tool — not a diagnostic one — and should always be considered alongside other clinical measures.",
+      "formula": "Metric:   BMI = weight (kg) ÷ height² (m)\nImperial: BMI = [weight (lbs) ÷ height² (in)] × 703",
       "ranges": [
-        { "label": "Underweight",   "value": "< 18.5",      "color": "#3498db" },
-        { "label": "Normal weight", "value": "18.5 – 24.9", "color": "#2ecc71" },
-        { "label": "Overweight",    "value": "25 – 29.9",   "color": "#e67e22" },
-        { "label": "Obese",         "value": "≥ 30",        "color": "#e74c3c" }
+        { "label": "Severe Thinness",   "value": "< 16.0",      "color": "#2980b9" },
+        { "label": "Moderate Thinness", "value": "16.0 – 16.9", "color": "#3498db" },
+        { "label": "Mild Thinness",     "value": "17.0 – 18.4", "color": "#5dade2" },
+        { "label": "Normal weight",     "value": "18.5 – 24.9", "color": "#2ecc71" },
+        { "label": "Pre-obesity",       "value": "25.0 – 29.9", "color": "#e67e22" },
+        { "label": "Obesity Class I",   "value": "30.0 – 34.9", "color": "#e74c3c" },
+        { "label": "Obesity Class II",  "value": "35.0 – 39.9", "color": "#c0392b" },
+        { "label": "Obesity Class III", "value": "≥ 40.0",      "color": "#922b21" }
       ],
-      "note": "BMI does not distinguish between fat and muscle mass. Athletes may have a high BMI due to muscle, not fat.",
-      "source": "WHO (World Health Organization)",
+      "note": "BMI is a population screening tool, not a diagnostic measure. It does not distinguish fat from muscle mass, does not capture fat distribution, and varies in accuracy by sex and age. WHO recommends waist circumference (>102 cm in men, >88 cm in women) as a complementary measure. For Asian populations, WHO identifies increased cardiometabolic risk starting at BMI 23.0.",
+      "source": "WHO Global Classification (1997) · WHO Obesity Fact Sheet (2022) · WHO Expert Consultation on BMI for Asian Populations, The Lancet (2004) · NHLBI Clinical Guidelines",
+      "healthRisks": {
+        "title": "Why Your BMI Result Matters",
+        "intro": "Awareness is the first step toward better health. Research from WHO and NHLBI consistently links sustained overweight (BMI ≥ 25) and obesity (BMI ≥ 30) to a higher likelihood of the following conditions. Recognising these connections early gives you the opportunity to take informed, preventive action.",
+        "overweightItems": [
+          { "condition": "Cardiovascular Disease",    "desc": "Obesity is a leading driver of heart disease worldwide. Reaching a healthy BMI reduces arterial inflammation, improves cholesterol levels, and significantly lowers the risk of heart attack and stroke." },
+          { "condition": "Type 2 Diabetes",           "desc": "Excess visceral fat is the primary modifiable risk factor for type 2 diabetes. Studies show that losing just 5–10% of body weight can delay or prevent onset in at-risk individuals." },
+          { "condition": "Hypertension",              "desc": "Higher body mass directly increases the workload on the heart. Even modest, sustained weight loss produces clinically meaningful reductions in blood pressure." },
+          { "condition": "Certain Cancers",           "desc": "WHO links obesity to at least 13 cancer types including breast, colorectal, and endometrial. Maintaining a healthy weight is one of the most evidence-backed forms of cancer prevention." },
+          { "condition": "Joint & Bone Health",       "desc": "Each kilogram of excess weight places roughly four kilograms of additional stress on the knee joints. Achieving a healthy BMI reliably reduces joint pain, slows cartilage wear, and improves mobility." }
+        ],
+        "underweightNote": "A healthy BMI is a two-way target. Being underweight (BMI < 18.5) is equally important to address — it is associated with reduced bone density, weakened immunity, and nutritional deficiencies. Every step toward the 18.5–24.9 range is a step toward better health."
+      },
+      "limitations": {
+        "title": "How to Use BMI Most Effectively",
+        "intro": "BMI is a powerful starting point — not the complete picture. WHO and CDC both classify it as a screening tool, not a diagnostic one. Understanding where it works best helps you get the most value from your result:",
+        "items": [
+          {
+            "title": "Combine with waist circumference",
+            "desc": "BMI does not show where fat is stored. Waist circumference (>102 cm in men, >88 cm in women) identifies visceral fat risk that BMI misses. Using both together gives a significantly stronger health signal than either measure alone."
+          },
+          {
+            "title": "Athletes and muscular individuals: add a body fat reading",
+            "desc": "Muscle is denser than fat. If you train regularly, your BMI may read 'overweight' while your body fat is low. Pair your result with a body fat percentage measurement for an accurate picture of your composition."
+          },
+          {
+            "title": "Asian backgrounds: use WHO-adjusted thresholds",
+            "desc": "A 2004 WHO Expert Consultation found that Asian populations face elevated cardiometabolic risk at lower BMI values. WHO recommends 23.0 as the 'increased risk' point and 27.5 as 'high risk' — apply these if relevant to you."
+          },
+          {
+            "title": "BMI is a screening start, not a medical verdict",
+            "desc": "A BMI result alone cannot diagnose any condition. For a complete picture, your doctor will assess waist circumference, blood pressure, blood glucose, lipid panel, and lifestyle together with your BMI."
+          },
+          {
+            "title": "Track trends, not single readings",
+            "desc": "A single BMI reading is a snapshot. Its real value emerges when tracked over time. Recalculate every 4–6 weeks when actively working on your health, and note the direction of change — that trend is what matters most."
+          }
+        ]
+      },
       "faq": [
         {
-          "q": "What is a healthy BMI range?",
-          "a": "A BMI between 18.5 and 24.9 is considered normal or healthy. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is classified as obese."
+          "q": "What are the official WHO BMI categories?",
+          "a": "WHO defines eight categories: Severe Thinness (< 16.0), Moderate Thinness (16.0–16.9), Mild Thinness (17.0–18.4), Normal weight (18.5–24.9), Pre-obesity (25.0–29.9), Obesity Class I (30.0–34.9), Obesity Class II (35.0–39.9), and Obesity Class III (≥ 40.0)."
+        },
+        {
+          "q": "What health risks are associated with high BMI?",
+          "a": "WHO and NHLBI data link overweight and obesity to type 2 diabetes, hypertension, hyperlipidaemia, coronary heart disease, obstructive sleep apnoea, certain cancers, and non-alcoholic fatty liver disease. In 2021, higher-than-optimal BMI was associated with an estimated 3.7 million deaths globally."
         },
         {
           "q": "Is BMI accurate for athletes and muscular people?",
-          "a": "Not always. BMI does not differentiate between muscle and fat. A bodybuilder or athlete may have a high BMI due to dense muscle mass while still having very low body fat. In such cases, body fat percentage is a better measure."
+          "a": "No. Muscle is denser than fat. An elite athlete or bodybuilder can register as 'overweight' or 'obese' while having very low body fat. Studies show BMI has only ~36% sensitivity for detecting actual obesity in men. Body fat percentage is a more accurate measure in such cases."
+        },
+        {
+          "q": "Should Asian individuals use different BMI cutoffs?",
+          "a": "WHO retains the global standard thresholds (overweight ≥ 25, obesity ≥ 30). However, a 2004 WHO Expert Consultation published in The Lancet found Asian populations face increased cardiometabolic risk at lower BMI values — WHO identifies 23.0 as an 'increased risk' trigger and 27.5 as 'high risk' for Asian populations."
         },
         {
           "q": "Can children use this BMI calculator?",
-          "a": "No. This calculator is designed for adults (18+). Children and teenagers require age- and sex-specific BMI charts (BMI-for-age) because their body composition changes significantly during growth."
+          "a": "No. This calculator is for adults aged 18 and above. Children and adolescents require age- and sex-specific BMI-for-age percentile charts because body composition changes significantly during growth. WHO and CDC publish separate BMI growth charts for children."
         },
         {
-          "q": "Does BMI differ by ethnicity?",
-          "a": "Yes. The WHO has established lower BMI thresholds for Asian populations. For example, a BMI of 23 or above may indicate increased health risk for some Asian individuals, compared to 25 for the general population."
+          "q": "Does BMI measure body fat directly?",
+          "a": "No. BMI is an indirect proxy based only on height and weight. Direct body fat measurement requires DEXA scan (gold standard), hydrostatic weighing, bioelectrical impedance analysis (BIA), or skinfold caliper measurements."
         },
         {
           "q": "What should I do if my BMI is outside the normal range?",
-          "a": "A BMI outside the healthy range is a signal, not a diagnosis. Consult a doctor or registered dietitian for a complete health assessment. Lifestyle changes — balanced diet and regular exercise — are the first steps recommended."
+          "a": "BMI outside the healthy range is a signal for further assessment, not a diagnosis. Consult a doctor, registered dietitian, or certified fitness professional. They will evaluate waist circumference, blood pressure, blood glucose, lipid profile, and lifestyle before recommending any intervention."
         }
       ]
     },

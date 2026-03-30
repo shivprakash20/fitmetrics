@@ -262,13 +262,16 @@ function ResultPanel({ type, result, unit }: { type: CalculatorType; result: any
 
 // ─── BMI Scale ────────────────────────────────────────────────────────────────
 function BMIScale({ bmi }: { bmi: number }) {
-  const MIN = 15, MAX = 40;
-  const pct = ((Math.min(Math.max(bmi, MIN), MAX) - MIN) / (MAX - MIN)) * 100;
+  const MIN = 15, MAX = 42;
+  const range = MAX - MIN;
+  const pct = ((Math.min(Math.max(bmi, MIN), MAX) - MIN) / range) * 100;
   const zones = [
-    { label: 'Under', end: (18.5 - MIN) / (MAX - MIN) * 100, color: '#3498db' },
-    { label: 'Normal', end: (25 - MIN) / (MAX - MIN) * 100,  color: '#2ecc71' },
-    { label: 'Over',   end: (30 - MIN) / (MAX - MIN) * 100,  color: '#e67e22' },
-    { label: 'Obese',  end: 100,                              color: '#e74c3c' },
+    { label: 'Underweight', end: (18.5 - MIN) / range * 100, color: '#3498db' },
+    { label: 'Normal',      end: (25   - MIN) / range * 100, color: '#2ecc71' },
+    { label: 'Pre-obese',   end: (30   - MIN) / range * 100, color: '#e67e22' },
+    { label: 'Obese I',     end: (35   - MIN) / range * 100, color: '#e74c3c' },
+    { label: 'Obese II',    end: (40   - MIN) / range * 100, color: '#c0392b' },
+    { label: 'Obese III',   end: 100,                        color: '#922b21' },
   ];
   return (
     <div className={styles.scale}>
@@ -280,7 +283,7 @@ function BMIScale({ bmi }: { bmi: number }) {
         <div className={styles.scaleMarker} style={{ left: `${pct}%` }} />
       </div>
       <div className={styles.scaleLabels}>
-        <span>15</span><span>18.5</span><span>25</span><span>30</span><span>40</span>
+        <span>15</span><span>18.5</span><span>25</span><span>30</span><span>35</span><span>40</span><span>42+</span>
       </div>
     </div>
   );

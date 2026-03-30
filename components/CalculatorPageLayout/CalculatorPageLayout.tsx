@@ -7,7 +7,9 @@ import type { CalculatorType } from '@/types';
 import styles from './CalculatorPageLayout.module.scss';
 
 type Range = { label: string; value: string; color: string };
-type FAQ   = { q: string; a: string };
+type FAQ = { q: string; a: string };
+type HealthRiskItem = { condition: string; desc: string };
+type LimitationItem = { title: string; desc: string };
 
 type Props = {
   id: CalculatorType;
@@ -21,6 +23,17 @@ type Props = {
   note: string;
   source: string;
   faq: FAQ[];
+  healthRisks?: {
+    title: string;
+    intro: string;
+    overweightItems: HealthRiskItem[];
+    underweightNote: string;
+  };
+  limitations?: {
+    title: string;
+    intro: string;
+    items: LimitationItem[];
+  };
 };
 
 function FAQItem({ q, a }: FAQ) {
@@ -44,6 +57,7 @@ function FAQItem({ q, a }: FAQ) {
 
 export default function CalculatorPageLayout({
   id, iconSrc, title, tagline, description, formula, ranges, note, source, faq,
+  healthRisks, limitations,
 }: Props) {
   return (
     <main className={styles.main}>
@@ -89,6 +103,53 @@ export default function CalculatorPageLayout({
 
           <p className={styles.source}>Source: {source}</p>
         </section>
+
+        {/* Health Risks section — optional, currently used by BMI */}
+        {healthRisks && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>{healthRisks.title}</h2>
+            <p className={styles.description}>{healthRisks.intro}</p>
+
+            <div className={styles.risksGrid}>
+              {healthRisks.overweightItems.map((item, i) => (
+                <div key={item.condition} className={styles.riskCard}>
+                  <span className={styles.riskNum}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p className={styles.riskCondition}>{item.condition}</p>
+                  <p className={styles.riskDesc}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.note} style={{ marginTop: '20px' }}>
+              <span className={styles.noteIcon}>ℹ</span>
+              <span>{healthRisks.underweightNote}</span>
+            </div>
+          </section>
+        )}
+
+        {/* Limitations section — optional, currently used by BMI */}
+        {limitations && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>{limitations.title}</h2>
+            <p className={styles.description}>{limitations.intro}</p>
+
+            <div className={styles.limitationsList}>
+              {limitations.items.map((item, i) => (
+                <div key={item.title} className={styles.limitationItem}>
+                  <div className={styles.limitationHeader}>
+                    <span className={styles.limitationNum}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <p className={styles.limitationTitle}>{item.title}</p>
+                  </div>
+                  <p className={styles.limitationDesc}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* FAQ section */}
         <section className={styles.section}>
