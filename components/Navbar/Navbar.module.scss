@@ -17,7 +17,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 80px;
+  min-height: 72px;
+
+  @media (min-width: 900px) {
+    min-height: 80px;
+  }
 }
 
 // ─── Logo ─────────────────────────────────────────────────────────────────────
@@ -33,14 +37,32 @@
   &:hover { opacity: 0.85; }
 }
 
+.logoImage {
+  width: 108px;
+  height: auto;
+
+  @media (min-width: 600px) {
+    width: 132px;
+  }
+
+  @media (min-width: 900px) {
+    width: 180px;
+  }
+}
+
 // ─── Middle — nav links ────────────────────────────────────────────────────────
 .links {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 2px;
   list-style: none;
-  flex: 1;
+  flex: 0;
   justify-content: center;
+
+  @media (min-width: 900px) {
+    display: flex;
+    flex: 1;
+  }
 }
 
 .link {
@@ -69,16 +91,49 @@
 .right {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex-shrink: 0;
+
+  @media (min-width: 900px) {
+    gap: 6px;
+  }
+}
+
+.mobileToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--bg-input);
+  transition: color g.$transition, background g.$transition, border-color g.$transition, box-shadow g.$transition;
+
+  &:hover {
+    color: var(--text);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-a12);
+  }
+
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+
+.mobileToggleActive {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  background: var(--primary-a12) !important;
 }
 
 // ─── Shared icon button ───────────────────────────────────────────────────────
 .userBtn {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 14px;
+  gap: 0;
+  padding: 8px 10px;
   border-radius: 999px;
   border: 1px solid var(--border);
   color: var(--text-muted);
@@ -88,10 +143,145 @@
   transition: color g.$transition, background g.$transition, border-color g.$transition, box-shadow g.$transition;
   white-space: nowrap;
 
+  @media (min-width: 900px) {
+    gap: 7px;
+    padding: 8px 14px;
+  }
+
   &:hover {
     color: var(--text);
     border-color: var(--primary);
     box-shadow: 0 0 0 3px var(--primary-a12);
+  }
+}
+
+.mobileMenu {
+  border-top: 1px solid var(--border);
+  background: var(--bg-card-a90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform-origin: top;
+  animation: mobileMenuReveal 0.18s ease-out;
+
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+
+@keyframes mobileMenuReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileMenuInner {
+  padding-top: 12px;
+  padding-bottom: 14px;
+}
+
+.mobileSectionTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  margin: 6px 0 8px;
+}
+
+.mobileLinks {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
+
+  > * {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: mobileItemReveal 0.22s ease-out forwards;
+  }
+
+  > :nth-child(1) { animation-delay: 0.03s; }
+  > :nth-child(2) { animation-delay: 0.06s; }
+  > :nth-child(3) { animation-delay: 0.09s; }
+  > :nth-child(4) { animation-delay: 0.12s; }
+  > :nth-child(5) { animation-delay: 0.15s; }
+  > :nth-child(6) { animation-delay: 0.18s; }
+  > :nth-child(7) { animation-delay: 0.21s; }
+  > :nth-child(8) { animation-delay: 0.24s; }
+}
+
+.mobileLink {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 10px 12px;
+  border-radius: g.$radius-sm;
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  color: var(--text);
+  transition: border-color g.$transition, background g.$transition, color g.$transition;
+
+  &:hover {
+    border-color: var(--primary);
+    background: var(--primary-a06);
+  }
+}
+
+.mobileLinkActive {
+  border-color: var(--primary) !important;
+  background: var(--primary-a12) !important;
+}
+
+.mobileLinkTitle {
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.mobileLinkDesc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.mobileAction {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: g.$radius-sm;
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  color: var(--text);
+  text-align: left;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: border-color g.$transition, background g.$transition, color g.$transition;
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-a06);
+  }
+}
+
+@keyframes mobileItemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileLinks > * {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }
 
