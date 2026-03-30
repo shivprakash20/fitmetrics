@@ -7,6 +7,11 @@ export const metadata = {
 };
 
 export default function TDEEPage() {
-  const calc = calculators.items.find(c => c.id === 'tdee')!;
-  return <CalculatorPageLayout id="tdee" {...calc} />;
+  const calc = calculators.items.find(c => c.id === 'tdee');
+  if (!calc) throw new Error('Calculator config "tdee" not found.');
+
+  const { id: calcId, ...calcProps } = calc;
+  if (calcId !== 'tdee') throw new Error(`Calculator ID mismatch for /tdee: ${calcId}`);
+
+  return <CalculatorPageLayout id={calcId} {...calcProps} />;
 }

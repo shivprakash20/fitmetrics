@@ -7,6 +7,11 @@ export const metadata = {
 };
 
 export default function BodyFatPage() {
-  const calc = calculators.items.find(c => c.id === 'bodyfat')!;
-  return <CalculatorPageLayout id="bodyfat" {...calc} />;
+  const calc = calculators.items.find(c => c.id === 'bodyfat');
+  if (!calc) throw new Error('Calculator config "bodyfat" not found.');
+
+  const { id: calcId, ...calcProps } = calc;
+  if (calcId !== 'bodyfat') throw new Error(`Calculator ID mismatch for /body-fat: ${calcId}`);
+
+  return <CalculatorPageLayout id={calcId} {...calcProps} />;
 }

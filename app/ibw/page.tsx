@@ -7,6 +7,11 @@ export const metadata = {
 };
 
 export default function IBWPage() {
-  const calc = calculators.items.find(c => c.id === 'ibw')!;
-  return <CalculatorPageLayout id="ibw" {...calc} />;
+  const calc = calculators.items.find(c => c.id === 'ibw');
+  if (!calc) throw new Error('Calculator config "ibw" not found.');
+
+  const { id: calcId, ...calcProps } = calc;
+  if (calcId !== 'ibw') throw new Error(`Calculator ID mismatch for /ibw: ${calcId}`);
+
+  return <CalculatorPageLayout id={calcId} {...calcProps} />;
 }

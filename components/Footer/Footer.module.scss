@@ -8,18 +8,18 @@
 // ─── Main footer body ─────────────────────────────────────────────────────────
 .body {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
   padding: 28px 0 24px;
 
-  @media (max-width: 768px) {
+  @media (min-width: 481px) {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  @media (min-width: 769px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
   }
 }
 

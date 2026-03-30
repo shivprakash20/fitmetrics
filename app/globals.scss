@@ -5,6 +5,8 @@
 
 :root,
 [data-theme='dark'] {
+  --layout-max-width: 1320px;
+  --layout-gutter: clamp(20px, 2vw, 28px);
   --primary:       #2ecc71;
   --primary-dark:  #27ae60;
   --secondary:     #3498db;
@@ -109,7 +111,7 @@ select {
 
 // ─── Utility ──────────────────────────────────────────────────────────────────
 .container {
-  max-width: 1100px;
+  max-width: var(--layout-max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding-inline: var(--layout-gutter);
 }

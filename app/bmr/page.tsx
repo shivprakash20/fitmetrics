@@ -7,6 +7,11 @@ export const metadata = {
 };
 
 export default function BMRPage() {
-  const calc = calculators.items.find(c => c.id === 'bmr')!;
-  return <CalculatorPageLayout id="bmr" {...calc} />;
+  const calc = calculators.items.find(c => c.id === 'bmr');
+  if (!calc) throw new Error('Calculator config "bmr" not found.');
+
+  const { id: calcId, ...calcProps } = calc;
+  if (calcId !== 'bmr') throw new Error(`Calculator ID mismatch for /bmr: ${calcId}`);
+
+  return <CalculatorPageLayout id={calcId} {...calcProps} />;
 }

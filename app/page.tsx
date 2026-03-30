@@ -20,7 +20,7 @@ export default function HomePage() {
     <>
       {/* ── Hero ── */}
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
+        <div className={`${styles.heroInner} container`}>
           <div className={styles.heroContent}>
             <span className={styles.heroEyebrow}>Free · Accurate · Instant</span>
             <h1 className={styles.heroTitle}>Know Your Body.<br />Track Your Health.</h1>

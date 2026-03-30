@@ -7,6 +7,11 @@ export const metadata = {
 };
 
 export default function BMIPage() {
-  const calc = calculators.items.find(c => c.id === 'bmi')!;
-  return <CalculatorPageLayout id="bmi" {...calc} />;
+  const calc = calculators.items.find(c => c.id === 'bmi');
+  if (!calc) throw new Error('Calculator config "bmi" not found.');
+
+  const { id: calcId, ...calcProps } = calc;
+  if (calcId !== 'bmi') throw new Error(`Calculator ID mismatch for /bmi: ${calcId}`);
+
+  return <CalculatorPageLayout id={calcId} {...calcProps} />;
 }

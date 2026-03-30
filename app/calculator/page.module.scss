@@ -72,10 +72,10 @@
 
 // ─── Body ─────────────────────────────────────────────────────────────────────
 .body {
-  padding: 28px 32px 36px;
+  padding: 20px 16px 28px;
 
-  @media (max-width: 600px) {
-    padding: 20px 16px 28px;
+  @media (min-width: 601px) {
+    padding: 28px 32px 36px;
   }
 }
 
