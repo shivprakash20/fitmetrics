@@ -52,6 +52,10 @@ export default function Navbar({ user }: NavbarProps) {
 
   const currentTheme = navigation.themes.find(t => t.id === theme);
   const calcSlugs = navigation.calculators.items.map(c => c.href);
+
+  const logoSrc = theme === 'light' ? '/logo-light.svg'
+    : theme === 'teal'  ? '/logo-teal.svg'
+    : '/logo-dark.svg';
   const isCalcActive = calcSlugs.includes(pathname);
 
   return (
@@ -61,12 +65,11 @@ export default function Navbar({ user }: NavbarProps) {
         {/* Logo → home */}
         <Link href="/" className={styles.logo} onClick={() => setMobileMenuOpen(false)}>
           <Image
-            src="/logo.png"
+            src={logoSrc}
             alt="FitMetrics"
-            width={180}
+            width={300}
             height={60}
             className={styles.logoImage}
-            style={{ objectFit: 'contain' }}
             priority
           />
         </Link>

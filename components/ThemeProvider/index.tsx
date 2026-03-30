@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useSyncExternalStore, type ReactNode } from 'react';
 
-export type Theme = 'dark' | 'light' | 'neon';
+export type Theme = 'dark' | 'light' | 'neon' | 'teal';
 
 interface ThemeCtx {
   theme: Theme;

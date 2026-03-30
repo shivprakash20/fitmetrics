@@ -1,5 +1,5 @@
 // ─── Theme tokens ─────────────────────────────────────────────────────────────
-// Three themes: dark (default) · light · neon
+// Four themes: dark (default) · light · neon · teal
 // Every colour used in CSS Modules references these custom properties so
 // switching data-theme on <html> instantly repaints the whole UI.
 
@@ -68,6 +68,28 @@
   --primary-a40:   rgba(0, 229, 255, 0.4);
   --secondary-a08: rgba(213, 0, 249, 0.08);
   --bg-card-a90:   rgba(11, 17, 32, 0.9);
+}
+
+[data-theme='teal'] {
+  /* Brand teal from logo — deep ocean teal palette */
+  --primary:       #1D9E75;    /* exact logo brand teal */
+  --primary-dark:  #168f68;
+  --secondary:     #22d3ee;    /* sky-cyan for contrast accents */
+  --accent:        #f59e0b;
+  --bg:            #071e22;    /* deep ocean teal-black */
+  --bg-card:       #0c2b32;    /* card surface — clear teal tint */
+  --bg-input:      #0f343d;    /* input fields */
+  --border:        #1c4a55;    /* teal-blue border */
+  --text:          #e0f4f1;    /* warm teal-white */
+  --text-muted:    #5ba99e;    /* readable muted teal */
+  --text-label:    #7dc7bc;    /* label teal */
+  --shadow:        0 4px 32px rgba(29, 158, 117, 0.14), 0 2px 12px rgba(0, 0, 0, 0.55);
+  --primary-a06:   rgba(29, 158, 117, 0.06);
+  --primary-a12:   rgba(29, 158, 117, 0.12);
+  --primary-a15:   rgba(29, 158, 117, 0.15);
+  --primary-a40:   rgba(29, 158, 117, 0.4);
+  --secondary-a08: rgba(34, 211, 238, 0.08);
+  --bg-card-a90:   rgba(12, 43, 50, 0.92);
 }
 
 // ─── Reset & Base ─────────────────────────────────────────────────────────────
