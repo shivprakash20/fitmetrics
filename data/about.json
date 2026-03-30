@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "title": "About Health Calculators — Why They Matter | FitMetrics",
+    "description": "Learn why BMI, BMR, IBW, Body Fat, and TDEE calculators are essential for your health. Understand what each metric means and how it helps you."
+  },
+  "banner": {
+    "eyebrow": "Why It Matters",
+    "title": "Your Health,",
+    "titleAccent": "Measured & Understood",
+    "subtitle": "Numbers alone do not tell the whole story. Understanding what each health metric means — and how it applies to your daily life — is the first step toward lasting well-being. Here is why these five calculators matter."
+  },
+  "cardCta": {
+    "prefix": "Open",
+    "suffix": "→"
+  },
+  "bottomCta": {
+    "title": "Ready to measure what matters?",
+    "subtitle": "All five calculators are free — no sign-up required.",
+    "button": "View All Calculators",
+    "href": "/"
+  }
+}

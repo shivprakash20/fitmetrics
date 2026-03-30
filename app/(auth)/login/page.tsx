@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { loginAction } from '@/app/(auth)/actions';
 import { getQueryValue, type QueryParams } from '@/app/(auth)/query';
 import styles from '@/app/(auth)/auth.module.scss';
+import auth from '@/data/auth.json';
 
 export default async function LoginPage({
   searchParams,
@@ -17,34 +18,32 @@ export default async function LoginPage({
     <main className={styles.page}>
       <div className="container">
         <section className={styles.card}>
-          <h1 className={styles.title}>Sign in to FitMetrics</h1>
-          <p className={styles.subtitle}>
-            Use your registered email and password. If your account does not exist, we redirect to registration.
-          </p>
+          <h1 className={styles.title}>{auth.login.title}</h1>
+          <p className={styles.subtitle}>{auth.login.subtitle}</p>
 
           {message ? <p className={`${styles.message} ${styles.messageInfo}`}>{message}</p> : null}
           {error ? <p className={`${styles.message} ${styles.messageError}`}>{error}</p> : null}
 
           <form action={loginAction} className={styles.form}>
             <div className={styles.row}>
-              <label htmlFor="email" className={styles.label}>Email</label>
+              <label htmlFor="email" className={styles.label}>{auth.login.fields.email.label}</label>
               <input id="email" name="email" type="email" defaultValue={email} className={styles.input} required />
             </div>
 
             <div className={styles.row}>
-              <label htmlFor="password" className={styles.label}>Password</label>
+              <label htmlFor="password" className={styles.label}>{auth.login.fields.password.label}</label>
               <input id="password" name="password" type="password" className={styles.input} required />
             </div>
 
             <div className={styles.linkRow}>
-              <Link href="/register" className={styles.link}>Don&apos;t have an account? Register</Link>
+              <Link href="/register" className={styles.link}>{auth.login.links.register}</Link>
             </div>
 
-            <button type="submit" className={styles.submitBtn}>Sign in</button>
+            <button type="submit" className={styles.submitBtn}>{auth.login.submitButton}</button>
           </form>
 
           <div className={styles.linkRow}>
-            <Link href="/forgot-password" className={styles.link}>Forgot password?</Link>
+            <Link href="/forgot-password" className={styles.link}>{auth.login.links.forgotPassword}</Link>
           </div>
         </section>
       </div>

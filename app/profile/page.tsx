@@ -6,15 +6,16 @@ import {
 } from '@/app/(auth)/actions';
 import { getQueryValue, type QueryParams } from '@/app/(auth)/query';
 import styles from '@/app/profile/page.module.scss';
+import profile from '@/data/profile.json';
 
 export default async function ProfilePage({
   searchParams,
 }: {
   searchParams: Promise<QueryParams>;
 }) {
-  const profile = await getProfileForPage();
+  const profileData = await getProfileForPage();
 
-  if (!profile) {
+  if (!profileData) {
     redirect('/register');
   }
 
@@ -26,52 +27,50 @@ export default async function ProfilePage({
     <main className={styles.page}>
       <div className="container">
         <section className={styles.card}>
-          <h1 className={styles.title}>My Profile</h1>
-          <p className={styles.subtitle}>
-            Update your profile details. This data is stored in your user account.
-          </p>
+          <h1 className={styles.title}>{profile.title}</h1>
+          <p className={styles.subtitle}>{profile.subtitle}</p>
 
           {message ? <p className={`${styles.message} ${styles.messageInfo}`}>{message}</p> : null}
           {error ? <p className={`${styles.message} ${styles.messageError}`}>{error}</p> : null}
 
           <div className={styles.meta}>
-            <p>Email: {profile.email}</p>
+            <p>{profile.meta.emailLabel} {profileData.email}</p>
             <p>
-              Email verification status:{' '}
-              {profile.emailVerifiedAt ? 'Verified' : 'Not verified'}
+              {profile.meta.verificationLabel}{' '}
+              {profileData.emailVerifiedAt ? profile.meta.verified : profile.meta.notVerified}
             </p>
-            <p>Joined: {profile.createdAt.toISOString().slice(0, 10)}</p>
+            <p>{profile.meta.joinedLabel} {profileData.createdAt.toISOString().slice(0, 10)}</p>
           </div>
 
           <form action={updateProfileAction} className={styles.form}>
             <div className={styles.gridTwo}>
               <div className={styles.row}>
-                <label htmlFor="firstName" className={styles.label}>First name</label>
+                <label htmlFor="firstName" className={styles.label}>{profile.fields.firstName.label}</label>
                 <input
                   id="firstName"
                   name="firstName"
-                  defaultValue={profile.firstName}
+                  defaultValue={profileData.firstName}
                   className={styles.input}
                   required
                 />
               </div>
               <div className={styles.row}>
-                <label htmlFor="middleName" className={styles.label}>Middle name (optional)</label>
+                <label htmlFor="middleName" className={styles.label}>{profile.fields.middleName.label}</label>
                 <input
                   id="middleName"
                   name="middleName"
-                  defaultValue={profile.middleName ?? ''}
+                  defaultValue={profileData.middleName ?? ''}
                   className={styles.input}
                 />
               </div>
             </div>
 
             <div className={styles.row}>
-              <label htmlFor="lastName" className={styles.label}>Last name</label>
+              <label htmlFor="lastName" className={styles.label}>{profile.fields.lastName.label}</label>
               <input
                 id="lastName"
                 name="lastName"
-                defaultValue={profile.lastName}
+                defaultValue={profileData.lastName}
                 className={styles.input}
                 required
               />
@@ -79,26 +78,25 @@ export default async function ProfilePage({
 
             <div className={styles.gridTwo}>
               <div className={styles.row}>
-                <label htmlFor="gender" className={styles.label}>Gender</label>
+                <label htmlFor="gender" className={styles.label}>{profile.fields.gender.label}</label>
                 <select
                   id="gender"
                   name="gender"
-                  defaultValue={profile.gender}
+                  defaultValue={profileData.gender}
                   className={styles.select}
                 >
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                  <option value="prefer_not_to_say">Prefer not to say</option>
+                  {profile.genderOptions.map(opt => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
                 </select>
               </div>
 
               <div className={styles.row}>
-                <label htmlFor="mobile" className={styles.label}>Mobile number</label>
+                <label htmlFor="mobile" className={styles.label}>{profile.fields.mobile.label}</label>
                 <input
                   id="mobile"
                   name="mobile"
-                  defaultValue={profile.mobile}
+                  defaultValue={profileData.mobile}
                   className={styles.input}
                   required
                 />
@@ -106,12 +104,12 @@ export default async function ProfilePage({
             </div>
 
             <div className={styles.actions}>
-              <button type="submit" className={styles.submitBtn}>Save profile</button>
+              <button type="submit" className={styles.submitBtn}>{profile.submitButton}</button>
             </div>
           </form>
 
           <form action={logoutAction}>
-            <button type="submit" className={styles.ghostBtn}>Logout</button>
+            <button type="submit" className={styles.ghostBtn}>{profile.logoutButton}</button>
           </form>
         </section>
       </div>

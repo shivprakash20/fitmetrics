@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "title": "FitMetrics — Free Health & Body Calculators",
+    "description": "Calculate BMI, BMR, Ideal Body Weight, Body Fat %, and TDEE using established formulas. Free, accurate, and easy to use."
+  },
+  "hero": {
+    "eyebrow": "Free · Accurate · Instant",
+    "title": "Know Your Body.",
+    "titleAccent": "Track Your Health.",
+    "subtitle": "FitMetrics gives you five essential health calculators built on established formulas used by doctors, dietitians, and fitness professionals worldwide.",
+    "cta": "Get Started",
+    "ctaHref": "#calculators",
+    "illustration": {
+      "src": "/hero-illustration.svg",
+      "alt": "Health metrics dashboard",
+      "width": 480,
+      "height": 400
+    },
+    "stats": [
+      { "value": "5",    "label": "Calculators"       },
+      { "value": "100%", "label": "Free"              },
+      { "value": "0",    "label": "Sign-up Required"  }
+    ]
+  },
+  "calculatorsSection": {
+    "title": "Choose a Calculator",
+    "subtitle": "Select any calculator to get your result instantly",
+    "cardCta": "Calculate now →"
+  },
+  "benefitsSection": {
+    "title": "Why Use FitMetrics?",
+    "subtitle": "Built for accuracy, simplicity, and your privacy",
+    "items": [
+      {
+        "icon": "🔬",
+        "title": "Established Formulas",
+        "desc": "Every calculator uses well-known formulas widely applied in clinical and fitness practice."
+      },
+      {
+        "icon": "⚡",
+        "title": "Instant Results",
+        "desc": "Get your health metrics in seconds with no sign-up or download required."
+      },
+      {
+        "icon": "📊",
+        "title": "Track Progress",
+        "desc": "Save your results and monitor how your metrics change over time."
+      },
+      {
+        "icon": "🔒",
+        "title": "Private & Secure",
+        "desc": "Your data stays on your device. We never sell or share personal information."
+      }
+    ]
+  },
+  "disclaimer": {
+    "title": "Medical Disclaimer",
+    "text": "The calculators on FitMetrics are for informational and educational purposes only. Results are estimates based on population averages and standard clinical formulas. They do not constitute medical advice and should not replace consultation with a qualified healthcare professional. Always consult a doctor, dietitian, or certified fitness professional before making changes to your diet, exercise routine, or health regimen."
+  }
+}

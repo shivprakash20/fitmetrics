@@ -5,10 +5,11 @@ import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { getCurrentUser } from '@/lib/server/auth/session';
+import site from '@/data/site.json';
 
 export const metadata: Metadata = {
-  title: 'FitMetrics — Health Calculators',
-  description: 'Calculate BMI, BMR, Ideal Body Weight, Body Fat %, and TDEE using clinically validated formulas.',
+  title: site.metadata.title,
+  description: site.metadata.description,
 };
 
 export default async function RootLayout({

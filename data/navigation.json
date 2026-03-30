@@ -2,11 +2,11 @@
   "calculators": {
     "label": "Calculators",
     "items": [
-      { "label": "BMI",       "href": "/bmi",       "desc": "Body Mass Index"             },
-      { "label": "BMR",       "href": "/bmr",       "desc": "Basal Metabolic Rate"        },
-      { "label": "IBW",       "href": "/ibw",       "desc": "Ideal Body Weight"           },
-      { "label": "Body Fat",  "href": "/body-fat",  "desc": "US Navy Body Fat Method"     },
-      { "label": "TDEE",      "href": "/tdee",      "desc": "Total Daily Energy Expenditure" }
+      { "label": "BMI",       "href": "/calculator/bmi",       "desc": "Body Mass Index"             },
+      { "label": "BMR",       "href": "/calculator/bmr",       "desc": "Basal Metabolic Rate"        },
+      { "label": "IBW",       "href": "/calculator/ibw",       "desc": "Ideal Body Weight"           },
+      { "label": "Body Fat",  "href": "/calculator/body-fat",  "desc": "US Navy Body Fat Method"     },
+      { "label": "TDEE",      "href": "/calculator/tdee",      "desc": "Total Daily Energy Expenditure" }
     ]
   },
   "links": [

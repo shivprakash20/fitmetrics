@@ -6,6 +6,10 @@
   "items": [
     {
       "id": "bmi",
+      "metadata": {
+        "title": "BMI Calculator — Body Mass Index | FitMetrics",
+        "description": "Calculate your Body Mass Index (BMI) using the WHO standard formula. Find out if you are underweight, normal weight, overweight, or obese."
+      },
       "slug": "bmi",
       "title": "BMI Calculator",
       "fullTitle": "BMI — Body Mass Index",
@@ -49,6 +53,10 @@
     },
     {
       "id": "bmr",
+      "metadata": {
+        "title": "BMR Calculator — Basal Metabolic Rate | FitMetrics",
+        "description": "Calculate your Basal Metabolic Rate (BMR) using the Mifflin-St Jeor equation. Know exactly how many calories your body burns at rest."
+      },
       "slug": "bmr",
       "title": "BMR Calculator",
       "fullTitle": "BMR — Basal Metabolic Rate",
@@ -87,6 +95,10 @@
     },
     {
       "id": "ibw",
+      "metadata": {
+        "title": "IBW Calculator — Ideal Body Weight | FitMetrics",
+        "description": "Calculate your Ideal Body Weight (IBW) using the Devine formula. Get a medically validated weight target based on your height and gender."
+      },
       "slug": "ibw",
       "title": "IBW Calculator",
       "fullTitle": "IBW — Ideal Body Weight",
@@ -125,6 +137,10 @@
     },
     {
       "id": "bodyfat",
+      "metadata": {
+        "title": "Body Fat Calculator — US Navy Method | FitMetrics",
+        "description": "Estimate your body fat percentage using the US Navy circumference method. No equipment needed — just a tape measure."
+      },
       "slug": "body-fat",
       "title": "Body Fat Calculator",
       "fullTitle": "Body Fat % — US Navy Method",
@@ -170,6 +186,10 @@
     },
     {
       "id": "tdee",
+      "metadata": {
+        "title": "TDEE Calculator — Total Daily Energy Expenditure | FitMetrics",
+        "description": "Calculate your Total Daily Energy Expenditure (TDEE) to know exactly how many calories you need per day to lose, maintain, or gain weight."
+      },
       "slug": "tdee",
       "title": "TDEE Calculator",
       "fullTitle": "TDEE — Total Daily Energy Expenditure",

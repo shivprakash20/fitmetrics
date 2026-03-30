@@ -1,27 +1,32 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import calculators from '@/data/calculators.json';
+import navigation from '@/data/navigation.json';
+import about from '@/data/about.json';
 import styles from './page.module.scss';
 
 export const metadata = {
-  title: 'About Health Calculators — Why They Matter | FitMetrics',
-  description: 'Learn why BMI, BMR, IBW, Body Fat, and TDEE calculators are essential for your health. Understand what each metric means and how it helps you.',
+  title: about.metadata.title,
+  description: about.metadata.description,
 };
 
 export default function AboutPage() {
+  const calcHrefMap = Object.fromEntries(
+    navigation.calculators.items.map(item => [
+      item.href.split('/').pop()!,
+      item.href,
+    ])
+  );
+
   return (
     <main className={styles.main}>
       <div className="container">
 
         {/* Banner */}
         <div className={styles.banner}>
-          <p className={styles.bannerEyebrow}>Why It Matters</p>
-          <h1 className={styles.bannerTitle}>Your Health,<br />Measured & Understood</h1>
-          <p className={styles.bannerSubtitle}>
-            Numbers alone do not tell the whole story. Understanding what each health metric
-            means — and how it applies to your daily life — is the first step toward lasting
-            well-being. Here is why these five calculators matter.
-          </p>
+          <p className={styles.bannerEyebrow}>{about.banner.eyebrow}</p>
+          <h1 className={styles.bannerTitle}>{about.banner.title}<br />{about.banner.titleAccent}</h1>
+          <p className={styles.bannerSubtitle}>{about.banner.subtitle}</p>
         </div>
 
         {/* Calculator importance cards */}
@@ -44,8 +49,8 @@ export default function AboutPage() {
                 <h2 className={styles.cardTitle}>{calc.fullTitle}</h2>
                 <p className={styles.cardTagline}>{calc.tagline}</p>
                 <p className={styles.cardImportance}>{calc.importance}</p>
-                <Link href={`/${calc.slug}`} className={styles.cardCta}>
-                  Open {calc.title} →
+                <Link href={calcHrefMap[calc.slug] ?? `/calculator/${calc.slug}`} className={styles.cardCta}>
+                  {about.cardCta.prefix} {calc.title} {about.cardCta.suffix}
                 </Link>
               </div>
 
@@ -55,9 +60,9 @@ export default function AboutPage() {
 
         {/* Bottom CTA */}
         <div className={styles.bottomCta}>
-          <h2 className={styles.bottomCtaTitle}>Ready to measure what matters?</h2>
-          <p className={styles.bottomCtaSubtitle}>All five calculators are free — no sign-up required.</p>
-          <Link href="/" className={styles.bottomCtaBtn}>View All Calculators</Link>
+          <h2 className={styles.bottomCtaTitle}>{about.bottomCta.title}</h2>
+          <p className={styles.bottomCtaSubtitle}>{about.bottomCta.subtitle}</p>
+          <Link href={about.bottomCta.href} className={styles.bottomCtaBtn}>{about.bottomCta.button}</Link>
         </div>
 
       </div>

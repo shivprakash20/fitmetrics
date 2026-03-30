@@ -1,0 +1,26 @@
+{
+  "title": "My Profile",
+  "subtitle": "Update your profile details. This data is stored in your user account.",
+  "fields": {
+    "firstName":  { "label": "First name"             },
+    "middleName": { "label": "Middle name (optional)" },
+    "lastName":   { "label": "Last name"              },
+    "gender":     { "label": "Gender"                 },
+    "mobile":     { "label": "Mobile number"          }
+  },
+  "genderOptions": [
+    { "value": "male",              "label": "Male"             },
+    { "value": "female",            "label": "Female"           },
+    { "value": "other",             "label": "Other"            },
+    { "value": "prefer_not_to_say", "label": "Prefer not to say"}
+  ],
+  "submitButton": "Save profile",
+  "logoutButton": "Logout",
+  "meta": {
+    "emailLabel":        "Email:",
+    "verificationLabel": "Email verification status:",
+    "verified":          "Verified",
+    "notVerified":       "Not verified",
+    "joinedLabel":       "Joined:"
+  }
+}
