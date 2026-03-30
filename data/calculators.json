@@ -1,0 +1,75 @@
+{
+  "page": {
+    "title": "About the Calculators",
+    "subtitle": "Learn about each health metric, the formula behind it, and how to interpret your results."
+  },
+  "items": [
+    {
+      "id": "bmi",
+      "title": "BMI — Body Mass Index",
+      "icon": "⚖️",
+      "tagline": "Are you at a healthy weight for your height?",
+      "description": "BMI is a simple screening tool that estimates whether a person has a healthy body weight relative to their height. It is widely used by health professionals as a first step to assess potential weight-related health risks.",
+      "formula": "BMI = weight (kg) ÷ height² (m)",
+      "ranges": [
+        { "label": "Underweight",   "value": "< 18.5",      "color": "#3498db" },
+        { "label": "Normal weight", "value": "18.5 – 24.9", "color": "#2ecc71" },
+        { "label": "Overweight",    "value": "25 – 29.9",   "color": "#e67e22" },
+        { "label": "Obese",         "value": "≥ 30",        "color": "#e74c3c" }
+      ],
+      "note": "BMI does not distinguish between fat and muscle mass. Athletes may have a high BMI due to muscle, not fat.",
+      "source": "WHO (World Health Organization)"
+    },
+    {
+      "id": "bmr",
+      "title": "BMR — Basal Metabolic Rate",
+      "icon": "🔥",
+      "tagline": "How many calories does your body burn doing nothing?",
+      "description": "BMR is the number of calories your body needs to sustain basic life-sustaining functions at complete rest — breathing, circulation, cell production, and temperature regulation. It forms the foundation for all calorie planning.",
+      "formula": "Male:   10×W + 6.25×H − 5×A + 5\nFemale: 10×W + 6.25×H − 5×A − 161\n(Mifflin-St Jeor Equation)",
+      "ranges": [],
+      "note": "W = weight in kg, H = height in cm, A = age in years. This is the most accurate equation for the general population.",
+      "source": "Mifflin et al., 1990 — American Journal of Clinical Nutrition"
+    },
+    {
+      "id": "ibw",
+      "title": "IBW — Ideal Body Weight",
+      "icon": "🎯",
+      "tagline": "What is your medically recommended weight?",
+      "description": "Ideal Body Weight (IBW) is a clinical guideline for the weight considered healthy for a given height and gender. It is frequently used in medicine to calculate drug dosages, nutritional requirements, and fitness goals.",
+      "formula": "Male:   50 + 2.3 × (height_in − 60)\nFemale: 45.5 + 2.3 × (height_in − 60)\n(Devine Formula)",
+      "ranges": [],
+      "note": "The result shows your IBW ± 10% as a healthy range. A 5-foot person is the baseline (60 inches).",
+      "source": "Devine BJ, 1974 — Drug Intelligence & Clinical Pharmacy"
+    },
+    {
+      "id": "bodyfat",
+      "title": "Body Fat % — US Navy Method",
+      "icon": "💪",
+      "tagline": "What percentage of your body is fat?",
+      "description": "Body fat percentage is a more accurate measure of fitness than BMI because it directly quantifies the proportion of fat in your body. The US Navy method estimates this from simple circumference measurements without needing expensive equipment.",
+      "formula": "Male:   495 ÷ (1.0324 − 0.19077×log(waist−neck) + 0.15456×log(height)) − 450\nFemale: 495 ÷ (1.29579 − 0.35004×log(waist+hip−neck) + 0.221×log(height)) − 450",
+      "ranges": [
+        { "label": "Athletes (M)", "value": "6 – 13%",  "color": "#2ecc71" },
+        { "label": "Fitness (M)",  "value": "14 – 17%", "color": "#27ae60" },
+        { "label": "Average (M)",  "value": "18 – 24%", "color": "#e67e22" },
+        { "label": "Athletes (F)", "value": "14 – 20%", "color": "#2ecc71" },
+        { "label": "Fitness (F)",  "value": "21 – 24%", "color": "#27ae60" },
+        { "label": "Average (F)",  "value": "25 – 31%", "color": "#e67e22" }
+      ],
+      "note": "All measurements should be taken at the widest point. For best accuracy measure in the morning.",
+      "source": "Hodgdon & Beckett, 1984 — Naval Health Research Center"
+    },
+    {
+      "id": "tdee",
+      "title": "TDEE — Total Daily Energy Expenditure",
+      "icon": "⚡",
+      "tagline": "How many calories do you need each day to maintain your weight?",
+      "description": "TDEE is your total calorie burn in a day, combining your BMR with your activity level. It is the most practical number for managing weight — eat below your TDEE to lose, above to gain, and at it to maintain.",
+      "formula": "TDEE = BMR × Activity Multiplier\n\nSedentary × 1.2 | Light × 1.375 | Moderate × 1.55\nActive × 1.725  | Very Active × 1.9",
+      "ranges": [],
+      "note": "A common strategy: subtract 500 kcal/day from TDEE to lose ~0.5 kg per week; add 500 kcal to gain.",
+      "source": "Harris & Benedict, updated by Mifflin-St Jeor"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Contact Us",
+  "subtitle": "Have a question or feedback? Fill in the form and we will get back to you.",
+  "successMessage": "Thanks for reaching out! We have received your message.",
+  "fields": {
+    "name":    { "label": "Name"    },
+    "email":   { "label": "Email"   },
+    "message": { "label": "Message" }
+  },
+  "submitButton": "Send Message"
+}

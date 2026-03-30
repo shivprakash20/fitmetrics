@@ -1,0 +1,16 @@
+{
+  "links": [
+    { "label": "Calculator", "href": "/calculator" },
+    { "label": "About",      "href": "/about"      },
+    { "label": "Contact Us", "href": "/contact"    }
+  ],
+  "themes": [
+    { "id": "dark",  "icon": "☽", "label": "Dark"  },
+    { "id": "light", "icon": "☀", "label": "Light" },
+    { "id": "neon",  "icon": "⚡", "label": "Neon"  }
+  ],
+  "userMenu": {
+    "profile": { "label": "Profile", "href": "/profile" },
+    "signOut": "Sign out"
+  }
+}

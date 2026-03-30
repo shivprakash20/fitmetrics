@@ -7,12 +7,7 @@ import { useState, useRef, useEffect } from 'react';
 import styles from './Navbar.module.scss';
 import { useTheme, type Theme } from '@/components/ThemeProvider';
 import { logoutAction } from '@/app/(auth)/actions';
-
-const THEMES: { id: Theme; icon: string; label: string }[] = [
-  { id: 'dark',  icon: '☽', label: 'Dark'  },
-  { id: 'light', icon: '☀', label: 'Light' },
-  { id: 'neon',  icon: '⚡', label: 'Neon'  },
-];
+import navigation from '@/data/navigation.json';
 
 type NavbarProps = {
   user: { firstName: string } | null;
@@ -39,7 +34,7 @@ export default function Navbar({ user }: NavbarProps) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const currentTheme = THEMES.find(t => t.id === theme);
+  const currentTheme = navigation.themes.find(t => t.id === theme);
 
   return (
     <header className={styles.header}>
@@ -51,30 +46,16 @@ export default function Navbar({ user }: NavbarProps) {
 
         {/* Middle — navigation links */}
         <ul className={styles.links}>
-          <li>
-            <Link
-              href="/calculator"
-              className={`${styles.link} ${pathname === '/calculator' ? styles.active : ''}`}
-            >
-              Calculator
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className={`${styles.link} ${pathname === '/about' ? styles.active : ''}`}
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className={`${styles.link} ${pathname === '/contact' ? styles.active : ''}`}
-            >
-              Contact Us
-            </Link>
-          </li>
+          {navigation.links.map(link => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`${styles.link} ${pathname === link.href ? styles.active : ''}`}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         {/* Right — theme + user */}
@@ -93,11 +74,11 @@ export default function Navbar({ user }: NavbarProps) {
 
             {themeMenuOpen && (
               <div className={styles.dropdown}>
-                {THEMES.map(t => (
+                {navigation.themes.map(t => (
                   <button
                     key={t.id}
                     className={`${styles.dropdownItem} ${theme === t.id ? styles.dropdownItemActive : ''}`}
-                    onClick={() => { setTheme(t.id); setThemeMenuOpen(false); }}
+                    onClick={() => { setTheme(t.id as Theme); setThemeMenuOpen(false); }}
                   >
                     <span>{t.icon}</span> {t.label}
                   </button>
@@ -124,13 +105,17 @@ export default function Navbar({ user }: NavbarProps) {
 
               {userMenuOpen && (
                 <div className={styles.dropdown}>
-                  <Link href="/profile" className={styles.dropdownItem} onClick={() => setUserMenuOpen(false)}>
-                    Profile
+                  <Link
+                    href={navigation.userMenu.profile.href}
+                    className={styles.dropdownItem}
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    {navigation.userMenu.profile.label}
                   </Link>
                   <div className={styles.dropdownDivider} />
                   <form action={logoutAction}>
                     <button type="submit" className={styles.dropdownItem}>
-                      Sign out
+                      {navigation.userMenu.signOut}
                     </button>
                   </form>
                 </div>

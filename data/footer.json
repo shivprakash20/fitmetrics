@@ -1,0 +1,27 @@
+{
+  "menu": {
+    "title": "Menu",
+    "links": [
+      { "label": "Calculator", "href": "/calculator" },
+      { "label": "About",      "href": "/about"      },
+      { "label": "Contact Us", "href": "/contact"    },
+      { "label": "Profile",    "href": "/profile"    }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "email": "support@fitmetrics.app",
+    "phone": "+91 97424 80601",
+    "location": "India"
+  },
+  "social": {
+    "title": "Follow Us",
+    "links": [
+      { "platform": "facebook",  "href": "https://www.facebook.com",  "ariaLabel": "Facebook"    },
+      { "platform": "instagram", "href": "https://www.instagram.com", "ariaLabel": "Instagram"   },
+      { "platform": "x",         "href": "https://www.x.com",         "ariaLabel": "X (Twitter)" },
+      { "platform": "linkedin",  "href": "https://www.linkedin.com",  "ariaLabel": "LinkedIn"    }
+    ]
+  },
+  "copyright": "FitMetrics — All rights reserved."
+}
