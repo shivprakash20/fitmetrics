@@ -161,3 +161,73 @@
   background: var(--border);
   margin: 4px 0;
 }
+
+// ─── Calculators dropdown ─────────────────────────────────────────────────────
+.calcMenu {
+  position: relative;
+}
+
+.calcBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.chevron {
+  transition: transform g.$transition;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.calcDropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: g.$radius;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  z-index: 200;
+  animation: dropIn 0.15s ease;
+}
+
+.calcDropdownItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: background g.$transition;
+
+  &:hover {
+    background: var(--bg-input);
+  }
+}
+
+.calcDropdownItemActive {
+  background: var(--primary-a12);
+
+  .calcDropdownLabel {
+    color: var(--primary);
+  }
+}
+
+.calcDropdownLabel {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.calcDropdownDesc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}

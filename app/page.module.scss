@@ -1,0 +1,367 @@
+@use './variables' as g;
+
+// ─── Hero ─────────────────────────────────────────────────────────────────────
+.hero {
+  width: 100%;
+  background: linear-gradient(160deg, var(--primary-a06) 0%, transparent 60%);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 24px 56px;
+
+  @media (min-width: 768px) {
+    padding: 72px 48px 80px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 80px 80px 88px;
+  }
+}
+
+// Two-column layout inside hero
+.heroInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.heroContent {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+
+  @media (min-width: 900px) {
+    text-align: left;
+  }
+}
+
+.heroVisual {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: 599px) {
+    display: none;
+  }
+}
+
+.heroIllustration {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  border-radius: g.$radius;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.heroEyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--primary-a06);
+  border: 1px solid var(--primary-a15);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 18px;
+}
+
+.heroTitle {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  @media (min-width: 480px) {
+    font-size: 2.6rem;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 3.2rem;
+  }
+}
+
+.heroSubtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.65;
+
+  @media (min-width: 900px) {
+    margin: 0 0 28px;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.05rem;
+  }
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 13px 28px;
+  border-radius: 999px;
+  transition: background g.$transition, transform g.$transition;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+}
+
+.heroStats {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+
+  @media (min-width: 900px) {
+    justify-content: flex-start;
+    gap: 40px;
+  }
+}
+
+.heroStat {
+  text-align: center;
+}
+
+.heroStatNum {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary);
+  display: block;
+  line-height: 1;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.heroStatLabel {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  display: block;
+}
+
+// ─── Sections ─────────────────────────────────────────────────────────────────
+.section {
+  padding: 48px 0;
+
+  @media (min-width: 768px) {
+    padding: 64px 0;
+  }
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 32px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 44px;
+  }
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+
+  @media (min-width: 768px) {
+    font-size: 1.9rem;
+  }
+}
+
+.sectionSubtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+// ─── Calculator Cards ─────────────────────────────────────────────────────────
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: g.$radius;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform g.$transition, box-shadow g.$transition, border-color g.$transition;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary);
+  }
+
+  @media (min-width: 768px) {
+    padding: 24px;
+    gap: 14px;
+  }
+}
+
+.cardIcon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+
+  @media (min-width: 768px) {
+    font-size: 1.1rem;
+  }
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.cardLink {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+// ─── Benefits ─────────────────────────────────────────────────────────────────
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.benefit {
+  text-align: center;
+  padding: 20px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: g.$radius;
+
+  @media (min-width: 768px) {
+    padding: 28px 20px;
+  }
+}
+
+.benefitIcon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.benefitTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.benefitDesc {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+// ─── Divider ──────────────────────────────────────────────────────────────────
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+// ─── Disclaimer ───────────────────────────────────────────────────────────────
+.disclaimer {
+  padding: 36px 0 52px;
+
+  @media (min-width: 768px) {
+    padding: 48px 0 72px;
+  }
+}
+
+.disclaimerBox {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: g.$radius;
+  padding: 20px;
+
+  @media (min-width: 768px) {
+    padding: 24px 28px;
+  }
+}
+
+.disclaimerTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.disclaimerText {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
