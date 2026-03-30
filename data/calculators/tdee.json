@@ -1,0 +1,42 @@
+{
+  "id": "tdee",
+  "metadata": {
+    "title": "TDEE Calculator — Total Daily Energy Expenditure | FitMetrics",
+    "description": "Calculate your Total Daily Energy Expenditure (TDEE) to know exactly how many calories you need per day to lose, maintain, or gain weight."
+  },
+  "slug": "tdee",
+  "title": "TDEE Calculator",
+  "fullTitle": "TDEE — Total Daily Energy Expenditure",
+  "icon": "⚡",
+  "iconSrc": "/icons/tdee.svg",
+  "tagline": "How many calories do you need each day to maintain your weight?",
+  "shortDesc": "Calculate your total daily calorie burn based on your activity level to manage weight precisely.",
+  "importance": "TDEE is the single most practical number for managing your weight. It tells you exactly how many calories you burn every day — at rest and through activity. Use it to create a precise calorie surplus for muscle gain, a deficit for fat loss, or maintenance for weight stability.",
+  "description": "TDEE is your total calorie burn in a day, combining your BMR with your activity level. It is the most practical number for managing weight — eat below your TDEE to lose, above to gain, and at it to maintain.",
+  "formula": "TDEE = BMR × Activity Multiplier\n\nSedentary × 1.2 | Light × 1.375 | Moderate × 1.55\nActive × 1.725  | Very Active × 1.9",
+  "ranges": [],
+  "note": "A common strategy: subtract 500 kcal/day from TDEE to lose ~0.5 kg per week; add 500 kcal to gain.",
+  "source": "Harris & Benedict, updated by Mifflin-St Jeor",
+  "faq": [
+    {
+      "q": "What is the difference between BMR and TDEE?",
+      "a": "BMR is the calories your body burns at complete rest. TDEE adds the calories burned through all daily activities — exercise, walking, work, and even digestion. TDEE is always higher than BMR and is the number you should use for diet planning."
+    },
+    {
+      "q": "How do I use TDEE to lose weight?",
+      "a": "Eat 300–500 kcal below your TDEE daily for safe, sustainable fat loss of approximately 0.3–0.5 kg per week. Avoid deficits larger than 750–1000 kcal/day as this risks muscle loss, nutrient deficiency, and metabolic adaptation."
+    },
+    {
+      "q": "How accurate is the TDEE calculation?",
+      "a": "TDEE estimates are typically within ±10–15% accuracy. Activity multipliers are averages and don't capture individual variation. The best approach: use the calculated TDEE as a starting point, track your weight for 2–3 weeks, and adjust intake by 100–200 kcal if needed."
+    },
+    {
+      "q": "What happens if I consistently eat at my TDEE?",
+      "a": "If you eat exactly at your TDEE, your weight should remain stable over time. This is called maintenance eating. It is a good strategy during phases of muscle building (recomposition) or simply maintaining a healthy weight after reaching your goal."
+    },
+    {
+      "q": "Does TDEE change as I lose weight or gain muscle?",
+      "a": "Yes. As you lose weight, your TDEE decreases because a lighter body requires fewer calories. As you gain muscle, TDEE increases slightly. Recalculate your TDEE every 4–6 weeks or whenever your weight changes by more than 2–3 kg."
+    }
+  ]
+}

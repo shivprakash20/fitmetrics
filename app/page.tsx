@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import calculators from '@/data/calculators.json';
+import calculators from '@/data/calculators/index.json';
 import navigation from '@/data/navigation.json';
 import home from '@/data/home.json';
 import styles from './page.module.scss';

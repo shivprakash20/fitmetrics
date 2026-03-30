@@ -1,0 +1,63 @@
+{
+  "page": {
+    "title": "About the Calculators",
+    "subtitle": "Learn about each health metric, the formula behind it, and how to interpret your results."
+  },
+  "items": [
+    {
+      "id": "bmi",
+      "slug": "bmi",
+      "title": "BMI Calculator",
+      "fullTitle": "BMI — Body Mass Index",
+      "icon": "⚖️",
+      "iconSrc": "/icons/bmi.svg",
+      "tagline": "Are you at a healthy weight for your height?",
+      "shortDesc": "Check if your weight is in a healthy range using the WHO international standard classification.",
+      "importance": "BMI is the most widely used screening tool by doctors, dietitians, and public health professionals worldwide. As of 2022, WHO data shows 2.5 billion adults (43%) are overweight and 890 million (16%) are living with obesity — numbers that have more than doubled since 1990. Knowing your BMI is the first step in identifying potential weight-related health risks such as type 2 diabetes, hypertension, and cardiovascular disease."
+    },
+    {
+      "id": "bmr",
+      "slug": "bmr",
+      "title": "BMR Calculator",
+      "fullTitle": "BMR — Basal Metabolic Rate",
+      "icon": "🔥",
+      "iconSrc": "/icons/bmr.svg",
+      "tagline": "How many calories does your body burn doing nothing?",
+      "shortDesc": "Discover the calories your body burns at complete rest — the foundation of all calorie planning.",
+      "importance": "Your BMR is the baseline for every nutrition and fitness plan. Whether you want to lose weight, gain muscle, or maintain your current body, understanding how many calories your body needs at rest allows you to make precise dietary adjustments and avoid under- or over-eating."
+    },
+    {
+      "id": "ibw",
+      "slug": "ibw",
+      "title": "IBW Calculator",
+      "fullTitle": "IBW — Ideal Body Weight",
+      "icon": "🎯",
+      "iconSrc": "/icons/ibw.svg",
+      "tagline": "What is your medically recommended weight?",
+      "shortDesc": "Find the medically recommended weight for your height using the Devine formula.",
+      "importance": "Ideal Body Weight is used extensively in clinical medicine for calculating medication dosages, ventilator settings, and nutritional requirements. For fitness purposes, it provides a realistic weight target rooted in science rather than social trends or aesthetics."
+    },
+    {
+      "id": "bodyfat",
+      "slug": "body-fat",
+      "title": "Body Fat Calculator",
+      "fullTitle": "Body Fat % — US Navy Method",
+      "icon": "💪",
+      "iconSrc": "/icons/bodyfat.svg",
+      "tagline": "What percentage of your body is fat?",
+      "shortDesc": "Estimate your body fat percentage using simple measurements — no equipment needed.",
+      "importance": "Body fat percentage is a far more meaningful measure of health and fitness than weight or BMI alone. Tracking it helps you understand whether you are losing fat vs. muscle, assess cardiovascular risk, and fine-tune your training and diet program for real body composition changes."
+    },
+    {
+      "id": "tdee",
+      "slug": "tdee",
+      "title": "TDEE Calculator",
+      "fullTitle": "TDEE — Total Daily Energy Expenditure",
+      "icon": "⚡",
+      "iconSrc": "/icons/tdee.svg",
+      "tagline": "How many calories do you need each day to maintain your weight?",
+      "shortDesc": "Calculate your total daily calorie burn based on your activity level to manage weight precisely.",
+      "importance": "TDEE is the single most practical number for managing your weight. It tells you exactly how many calories you burn every day — at rest and through activity. Use it to create a precise calorie surplus for muscle gain, a deficit for fat loss, or maintenance for weight stability."
+    }
+  ]
+}

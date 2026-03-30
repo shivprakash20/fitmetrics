@@ -1,0 +1,42 @@
+{
+  "id": "bmr",
+  "metadata": {
+    "title": "BMR Calculator — Basal Metabolic Rate | FitMetrics",
+    "description": "Calculate your Basal Metabolic Rate (BMR) using the Mifflin-St Jeor equation. Know exactly how many calories your body burns at rest."
+  },
+  "slug": "bmr",
+  "title": "BMR Calculator",
+  "fullTitle": "BMR — Basal Metabolic Rate",
+  "icon": "🔥",
+  "iconSrc": "/icons/bmr.svg",
+  "tagline": "How many calories does your body burn doing nothing?",
+  "shortDesc": "Discover the calories your body burns at complete rest — the foundation of all calorie planning.",
+  "importance": "Your BMR is the baseline for every nutrition and fitness plan. Whether you want to lose weight, gain muscle, or maintain your current body, understanding how many calories your body needs at rest allows you to make precise dietary adjustments and avoid under- or over-eating.",
+  "description": "BMR is the number of calories your body needs to sustain basic life-sustaining functions at complete rest — breathing, circulation, cell production, and temperature regulation. It forms the foundation for all calorie planning.",
+  "formula": "Male:   10×W + 6.25×H − 5×A + 5\nFemale: 10×W + 6.25×H − 5×A − 161\n(Mifflin-St Jeor Equation)",
+  "ranges": [],
+  "note": "W = weight in kg, H = height in cm, A = age in years. This is the most accurate equation for the general population.",
+  "source": "Mifflin et al., 1990 — American Journal of Clinical Nutrition",
+  "faq": [
+    {
+      "q": "What does BMR mean in simple terms?",
+      "a": "BMR (Basal Metabolic Rate) is the number of calories your body burns just to stay alive — breathing, pumping blood, regulating temperature — even if you lie still all day and do nothing."
+    },
+    {
+      "q": "Is it safe to eat below my BMR?",
+      "a": "No. Consistently eating below your BMR deprives your body of the energy it needs for vital organ functions. This can lead to muscle loss, nutritional deficiencies, fatigue, and metabolic slowdown. Never go below your BMR without medical supervision."
+    },
+    {
+      "q": "Does BMR decrease with age?",
+      "a": "Yes. BMR typically decreases by 1–2% per decade after age 20, primarily because muscle mass (which is metabolically active) tends to decline with age. Resistance training can help slow this decline."
+    },
+    {
+      "q": "How can I increase my BMR?",
+      "a": "Building lean muscle mass through strength training is the most effective way to raise BMR, as muscle tissue burns more calories at rest than fat. Staying well-hydrated, getting enough sleep, and eating adequate protein also help."
+    },
+    {
+      "q": "Why is the Mifflin-St Jeor equation used?",
+      "a": "The Mifflin-St Jeor equation (1990) is considered the most accurate BMR formula for the general population in multiple validation studies. It outperforms older formulas like Harris-Benedict in accuracy for modern, diverse populations."
+    }
+  ]
+}

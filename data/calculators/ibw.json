@@ -1,0 +1,42 @@
+{
+  "id": "ibw",
+  "metadata": {
+    "title": "IBW Calculator — Ideal Body Weight | FitMetrics",
+    "description": "Calculate your Ideal Body Weight (IBW) using the Devine formula. Get a medically validated weight target based on your height and gender."
+  },
+  "slug": "ibw",
+  "title": "IBW Calculator",
+  "fullTitle": "IBW — Ideal Body Weight",
+  "icon": "🎯",
+  "iconSrc": "/icons/ibw.svg",
+  "tagline": "What is your medically recommended weight?",
+  "shortDesc": "Find the medically recommended weight for your height using the Devine formula.",
+  "importance": "Ideal Body Weight is used extensively in clinical medicine for calculating medication dosages, ventilator settings, and nutritional requirements. For fitness purposes, it provides a realistic weight target rooted in science rather than social trends or aesthetics.",
+  "description": "Ideal Body Weight (IBW) is a clinical guideline for the weight considered healthy for a given height and gender. It is frequently used in medicine to calculate drug dosages, nutritional requirements, and fitness goals.",
+  "formula": "Male:   50 + 2.3 × (height_in − 60)\nFemale: 45.5 + 2.3 × (height_in − 60)\n(Devine Formula)",
+  "ranges": [],
+  "note": "The result shows your IBW ± 10% as a healthy range. A 5-foot person is the baseline (60 inches).",
+  "source": "Devine BJ, 1974 — Drug Intelligence & Clinical Pharmacy",
+  "faq": [
+    {
+      "q": "What is ideal body weight used for?",
+      "a": "IBW was originally developed for clinical use — calculating drug dosages, anaesthesia, and nutritional support in hospitals. For general fitness, it provides a science-based weight target that accounts for height and gender."
+    },
+    {
+      "q": "Is IBW the same as my goal weight?",
+      "a": "Not necessarily. IBW is a medical guideline, not a personal fitness target. Your goal weight depends on your body composition, muscle mass, and individual health factors. Use IBW as a reference point, not an absolute target."
+    },
+    {
+      "q": "Does IBW account for muscle mass or body composition?",
+      "a": "No. Like BMI, IBW is based only on height and gender. It does not distinguish between fat and muscle. A well-built, muscular person may weigh more than their IBW while still being very healthy."
+    },
+    {
+      "q": "What if my weight is significantly below my IBW?",
+      "a": "Being significantly below your IBW may indicate underweight status or insufficient muscle mass, which can pose health risks. Consider consulting a doctor or dietitian if your weight is more than 10% below your IBW."
+    },
+    {
+      "q": "Are there other IBW formulas besides Devine?",
+      "a": "Yes. The Hamwi formula (1964) and Robinson formula (1983) are alternatives. Each gives slightly different results. The Devine formula remains the most widely used in clinical settings due to its simplicity and validated use in pharmacology."
+    }
+  ]
+}

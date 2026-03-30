@@ -1,0 +1,49 @@
+{
+  "id": "bodyfat",
+  "metadata": {
+    "title": "Body Fat Calculator — US Navy Method | FitMetrics",
+    "description": "Estimate your body fat percentage using the US Navy circumference method. No equipment needed — just a tape measure."
+  },
+  "slug": "body-fat",
+  "title": "Body Fat Calculator",
+  "fullTitle": "Body Fat % — US Navy Method",
+  "icon": "💪",
+  "iconSrc": "/icons/bodyfat.svg",
+  "tagline": "What percentage of your body is fat?",
+  "shortDesc": "Estimate your body fat percentage using simple measurements — no equipment needed.",
+  "importance": "Body fat percentage is a far more meaningful measure of health and fitness than weight or BMI alone. Tracking it helps you understand whether you are losing fat vs. muscle, assess cardiovascular risk, and fine-tune your training and diet program for real body composition changes.",
+  "description": "Body fat percentage is a more accurate measure of fitness than BMI because it directly quantifies the proportion of fat in your body. The US Navy method estimates this from simple circumference measurements without needing expensive equipment.",
+  "formula": "Male:   495 ÷ (1.0324 − 0.19077×log(waist−neck) + 0.15456×log(height)) − 450\nFemale: 495 ÷ (1.29579 − 0.35004×log(waist+hip−neck) + 0.221×log(height)) − 450",
+  "ranges": [
+    { "label": "Athletes (M)", "value": "6 – 13%",  "color": "#2ecc71" },
+    { "label": "Fitness (M)",  "value": "14 – 17%", "color": "#27ae60" },
+    { "label": "Average (M)",  "value": "18 – 24%", "color": "#e67e22" },
+    { "label": "Athletes (F)", "value": "14 – 20%", "color": "#2ecc71" },
+    { "label": "Fitness (F)",  "value": "21 – 24%", "color": "#27ae60" },
+    { "label": "Average (F)",  "value": "25 – 31%", "color": "#e67e22" }
+  ],
+  "note": "All measurements should be taken at the widest point. For best accuracy measure in the morning.",
+  "source": "Hodgdon & Beckett, 1984 — Naval Health Research Center",
+  "faq": [
+    {
+      "q": "What is a healthy body fat percentage?",
+      "a": "For men, 6–13% is athlete-level, 14–17% is fitness, 18–24% is average, and above 25% is high. For women, 14–20% is athlete-level, 21–24% is fitness, 25–31% is average, and above 32% is high. Essential fat (needed for survival) is ~3–5% for men and ~10–13% for women."
+    },
+    {
+      "q": "How accurate is the US Navy method?",
+      "a": "The Navy method has an error margin of approximately ±3–4% compared to DEXA scans (gold standard). It is suitable for general fitness tracking and progress monitoring but not for clinical precision. Consistent measurement technique improves reliability."
+    },
+    {
+      "q": "What is essential body fat and why does it matter?",
+      "a": "Essential fat is the minimum amount of fat required for normal physiological function — hormone production, organ protection, and neurological function. For men it is ~3–5% and for women ~10–13%. Dropping below essential fat is dangerous and life-threatening."
+    },
+    {
+      "q": "How often should I measure my body fat?",
+      "a": "Measure monthly for a meaningful trend. Daily measurements are unreliable because body fat readings fluctuate with hydration, food intake, and time of day. For best consistency, always measure at the same time of day, ideally in the morning before eating."
+    },
+    {
+      "q": "Can I lose fat from specific body parts (spot reduction)?",
+      "a": "No. Spot reduction is a myth. Fat loss occurs systemically throughout the body based on genetics and hormones. Targeted exercises strengthen muscles in specific areas but do not burn fat from those areas specifically. A caloric deficit and overall exercise reduce fat everywhere."
+    }
+  ]
+}
