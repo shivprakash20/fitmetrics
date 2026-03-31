@@ -1,9 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <!-- Ionicons body-outline — adapted to FitMetrics icon style -->
-  <circle fill="rgba(46,204,113,0.1)" stroke="#2ecc71" stroke-miterlimit="10" stroke-width="32" cx="256" cy="56" r="40"/>
-  <path fill="rgba(46,204,113,0.08)" stroke="#2ecc71" stroke-miterlimit="10" stroke-width="32"
-    d="M199.3,295.62h0l-30.4,172.2a24,24,0,0,0,19.5,27.8,23.76,23.76,0,0,0,27.6-19.5l21-119.9v.2
-    s5.2-32.5,17.5-32.5h3.1c12.5,0,17.5,32.5,17.5,32.5v-.1l21,119.9a23.92,23.92,0,1,0,47.1-8.4
-    l-30.4-172.2-4.9-29.7c-2.9-18.1-4.2-47.6.5-59.7,4-10.4,14.13-14.2,23.2-14.2H424a24,24,0,0,0,0-48
-    H88a24,24,0,0,0,0,48h92.5c9.23,0,19.2,3.8,23.2,14.2,4.7,12.1,3.4,41.6.5,59.7Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Ionicons body-outline adapted to 24x24 — full human figure showing body proportions -->
+  <circle cx="12" cy="3" r="2" />
+  <path d="M9.5 8.5a2.5 2.5 0 0 0 -2 1.5l-1.5 4h2.5l-1 6.5a.5 .5 0 0 0 1 .1l1.5 -5h1l1.5 5a.5 .5 0 0 0 1 -.1l-1 -6.5h2.5l-1.5 -4a2.5 2.5 0 0 0 -2 -1.5h-2z" />
 </svg>

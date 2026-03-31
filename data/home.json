@@ -7,7 +7,7 @@
     "eyebrow": "Free · Accurate · Instant",
     "title": "Know Your Body.",
     "titleAccent": "Track Your Health.",
-    "subtitle": "FitMetrics gives you five essential health calculators built on established formulas used by doctors, dietitians, and fitness professionals worldwide.",
+    "subtitle": "FitMetrics gives you essential health calculators built on established formulas used by doctors, dietitians, and fitness professionals worldwide.",
     "cta": "Get Started",
     "ctaHref": "#calculators",
     "illustration": {
@@ -17,7 +17,7 @@
       "height": 400
     },
     "stats": [
-      { "value": "5",    "label": "Calculators"       },
+      { "value": null,   "label": "Calculators"       },
       { "value": "100%", "label": "Free"              },
       { "value": "0",    "label": "Sign-up Required"  }
     ]

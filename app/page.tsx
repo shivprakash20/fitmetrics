@@ -40,7 +40,9 @@ export default function HomePage() {
             <div className={styles.heroStats}>
               {home.hero.stats.map(stat => (
                 <div key={stat.label} className={styles.heroStat}>
-                  <span className={styles.heroStatNum}>{stat.value}</span>
+                  <span className={styles.heroStatNum}>
+                    {stat.value === null ? calculators.items.length : stat.value}
+                  </span>
                   <span className={styles.heroStatLabel}>{stat.label}</span>
                 </div>
               ))}

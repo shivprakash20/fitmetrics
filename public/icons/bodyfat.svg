@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-  <!-- Human silhouette with body measurement circles -->
-  <!-- Head -->
-  <circle cx="24" cy="10" r="5" stroke="#2ecc71" stroke-width="2.5" fill="rgba(46,204,113,0.1)"/>
-  <!-- Body -->
-  <path d="M17 18 C17 18 14 22 14 28 L14 36 L20 36 L20 30 L28 30 L28 36 L34 36 L34 28 C34 22 31 18 31 18 Z" stroke="#2ecc71" stroke-width="2.5" fill="rgba(46,204,113,0.08)" stroke-linejoin="round"/>
-  <!-- Arms -->
-  <line x1="17" y1="20" x2="11" y2="28" stroke="#2ecc71" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="31" y1="20" x2="37" y2="28" stroke="#2ecc71" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- measurement arc -->
-  <path d="M12 26 Q24 22 36 26" stroke="#2ecc71" stroke-width="1.5" stroke-dasharray="2 2" stroke-linecap="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Tabler: ruler-measure — body circumference measurements -->
+  <path d="M19.875 12c.621 0 1.125 .512 1.125 1.143v5.714c0 .631 -.504 1.143 -1.125 1.143h-15.875a1 1 0 0 1 -1 -1v-5.857c0 -.631 .504 -1.143 1.125 -1.143h15.75" />
+  <path d="M9 12v2" />
+  <path d="M6 12v3" />
+  <path d="M12 12v3" />
+  <path d="M18 12v3" />
+  <path d="M15 12v2" />
+  <path d="M3 3v4" />
+  <path d="M3 5h18" />
+  <path d="M21 3v4" />
 </svg>
