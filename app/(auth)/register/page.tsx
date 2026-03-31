@@ -13,6 +13,7 @@ export default async function RegisterPage({
   const email = getQueryValue(params, 'email');
   const message = getQueryValue(params, 'message');
   const error = getQueryValue(params, 'error');
+  const next = getQueryValue(params, 'next');
 
   return (
     <main className={styles.page}>
@@ -25,6 +26,7 @@ export default async function RegisterPage({
           {error ? <p className={`${styles.message} ${styles.messageError}`}>{error}</p> : null}
 
           <form action={registerAction} className={styles.form}>
+            <input type="hidden" name="next" value={next} />
             <div className={styles.gridTwo}>
               <div className={styles.row}>
                 <label htmlFor="firstName" className={styles.label}>{auth.register.fields.firstName.label}</label>
@@ -71,7 +73,9 @@ export default async function RegisterPage({
 
           <div className={styles.linkRow}>
             <span>{auth.register.links.signInPrompt}</span>
-            <Link href="/login" className={styles.link}>{auth.register.links.signIn}</Link>
+            <Link href={next ? `/login?next=${encodeURIComponent(next)}` : '/login'} className={styles.link}>
+              {auth.register.links.signIn}
+            </Link>
           </div>
         </section>
       </div>

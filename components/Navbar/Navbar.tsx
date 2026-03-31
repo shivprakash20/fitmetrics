@@ -50,8 +50,21 @@ export default function Navbar({ user }: NavbarProps) {
     };
   }, [mobileMenuOpen]);
 
+  // Ensure no dropdown remains open/highlighted after route/auth transitions
+  // (e.g. redirect after login/logout).
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      setCalcMenuOpen(false);
+      setUserMenuOpen(false);
+      setThemeMenuOpen(false);
+      setMobileMenuOpen(false);
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, user?.firstName]);
+
   const currentTheme = navigation.themes.find(t => t.id === theme);
   const calcSlugs = navigation.calculators.items.map(c => c.href);
+  const loginHref = pathname !== '/login' ? `/login?next=${encodeURIComponent(pathname)}` : '/login';
   const calculatorGroups = [
     {
       title: 'Body Metrics',
@@ -207,7 +220,7 @@ export default function Navbar({ user }: NavbarProps) {
           {user ? (
             <div className={styles.userMenu} ref={userMenuRef}>
               <button
-                className={`${styles.userBtn} ${userMenuOpen ? styles.userBtnActive : ''}`}
+                className={styles.userBtn}
                 onClick={() => setUserMenuOpen(p => !p)}
                 aria-expanded={userMenuOpen} aria-label="User menu"
               >
@@ -223,13 +236,14 @@ export default function Navbar({ user }: NavbarProps) {
                   </Link>
                   <div className={styles.dropdownDivider} />
                   <form action={logoutAction}>
+                    <input type="hidden" name="from" value={pathname} />
                     <button type="submit" className={styles.dropdownItem}>{navigation.userMenu.signOut}</button>
                   </form>
                 </div>
               )}
             </div>
           ) : (
-            <Link href="/login" className={styles.userBtn} aria-label="Sign in" title="Sign in">
+            <Link href={loginHref} className={styles.userBtn} aria-label="Sign in" title="Sign in">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
               </svg>
@@ -280,12 +294,13 @@ export default function Navbar({ user }: NavbarProps) {
                     <span className={styles.mobileLinkTitle}>{navigation.userMenu.profile.label}</span>
                   </Link>
                   <form action={logoutAction}>
+                    <input type="hidden" name="from" value={pathname} />
                     <button type="submit" className={styles.mobileAction}>{navigation.userMenu.signOut}</button>
                   </form>
                 </>
               ) : (
                 <Link
-                  href="/login"
+                  href={loginHref}
                   className={`${styles.mobileLink} ${pathname === '/login' ? styles.mobileLinkActive : ''}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >

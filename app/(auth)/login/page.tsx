@@ -13,6 +13,7 @@ export default async function LoginPage({
   const email = getQueryValue(params, 'email');
   const message = getQueryValue(params, 'message');
   const error = getQueryValue(params, 'error');
+  const next = getQueryValue(params, 'next');
 
   return (
     <main className={styles.page}>
@@ -25,6 +26,7 @@ export default async function LoginPage({
           {error ? <p className={`${styles.message} ${styles.messageError}`}>{error}</p> : null}
 
           <form action={loginAction} className={styles.form}>
+            <input type="hidden" name="next" value={next} />
             <div className={styles.row}>
               <label htmlFor="email" className={styles.label}>{auth.login.fields.email.label}</label>
               <input id="email" name="email" type="email" defaultValue={email} className={styles.input} required />
@@ -36,14 +38,18 @@ export default async function LoginPage({
             </div>
 
             <div className={styles.linkRow}>
-              <Link href="/register" className={styles.link}>{auth.login.links.register}</Link>
+              <Link href={next ? `/register?next=${encodeURIComponent(next)}` : '/register'} className={styles.link}>
+                {auth.login.links.register}
+              </Link>
             </div>
 
             <button type="submit" className={styles.submitBtn}>{auth.login.submitButton}</button>
           </form>
 
           <div className={styles.linkRow}>
-            <Link href="/forgot-password" className={styles.link}>{auth.login.links.forgotPassword}</Link>
+            <Link href={next ? `/forgot-password?next=${encodeURIComponent(next)}` : '/forgot-password'} className={styles.link}>
+              {auth.login.links.forgotPassword}
+            </Link>
           </div>
         </section>
       </div>

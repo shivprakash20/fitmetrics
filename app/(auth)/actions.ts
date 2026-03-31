@@ -98,6 +98,45 @@ function buildUrl(pathname: string, params: Record<string, string | undefined>):
   return query ? `${pathname}?${query}` : pathname;
 }
 
+function sanitizeNextPath(value: string): string | undefined {
+  const next = value.trim();
+  if (!next.startsWith('/') || next.startsWith('//')) {
+    return undefined;
+  }
+
+  const disallowedAuthRoutes = ['/login', '/register', '/verify-email', '/forgot-password', '/reset-password'];
+  const isAuthRoute = disallowedAuthRoutes.some(route => next === route || next.startsWith(`${route}?`));
+  if (isAuthRoute) {
+    return undefined;
+  }
+
+  return next;
+}
+
+function sanitizeLogoutReturnPath(value: string): string | undefined {
+  const from = value.trim();
+  if (!from.startsWith('/') || from.startsWith('//')) {
+    return undefined;
+  }
+
+  if (from.startsWith('/calculator/')) {
+    return from;
+  }
+
+  const allowedStaticRoutes = new Set([
+    '/',
+    '/about',
+    '/contact',
+    '/login',
+    '/register',
+    '/forgot-password',
+    '/reset-password',
+    '/verify-email',
+  ]);
+
+  return allowedStaticRoutes.has(from) ? from : undefined;
+}
+
 async function createAndSendOtp(params: {
   userId: string;
   email: string;
@@ -119,6 +158,7 @@ async function createAndSendOtp(params: {
 }
 
 export async function registerAction(formData: FormData) {
+  const next = sanitizeNextPath(String(formData.get('next') ?? ''));
   const raw = {
     firstName: String(formData.get('firstName') ?? ''),
     middleName: String(formData.get('middleName') ?? ''),
@@ -131,21 +171,21 @@ export async function registerAction(formData: FormData) {
 
   const parsed = registerSchema.safeParse(raw);
   if (!parsed.success) {
-    redirect(buildUrl('/register', { error: getFirstErrorMessage(parsed.error.issues), email: raw.email }));
+    redirect(buildUrl('/register', { error: getFirstErrorMessage(parsed.error.issues), email: raw.email, next }));
   }
 
   const input = parsed.data;
 
   const existingByMobile = await findUserByMobile(input.mobile);
   if (existingByMobile && existingByMobile.email !== input.email) {
-    redirect(buildUrl('/register', { error: 'Mobile number is already registered.', email: input.email }));
+    redirect(buildUrl('/register', { error: 'Mobile number is already registered.', email: input.email, next }));
   }
 
   const passwordHash = await hashPassword(input.password);
   const existingByEmail = await findUserByEmail(input.email);
 
   if (existingByEmail && existingByEmail.emailVerifiedAt) {
-    redirect(buildUrl('/login', { error: 'Account already exists. Please sign in.', email: input.email }));
+    redirect(buildUrl('/login', { error: 'Account already exists. Please sign in.', email: input.email, next }));
   }
 
   const registrationPayload = {
@@ -170,9 +210,9 @@ export async function registerAction(formData: FormData) {
     }
   } catch (error) {
     if (isUniqueViolation(error, 'mobile')) {
-      redirect(buildUrl('/register', { error: 'Mobile number is already in use.', email: input.email }));
+      redirect(buildUrl('/register', { error: 'Mobile number is already in use.', email: input.email, next }));
     }
-    redirect(buildUrl('/register', { error: 'Could not create account. Please try again.', email: input.email }));
+    redirect(buildUrl('/register', { error: 'Could not create account. Please try again.', email: input.email, next }));
   }
 
   await createAndSendOtp({ userId, email: input.email, purpose: OtpPurpose.VERIFY_EMAIL });
@@ -181,11 +221,13 @@ export async function registerAction(formData: FormData) {
     buildUrl('/verify-email', {
       email: input.email,
       message: 'OTP sent to your email. Please verify to complete registration.',
+      next,
     }),
   );
 }
 
 export async function loginAction(formData: FormData) {
+  const next = sanitizeNextPath(String(formData.get('next') ?? ''));
   const raw = {
     email: String(formData.get('email') ?? ''),
     password: String(formData.get('password') ?? ''),
@@ -193,7 +235,7 @@ export async function loginAction(formData: FormData) {
 
   const parsed = loginSchema.safeParse(raw);
   if (!parsed.success) {
-    redirect(buildUrl('/login', { error: getFirstErrorMessage(parsed.error.issues), email: raw.email }));
+    redirect(buildUrl('/login', { error: getFirstErrorMessage(parsed.error.issues), email: raw.email, next }));
   }
 
   const input = parsed.data;
@@ -204,13 +246,14 @@ export async function loginAction(formData: FormData) {
       buildUrl('/register', {
         email: input.email,
         message: 'No user found with this email. Please register first.',
+        next,
       }),
     );
   }
 
   const isValidPassword = await verifyPassword(input.password, user.passwordHash);
   if (!isValidPassword) {
-    redirect(buildUrl('/login', { error: 'Invalid email or password.', email: input.email }));
+    redirect(buildUrl('/login', { error: 'Invalid email or password.', email: input.email, next }));
   }
 
   if (!user.emailVerifiedAt) {
@@ -224,15 +267,17 @@ export async function loginAction(formData: FormData) {
       buildUrl('/verify-email', {
         email: user.email,
         message: 'Your email is not verified yet. A new OTP has been sent.',
+        next,
       }),
     );
   }
 
   await createSession(user.id);
-  redirect('/profile');
+  redirect(next ?? '/profile');
 }
 
 export async function verifyEmailOtpAction(formData: FormData) {
+  const next = sanitizeNextPath(String(formData.get('next') ?? ''));
   const raw = {
     email: String(formData.get('email') ?? ''),
     otp: String(formData.get('otp') ?? ''),
@@ -240,7 +285,7 @@ export async function verifyEmailOtpAction(formData: FormData) {
 
   const parsed = otpSchema.safeParse(raw);
   if (!parsed.success) {
-    redirect(buildUrl('/verify-email', { error: getFirstErrorMessage(parsed.error.issues), email: raw.email }));
+    redirect(buildUrl('/verify-email', { error: getFirstErrorMessage(parsed.error.issues), email: raw.email, next }));
   }
 
   const input = parsed.data;
@@ -257,7 +302,7 @@ export async function verifyEmailOtpAction(formData: FormData) {
   });
 
   if (!consumed) {
-    redirect(buildUrl('/verify-email', { email: input.email, error: 'Invalid or expired OTP.' }));
+    redirect(buildUrl('/verify-email', { email: input.email, error: 'Invalid or expired OTP.', next }));
   }
 
   if (!user.emailVerifiedAt) {
@@ -265,13 +310,14 @@ export async function verifyEmailOtpAction(formData: FormData) {
   }
 
   await createSession(user.id);
-  redirect('/profile');
+  redirect(next ?? '/profile');
 }
 
 export async function resendVerificationOtpAction(formData: FormData) {
+  const next = sanitizeNextPath(String(formData.get('next') ?? ''));
   const email = String(formData.get('email') ?? '').trim().toLowerCase();
   if (!email) {
-    redirect(buildUrl('/verify-email', { error: 'Email is required to resend OTP.' }));
+    redirect(buildUrl('/verify-email', { error: 'Email is required to resend OTP.', next }));
   }
 
   const user = await findUserByEmail(email);
@@ -285,7 +331,7 @@ export async function resendVerificationOtpAction(formData: FormData) {
     purpose: OtpPurpose.VERIFY_EMAIL,
   });
 
-  redirect(buildUrl('/verify-email', { email, message: 'A new OTP has been sent to your email.' }));
+  redirect(buildUrl('/verify-email', { email, message: 'A new OTP has been sent to your email.', next }));
 }
 
 export async function forgotPasswordAction(formData: FormData) {
@@ -392,9 +438,11 @@ export async function updateProfileAction(formData: FormData) {
   redirect(buildUrl('/profile', { message: 'Profile updated successfully.' }));
 }
 
-export async function logoutAction() {
+export async function logoutAction(formData: FormData) {
+  const from = String(formData.get('from') ?? '');
+  const redirectTo = sanitizeLogoutReturnPath(from) ?? '/';
   await clearSession();
-  redirect('/calculator');
+  redirect(redirectTo);
 }
 
 export async function getProfileForPage() {

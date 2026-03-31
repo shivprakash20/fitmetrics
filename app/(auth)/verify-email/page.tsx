@@ -13,6 +13,7 @@ export default async function VerifyEmailPage({
   const email = getQueryValue(params, 'email');
   const message = getQueryValue(params, 'message');
   const error = getQueryValue(params, 'error');
+  const next = getQueryValue(params, 'next');
 
   return (
     <main className={styles.page}>
@@ -25,6 +26,7 @@ export default async function VerifyEmailPage({
           {error ? <p className={`${styles.message} ${styles.messageError}`}>{error}</p> : null}
 
           <form action={verifyEmailOtpAction} className={styles.form}>
+            <input type="hidden" name="next" value={next} />
             <div className={styles.row}>
               <label htmlFor="email" className={styles.label}>{auth.verifyEmail.fields.email.label}</label>
               <input id="email" name="email" type="email" defaultValue={email} className={styles.input} required />
@@ -38,11 +40,14 @@ export default async function VerifyEmailPage({
 
           <form action={resendVerificationOtpAction} className={styles.form}>
             <input type="hidden" name="email" value={email} />
+            <input type="hidden" name="next" value={next} />
             <button type="submit" className={styles.ghostBtn}>{auth.verifyEmail.resendButton}</button>
           </form>
 
           <div className={styles.linkRow}>
-            <Link href="/login" className={styles.link}>{auth.verifyEmail.links.backToSignIn}</Link>
+            <Link href={next ? `/login?next=${encodeURIComponent(next)}` : '/login'} className={styles.link}>
+              {auth.verifyEmail.links.backToSignIn}
+            </Link>
           </div>
         </section>
       </div>

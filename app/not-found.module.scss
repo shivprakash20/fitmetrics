@@ -1,0 +1,161 @@
+@use './variables' as g;
+
+.page {
+  min-height: calc(100vh - 160px);
+  padding: clamp(28px, 6vw, 72px) 0 clamp(36px, 8vw, 90px);
+}
+
+.hero {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(22px, 3vw, 34px);
+  border-radius: g.$radius;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 12% 14%, var(--primary-a12), transparent 38%),
+    radial-gradient(circle at 88% 22%, var(--secondary-a08), transparent 46%),
+    var(--bg-card);
+  box-shadow: var(--shadow);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid var(--primary-a40);
+  border-radius: 999px;
+  background: var(--primary-a12);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 12px;
+  font-size: clamp(1.8rem, 4vw, 2.55rem);
+  line-height: 1.14;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.subtitle {
+  margin-top: 10px;
+  max-width: 72ch;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.banner {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: g.$radius;
+  background: var(--bg-input);
+}
+
+.bannerAccent {
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+}
+
+.bannerTitle {
+  margin: 0;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.96rem;
+}
+
+.bannerText {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  border-radius: g.$radius;
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: background g.$transition, border-color g.$transition, color g.$transition, transform g.$transition;
+}
+
+.primaryBtn {
+  border: 1px solid transparent;
+  background: var(--primary);
+  color: #fff;
+
+  &:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+}
+
+.secondaryBtn {
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  color: var(--text);
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-a06);
+    transform: translateY(-1px);
+  }
+}
+
+.links {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+
+  @media (min-width: 760px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.linkCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: g.$radius;
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  transition: border-color g.$transition, background g.$transition;
+
+  &:hover {
+    border-color: var(--primary);
+    background: var(--primary-a06);
+  }
+}
+
+.linkTitle {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.linkDesc {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
