@@ -25,6 +25,7 @@ type Props = {
   note: string;
   source: string;
   faq: FAQ[];
+  userId?: string;
   activityGuide?: {
     title: string;
     intro: string;
@@ -69,7 +70,7 @@ function FAQItem({ q, a }: FAQ) {
 
 export default function CalculatorPageLayout({
   id, iconSrc, title, tagline, description, formula, ranges, note, source, faq,
-  activityGuide, bodyShapes, healthRisks, limitations,
+  userId, activityGuide, bodyShapes, healthRisks, limitations,
 }: Props) {
   return (
     <main className={styles.main}>
@@ -83,7 +84,7 @@ export default function CalculatorPageLayout({
         </div>
 
         {/* Interactive calculator */}
-        <CalculatorWidget type={id} />
+        <CalculatorWidget type={id} userId={userId} />
 
         {/* About section */}
         <section className={styles.section}>

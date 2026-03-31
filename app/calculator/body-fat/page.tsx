@@ -1,4 +1,4 @@
-import CalculatorPageLayout from '@/components/CalculatorPageLayout/CalculatorPageLayout';
+import CalculatorPageWrapper from '@/components/CalculatorPageWrapper/CalculatorPageWrapper';
 import calc from '@/data/calculators/bodyfat.json';
 import type { CalculatorType } from '@/types';
 
@@ -9,5 +9,5 @@ export const metadata = {
 
 export default function BodyFatPage() {
   const { id, ...props } = calc;
-  return <CalculatorPageLayout id={id as CalculatorType} {...props} />;
+  return <CalculatorPageWrapper id={id as CalculatorType} {...props} />;
 }

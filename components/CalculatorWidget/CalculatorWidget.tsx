@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { saveReadingAction } from '@/app/calculator/actions';
 import type {
   CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal, CaloriesBurnedActivity, ProteinGoal, GainPace, LossPace,
 } from '@/types';
@@ -11,9 +12,9 @@ import {
 } from '@/lib/calculators';
 import styles from './CalculatorWidget.module.scss';
 
-type Props = { type: CalculatorType };
+type Props = { type: CalculatorType; userId?: string };
 
-export default function CalculatorWidget({ type }: Props) {
+export default function CalculatorWidget({ type, userId }: Props) {
   const [unit, setUnit]         = useState<UnitSystem>('metric');
   const [gender, setGender]     = useState<Gender>('male');
   const [weight, setWeight]     = useState('');
@@ -34,11 +35,12 @@ export default function CalculatorWidget({ type }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [result, setResult]     = useState<any | null>(null);
   const [error, setError]       = useState('');
+  const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
 
   const wLabel = unit === 'metric' ? 'kg' : 'lbs';
   const hLabel = unit === 'metric' ? 'cm' : 'in';
 
-  function reset() { setResult(null); setError(''); }
+  function reset() { setResult(null); setError(''); setSaveState('idle'); }
 
   function handleUnitChange(u: UnitSystem) {
     setUnit(u); reset();
@@ -50,7 +52,7 @@ export default function CalculatorWidget({ type }: Props) {
   }
 
   function handleCalculate() {
-    setError(''); setResult(null);
+    setError(''); setResult(null); setSaveState('idle');
     try {
       if (type === 'bmi') {
         if (!validate(weight, height)) return setError('Please enter valid weight and height.');
@@ -127,6 +129,27 @@ export default function CalculatorWidget({ type }: Props) {
     } catch {
       setError('Something went wrong. Please check your inputs.');
     }
+  }
+
+  async function handleSave() {
+    if (!result) return;
+    setSaveState('saving');
+    const inputs: Record<string, unknown> = { unit };
+    if (showGender)       inputs.gender   = gender;
+    if (showWeight)       inputs.weight   = +weight;
+    if (showHeight)       inputs.height   = +height;
+    if (showAge)          inputs.age      = +age;
+    if (showBody)       { inputs.neck = +neck; inputs.waist = +waist; if (hip) inputs.hip = +hip; }
+    if (showBodyType)   { inputs.bust = +bust; inputs.waist = +waist; inputs.hip = +hip; }
+    if (showActivity)     inputs.activity = activity;
+    if (showGoal)         inputs.goal     = goal;
+    if (showDuration)     inputs.minutes  = +minutes;
+    if (showBurnActivity) inputs.burnActivity = burnActivity;
+    if (showProteinGoal)  inputs.proteinGoal  = proteinGoal;
+    if (type === 'weightgain') inputs.targetWeight = +targetWeight;
+    if (type === 'weightloss') inputs.targetWeight = +targetWeight;
+    const res = await saveReadingAction(type, inputs, result);
+    setSaveState(res.success ? 'saved' : 'error');
   }
 
   const showUnitToggle   = true;
@@ -382,6 +405,29 @@ export default function CalculatorWidget({ type }: Props) {
         <button className={styles.calcBtn} onClick={handleCalculate}>Calculate</button>
 
         {result && <ResultPanel type={type} result={result} unit={unit} />}
+
+        {result && (
+          <div className={styles.saveRow}>
+            {userId ? (
+              <button
+                className={`${styles.saveBtn} ${saveState === 'saved' ? styles.saveBtnSaved : ''}`}
+                onClick={handleSave}
+                disabled={saveState === 'saving' || saveState === 'saved'}
+              >
+                {saveState === 'saving' && 'Saving…'}
+                {saveState === 'saved'  && '✓ Saved'}
+                {saveState === 'error'  && 'Retry Save'}
+                {saveState === 'idle'   && 'Save Reading'}
+              </button>
+            ) : (
+              <p className={styles.saveSignIn}>
+                <a href={`/login?next=${encodeURIComponent(typeof window !== 'undefined' ? window.location.pathname : '/')}`}>
+                  Sign in
+                </a>{' '}to save your result
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

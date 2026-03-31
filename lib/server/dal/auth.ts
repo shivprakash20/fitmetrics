@@ -119,6 +119,7 @@ export async function getProfileByUserId(userId: string) {
   return prisma.user.findUnique({
     where: { id: userId },
     select: {
+      id: true,
       email: true,
       firstName: true,
       middleName: true,
