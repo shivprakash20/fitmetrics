@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Ionicons body-outline adapted to 24x24 — full human figure showing body proportions -->
-  <circle cx="12" cy="3" r="2" />
-  <path d="M9.5 8.5a2.5 2.5 0 0 0 -2 1.5l-1.5 4h2.5l-1 6.5a.5 .5 0 0 0 1 .1l1.5 -5h1l1.5 5a.5 .5 0 0 0 1 -.1l-1 -6.5h2.5l-1.5 -4a2.5 2.5 0 0 0 -2 -1.5h-2z" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Body type icon (same concept) with thicker strokes -->
+  <circle cx="12" cy="4" r="2" />
+  <path d="M12 9v6" />
+  <path d="M9 11l3 -2l3 2" />
+  <path d="M9.5 20l2.5 -5l2.5 5" />
 </svg>

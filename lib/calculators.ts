@@ -6,6 +6,7 @@ import {
   TDEEInput, TDEEResult,
   BodyTypeInput, BodyTypeResult,
   CalorieInput, CalorieResult,
+  CaloriesBurnedInput, CaloriesBurnedResult, CaloriesBurnedActivity,
   ActivityLevel,
 } from '@/types';
 
@@ -169,6 +170,40 @@ export function calcCalorie(input: CalorieInput): CalorieResult {
 }
 
 export { GOAL_ADJUSTMENTS };
+
+// ─── Calories Burned ─────────────────────────────────────────────────────────
+// Calories burned = MET × body weight (kg) × duration (hours)
+// Equivalent minute form: (MET × 3.5 × weight kg / 200) × minutes
+
+const CALORIES_BURNED_ACTIVITIES: Record<CaloriesBurnedActivity, { label: string; met: number }> = {
+  walking_slow:      { label: 'Walking (slow, ~3.2 km/h)',        met: 2.8 },
+  walking_brisk:     { label: 'Walking (brisk, ~5.6 km/h)',       met: 4.3 },
+  running_8kph:      { label: 'Running (~8 km/h)',                met: 8.3 },
+  running_10kph:     { label: 'Running (~10 km/h)',               met: 9.8 },
+  cycling_leisure:   { label: 'Cycling (leisure, <16 km/h)',      met: 4.0 },
+  cycling_vigorous:  { label: 'Cycling (vigorous, 19-22 km/h)',   met: 10.0 },
+  swimming_moderate: { label: 'Swimming (moderate effort)',       met: 6.0 },
+  jump_rope:         { label: 'Jump rope (moderate-vigorous)',    met: 11.8 },
+  strength_training: { label: 'Strength training (general)',      met: 3.5 },
+  yoga_hatha:        { label: 'Yoga (Hatha)',                     met: 2.5 },
+};
+
+export function calcCaloriesBurned(input: CaloriesBurnedInput): CaloriesBurnedResult {
+  const weightKg = input.unit === 'imperial' ? toKg(input.weight) : input.weight;
+  const { label, met } = CALORIES_BURNED_ACTIVITIES[input.activity];
+
+  const caloriesPerHour = met * weightKg;
+  const caloriesBurned = caloriesPerHour * (input.minutes / 60);
+
+  return {
+    caloriesBurned: Math.round(caloriesBurned),
+    caloriesPerHour: Math.round(caloriesPerHour),
+    met,
+    activityLabel: label,
+  };
+}
+
+export { CALORIES_BURNED_ACTIVITIES };
 
 // ─── Body Type ────────────────────────────────────────────────────────────────
 // Body shape derived from bust / waist / hip ratios

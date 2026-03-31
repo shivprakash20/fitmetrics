@@ -1,0 +1,91 @@
+{
+  "id": "caloriesburned",
+  "metadata": {
+    "title": "Calories Burned Calculator - MET-Based Activity Burn | FitMetrics",
+    "description": "Estimate calories burned for walking, running, cycling, swimming, strength training, and more using the MET standard formula from open exercise science references."
+  },
+  "slug": "calories-burned",
+  "title": "Calories Burned Calculator",
+  "fullTitle": "Calories Burned - MET Standard",
+  "icon": "🏃",
+  "iconSrc": "/icons/burned.svg",
+  "tagline": "How many calories do you burn in a workout session?",
+  "shortDesc": "Estimate calories burned from activity type, duration, and body weight using MET-based open standards.",
+  "importance": "Knowing exercise calorie burn helps you set realistic fat-loss, maintenance, or performance targets. When paired with calorie intake planning, it improves energy balance decisions and reduces guesswork in training programs.",
+  "description": "This calculator estimates exercise energy expenditure using MET (Metabolic Equivalent of Task), the most widely used open standard for activity intensity. One MET represents resting energy cost. Higher MET values indicate higher intensity and greater calorie burn per minute. We apply the standard MET equation with your body weight and workout duration to estimate total calories burned for the selected activity.",
+  "formula": "Primary equation:\n  Calories burned = MET x body weight (kg) x duration (hours)\n\nEquivalent minute equation:\n  Calories burned = (MET x 3.5 x body weight (kg) / 200) x minutes\n\nWhere:\n  1 MET = resting metabolic rate",
+  "ranges": [
+    { "label": "Light intensity", "value": "< 3 MET", "color": "#3498db" },
+    { "label": "Moderate intensity", "value": "3-5.9 MET", "color": "#2ecc71" },
+    { "label": "Vigorous intensity", "value": ">= 6 MET", "color": "#e67e22" }
+  ],
+  "note": "This result is an evidence-based estimate, not a lab measurement. Actual burn varies with exercise technique, terrain, fitness level, body composition, and heart-rate response. For best use, track trend averages across weeks instead of relying on single-session values.",
+  "source": "Compendium of Physical Activities (Ainsworth et al., 2011; updated 2024) · WHO Guidelines on Physical Activity and Sedentary Behaviour (2020) · ACSM metabolic equations and MET conventions",
+  "healthRisks": {
+    "title": "Why Exercise Energy Expenditure Matters",
+    "intro": "Calorie-burn awareness is useful for weight and cardiometabolic health when interpreted correctly. It helps align activity volume with realistic outcomes and supports long-term consistency.",
+    "overweightItems": [
+      {
+        "condition": "Energy Balance Accuracy",
+        "desc": "Many people overestimate calories burned during exercise, which can erase fat-loss progress through unintentional overeating. Structured estimates improve planning accuracy."
+      },
+      {
+        "condition": "Cardiometabolic Risk Reduction",
+        "desc": "Regular moderate-to-vigorous activity improves insulin sensitivity, blood pressure, and lipid profile independent of weight loss. Tracking activity burn can reinforce adherence."
+      },
+      {
+        "condition": "Training Progression",
+        "desc": "As fitness improves, the same workout can feel easier and expend fewer calories per perceived effort. Monitoring duration and intensity helps maintain progressive overload."
+      }
+    ],
+    "underweightNote": "Calories burned are only one side of the equation. Health outcomes depend on total energy intake, sleep, stress, protein adequacy, and recovery quality."
+  },
+  "limitations": {
+    "title": "How to Use This Calculator Most Effectively",
+    "intro": "Use the output as a planning tool, then refine with real-world feedback from body-weight trends, performance, and recovery:",
+    "items": [
+      {
+        "title": "Choose the closest activity intensity",
+        "desc": "MET values differ by pace and effort. Select the activity option that best matches your true intensity; this has a larger impact than minor weight differences."
+      },
+      {
+        "title": "Avoid compensatory eating errors",
+        "desc": "A common mistake is eating back all estimated exercise calories. If fat loss is the goal, use conservative compensation and monitor weekly results before adjusting intake."
+      },
+      {
+        "title": "Recalculate as body weight changes",
+        "desc": "The same session burns fewer calories at lower body weight. Recheck estimates every few weeks to keep planning aligned with your current physiology."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What is MET and why is it used in calorie-burn calculators?",
+      "a": "MET (Metabolic Equivalent of Task) is a standardized intensity unit in exercise science. 1 MET equals resting energy cost. It allows activities to be compared using a consistent open framework and is widely used in public-health and clinical exercise guidance."
+    },
+    {
+      "q": "How accurate is a calories burned calculator?",
+      "a": "Most calculator outputs are estimates and can vary meaningfully from true lab-measured expenditure. They are best used for trend tracking and planning, not as an exact per-session number."
+    },
+    {
+      "q": "Do heavier people burn more calories doing the same workout?",
+      "a": "Yes. For the same activity and duration, calorie burn generally rises with body weight because moving a larger mass requires more energy."
+    },
+    {
+      "q": "Why does my smartwatch number differ from this calculator?",
+      "a": "Wearables use proprietary algorithms that include heart rate, movement sensors, and user profile data. MET calculators use standardized intensity assumptions. Differences are expected; consistency over time matters more than one-off agreement."
+    },
+    {
+      "q": "Can I use this for weight-loss planning?",
+      "a": "Yes. Combine this estimate with your daily calorie-intake target to plan an achievable weekly energy deficit. Reassess every 2-4 weeks based on actual body-weight trend and recovery."
+    },
+    {
+      "q": "Does this include calories burned after exercise (EPOC)?",
+      "a": "No. This estimate focuses on the selected activity session itself. Post-exercise oxygen consumption exists but is usually modest for most routine workouts."
+    },
+    {
+      "q": "What weekly activity level is recommended for health?",
+      "a": "WHO recommends adults target 150-300 minutes of moderate-intensity activity or 75-150 minutes of vigorous-intensity activity per week, plus muscle-strengthening activities on at least 2 days per week."
+    }
+  ]
+}

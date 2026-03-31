@@ -71,6 +71,17 @@
       "importance": "Calories are the single most important variable in any weight management goal. WHO identifies energy imbalance as the primary driver of the global obesity epidemic. Knowing your exact daily calorie target removes guesswork and gives you a precise, evidence-based number to work from."
     },
     {
+      "id": "caloriesburned",
+      "slug": "calories-burned",
+      "title": "Calories Burned Calculator",
+      "fullTitle": "Calories Burned — MET Standard",
+      "icon": "🏃",
+      "iconSrc": "/icons/burned.svg",
+      "tagline": "How many calories do you burn in a workout session?",
+      "shortDesc": "Estimate calories burned from activity type, duration, and body weight using MET-based open standards.",
+      "importance": "Exercise calorie-burn estimates help connect your workouts to measurable energy expenditure. Used correctly, this improves weight-management planning, helps avoid overestimating workout impact, and supports consistent long-term progress."
+    },
+    {
       "id": "bodytype",
       "slug": "body-type",
       "title": "Body Type Calculator",

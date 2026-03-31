@@ -1,8 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import type { CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal } from '@/types';
-import { calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, ACTIVITY_MULTIPLIERS, GOAL_ADJUSTMENTS } from '@/lib/calculators';
+import type {
+  CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal, CaloriesBurnedActivity,
+} from '@/types';
+import {
+  calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, calcCaloriesBurned,
+  ACTIVITY_MULTIPLIERS, GOAL_ADJUSTMENTS, CALORIES_BURNED_ACTIVITIES,
+} from '@/lib/calculators';
 import styles from './CalculatorWidget.module.scss';
 
 type Props = { type: CalculatorType };
@@ -17,8 +22,10 @@ export default function CalculatorWidget({ type }: Props) {
   const [waist, setWaist]       = useState('');
   const [hip, setHip]           = useState('');
   const [bust, setBust]         = useState('');
+  const [minutes, setMinutes]   = useState('');
   const [activity, setActivity] = useState<ActivityLevel>('sedentary');
   const [goal, setGoal]         = useState<WeightGoal>('maintain');
+  const [burnActivity, setBurnActivity] = useState<CaloriesBurnedActivity>('walking_brisk');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [result, setResult]     = useState<any | null>(null);
   const [error, setError]       = useState('');
@@ -65,6 +72,9 @@ export default function CalculatorWidget({ type }: Props) {
       } else if (type === 'bodytype') {
         if (!validate(waist, hip, bust)) return setError('Please enter valid waist, hip, and bust measurements.');
         setResult(calcBodyType({ waist: +waist, hip: +hip, bust: +bust, unit }));
+      } else if (type === 'caloriesburned') {
+        if (!validate(weight, minutes)) return setError('Please enter valid weight and duration.');
+        setResult(calcCaloriesBurned({ weight: +weight, minutes: +minutes, activity: burnActivity, unit }));
       }
     } catch {
       setError('Something went wrong. Please check your inputs.');
@@ -73,12 +83,14 @@ export default function CalculatorWidget({ type }: Props) {
 
   const showGender   = ['bmr', 'ibw', 'bodyfat', 'tdee', 'calorie'].includes(type);
   const showWeight   = !['ibw', 'bodyfat', 'bodytype'].includes(type);
-  const showHeight   = !['bodytype'].includes(type);
+  const showHeight   = !['bodytype', 'caloriesburned'].includes(type);
   const showAge      = ['bmr', 'tdee', 'calorie'].includes(type);
   const showBody     = type === 'bodyfat';
   const showActivity = ['tdee', 'calorie'].includes(type);
   const showGoal     = type === 'calorie';
   const showBodyType = type === 'bodytype';
+  const showDuration = type === 'caloriesburned';
+  const showBurnActivity = type === 'caloriesburned';
 
   return (
     <div className={styles.card}>
@@ -230,6 +242,32 @@ export default function CalculatorWidget({ type }: Props) {
               </select>
             </div>
           )}
+
+          {showDuration && (
+            <div className={styles.field}>
+              <label className={styles.label}>Duration (minutes)</label>
+              <input
+                className={styles.input}
+                type="number"
+                min="1"
+                placeholder="e.g. 45"
+                value={minutes}
+                onChange={e => { setMinutes(e.target.value); reset(); }}
+              />
+            </div>
+          )}
+
+          {showBurnActivity && (
+            <div className={`${styles.field} ${styles.fieldFull}`}>
+              <label className={styles.label}>Activity</label>
+              <select className={styles.select} value={burnActivity}
+                onChange={e => { setBurnActivity(e.target.value as CaloriesBurnedActivity); reset(); }}>
+                {Object.entries(CALORIES_BURNED_ACTIVITIES).map(([key, val]) => (
+                  <option key={key} value={key}>{val.label}</option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
 
         {error && <p className={styles.error}>{error}</p>}
@@ -350,6 +388,27 @@ function ResultPanel({ type, result, unit }: { type: CalculatorType; result: any
             <div className={styles.tdeeItem}>
               <span className={styles.tdeeSub}>Shape Risk Profile</span>
               <span className={styles.tdeeVal}>{result.riskLevel}</span>
+            </div>
+          </div>
+        </>
+      )}
+
+      {type === 'caloriesburned' && (
+        <>
+          <div className={styles.bigNumber}>{result.caloriesBurned}</div>
+          <p className={styles.resultNote}>calories burned for this session</p>
+          <div className={styles.tdeeGrid}>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Activity</span>
+              <span className={styles.tdeeVal}>{result.activityLabel}</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>MET Value</span>
+              <span className={styles.tdeeVal}>{result.met}</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Estimated burn rate</span>
+              <span className={styles.tdeeVal}>{result.caloriesPerHour} kcal/hour</span>
             </div>
           </div>
         </>

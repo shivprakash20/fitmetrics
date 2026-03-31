@@ -1,6 +1,14 @@
 // ─── Calculator Types ─────────────────────────────────────────────────────────
 
-export type CalculatorType = 'bmi' | 'bmr' | 'ibw' | 'bodyfat' | 'tdee' | 'bodytype' | 'calorie';
+export type CalculatorType =
+  | 'bmi'
+  | 'bmr'
+  | 'ibw'
+  | 'bodyfat'
+  | 'tdee'
+  | 'bodytype'
+  | 'calorie'
+  | 'caloriesburned';
 
 export type WeightGoal = 'lose_fast' | 'lose' | 'maintain' | 'gain' | 'gain_fast';
 
@@ -62,6 +70,25 @@ export interface BodyTypeInput {
   unit: UnitSystem;
 }
 
+export type CaloriesBurnedActivity =
+  | 'walking_slow'
+  | 'walking_brisk'
+  | 'running_8kph'
+  | 'running_10kph'
+  | 'cycling_leisure'
+  | 'cycling_vigorous'
+  | 'swimming_moderate'
+  | 'jump_rope'
+  | 'strength_training'
+  | 'yoga_hatha';
+
+export interface CaloriesBurnedInput {
+  weight: number; // kg or lbs
+  minutes: number;
+  activity: CaloriesBurnedActivity;
+  unit: UnitSystem;
+}
+
 // ─── Result Shapes ────────────────────────────────────────────────────────────
 
 export interface BMIResult {
@@ -108,4 +135,11 @@ export interface BodyTypeResult {
   color: string;
   desc: string;
   riskLevel: string;
+}
+
+export interface CaloriesBurnedResult {
+  caloriesBurned: number;
+  caloriesPerHour: number;
+  met: number;
+  activityLabel: string;
 }
