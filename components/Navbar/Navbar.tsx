@@ -52,6 +52,23 @@ export default function Navbar({ user }: NavbarProps) {
 
   const currentTheme = navigation.themes.find(t => t.id === theme);
   const calcSlugs = navigation.calculators.items.map(c => c.href);
+  const calculatorGroups = [
+    {
+      title: 'Body Metrics',
+      hrefs: ['/calculator/bmi', '/calculator/bmr', '/calculator/ibw', '/calculator/body-fat', '/calculator/body-type'],
+    },
+    {
+      title: 'Energy Planning',
+      hrefs: ['/calculator/tdee', '/calculator/calorie-intake', '/calculator/weight-loss', '/calculator/weight-gain', '/calculator/carbohydrate', '/calculator/protein'],
+    },
+    {
+      title: 'Activity & Hydration',
+      hrefs: ['/calculator/calories-burned', '/calculator/water'],
+    },
+  ].map(group => ({
+    ...group,
+    items: navigation.calculators.items.filter(item => group.hrefs.includes(item.href)),
+  }));
 
   const logoSrc = theme === 'light' ? '/logo-light.svg'
     : theme === 'teal'  ? '/logo-teal.svg'
@@ -96,17 +113,30 @@ export default function Navbar({ user }: NavbarProps) {
 
               {calcMenuOpen && (
                 <div className={styles.calcDropdown}>
-                  {navigation.calculators.items.map(item => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`${styles.calcDropdownItem} ${pathname === item.href ? styles.calcDropdownItemActive : ''}`}
-                      onClick={() => setCalcMenuOpen(false)}
-                    >
-                      <span className={styles.calcDropdownLabel}>{item.label}</span>
-                      <span className={styles.calcDropdownDesc}>{item.desc}</span>
-                    </Link>
-                  ))}
+                  <div className={styles.calcDropdownHeader}>
+                    <p className={styles.calcDropdownTitle}>All Calculators</p>
+                    <p className={styles.calcDropdownSub}>Choose a tool based on your health goal</p>
+                  </div>
+                  <div className={styles.calcDropdownGrid}>
+                    {calculatorGroups.map(group => (
+                      <section key={group.title} className={styles.calcDropdownCol}>
+                        <p className={styles.calcDropdownColTitle}>{group.title}</p>
+                        <div className={styles.calcDropdownList}>
+                          {group.items.map(item => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className={`${styles.calcDropdownItem} ${pathname === item.href ? styles.calcDropdownItemActive : ''}`}
+                              onClick={() => setCalcMenuOpen(false)}
+                            >
+                              <span className={styles.calcDropdownLabel}>{item.label}</span>
+                              <span className={styles.calcDropdownDesc}>{item.desc}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </section>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

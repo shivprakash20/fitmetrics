@@ -14,6 +14,7 @@
 
 // ─── Nav layout: logo | links (center) | actions (right) ─────────────────────
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -357,7 +358,7 @@
 
 // ─── Calculators dropdown ─────────────────────────────────────────────────────
 .calcMenu {
-  position: relative;
+  position: static;
 }
 
 .calcBtn {
@@ -383,31 +384,98 @@
   top: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%);
-  min-width: 220px;
+  width: min(920px, calc(100vw - 48px));
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: g.$radius;
+  border-radius: calc(g.$radius + 2px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
-  overflow: hidden;
+  padding: 12px;
   z-index: 200;
-  animation: dropIn 0.15s ease;
+  animation: calcDropIn 0.15s ease;
+}
+
+@keyframes calcDropIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.calcDropdownHeader {
+  padding: 2px 6px 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+
+.calcDropdownTitle {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.calcDropdownSub {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.calcDropdownGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+
+  @media (max-width: 1160px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.calcDropdownCol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calcDropdownColTitle {
+  margin: 0;
+  padding: 0 4px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-label);
+}
+
+.calcDropdownList {
+  display: grid;
+  gap: 6px;
 }
 
 .calcDropdownItem {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 10px 16px;
+  gap: 3px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: g.$radius-sm;
+  background: var(--bg-input);
   text-decoration: none;
-  transition: background g.$transition;
+  transition: background g.$transition, border-color g.$transition, transform g.$transition;
 
   &:hover {
-    background: var(--bg-input);
+    background: var(--primary-a06);
+    border-color: var(--primary);
+    transform: translateY(-1px);
   }
 }
 
 .calcDropdownItemActive {
   background: var(--primary-a12);
+  border-color: var(--primary);
 
   .calcDropdownLabel {
     color: var(--primary);
