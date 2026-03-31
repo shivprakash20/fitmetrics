@@ -11,6 +11,7 @@ export type CalculatorType =
   | 'caloriesburned'
   | 'carbohydrate'
   | 'weightgain'
+  | 'weightloss'
   | 'protein'
   | 'water';
 
@@ -99,10 +100,17 @@ export interface CarbohydrateInput extends BMRInput {
 }
 
 export type GainPace = 'lean' | 'moderate' | 'aggressive';
+export type LossPace = 'gentle' | 'moderate' | 'aggressive';
 
 export interface WeightGainInput extends BMRInput {
   activityLevel: ActivityLevel;
   gainPace: GainPace;
+  targetWeight: number; // kg or lbs (same unit as input)
+}
+
+export interface WeightLossInput extends BMRInput {
+  activityLevel: ActivityLevel;
+  lossPace: LossPace;
   targetWeight: number; // kg or lbs (same unit as input)
 }
 
@@ -191,6 +199,16 @@ export interface WeightGainResult {
   tdee: number;
   surplus: number;
   gainPaceLabel: string;
+  estimatedWeeks: number;
+  macros: { carbs: number; protein: number; fat: number };
+}
+
+export interface WeightLossResult {
+  calories: number;
+  bmr: number;
+  tdee: number;
+  deficit: number;
+  lossPaceLabel: string;
   estimatedWeeks: number;
   macros: { carbs: number; protein: number; fat: number };
 }

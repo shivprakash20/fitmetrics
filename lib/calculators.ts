@@ -8,6 +8,7 @@ import {
   CalorieInput, CalorieResult,
   CarbohydrateInput, CarbohydrateResult,
   WeightGainInput, WeightGainResult, GainPace,
+  WeightLossInput, WeightLossResult, LossPace,
   CaloriesBurnedInput, CaloriesBurnedResult, CaloriesBurnedActivity,
   ProteinInput, ProteinResult, ProteinGoal,
   WaterInput, WaterResult,
@@ -217,6 +218,49 @@ export function calcWeightGain(input: WeightGainInput): WeightGainResult {
 }
 
 export { WEIGHT_GAIN_PACES };
+
+// ─── Weight Loss ─────────────────────────────────────────────────────────────
+// Calorie target for weight loss using configurable deficit
+// 1 kg body weight roughly equals 7,700 kcal (population-level estimate)
+
+const WEIGHT_LOSS_PACES: Record<LossPace, { label: string; deficit: number }> = {
+  gentle:     { label: 'Gentle loss (-250 kcal/day)',      deficit: 250 },
+  moderate:   { label: 'Moderate loss (-500 kcal/day)',    deficit: 500 },
+  aggressive: { label: 'Aggressive loss (-750 kcal/day)',  deficit: 750 },
+};
+
+export function calcWeightLoss(input: WeightLossInput): WeightLossResult {
+  const { bmr } = calcBMR(input);
+  const { factor } = ACTIVITY_MULTIPLIERS[input.activityLevel];
+  const tdee = Math.round(bmr * factor);
+  const { label: lossPaceLabel, deficit } = WEIGHT_LOSS_PACES[input.lossPace];
+
+  const calories = Math.max(1200, tdee - deficit);
+
+  const currentWeightKg = input.unit === 'imperial' ? toKg(input.weight) : input.weight;
+  const targetWeightKg = input.unit === 'imperial' ? toKg(input.targetWeight) : input.targetWeight;
+  const lossKg = Math.max(0, currentWeightKg - targetWeightKg);
+
+  const weeklyLossKg = (deficit * 7) / 7700;
+  const estimatedWeeks = weeklyLossKg > 0 ? Math.max(1, Math.ceil(lossKg / weeklyLossKg)) : 0;
+
+  // Practical satiety-focused split for fat-loss phases
+  const carbs = Math.round((calories * 0.40) / 4);
+  const protein = Math.round((calories * 0.30) / 4);
+  const fat = Math.round((calories * 0.30) / 9);
+
+  return {
+    calories,
+    bmr,
+    tdee,
+    deficit,
+    lossPaceLabel,
+    estimatedWeeks,
+    macros: { carbs, protein, fat },
+  };
+}
+
+export { WEIGHT_LOSS_PACES };
 
 // ─── Carbohydrate ────────────────────────────────────────────────────────────
 // Daily carbohydrate grams based on calorie target.

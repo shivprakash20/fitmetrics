@@ -93,6 +93,17 @@
       "importance": "Structured weight gain prevents the common mistake of gaining mostly body fat. Using a controlled surplus with realistic timelines helps improve lean mass outcomes, recovery, and long-term body composition quality."
     },
     {
+      "id": "weightloss",
+      "slug": "weight-loss",
+      "title": "Weight Loss Calculator",
+      "fullTitle": "Healthy Weight Loss — Calorie Deficit Planning",
+      "icon": "📉",
+      "iconSrc": "/icons/weightloss.svg",
+      "tagline": "How many calories do you need to lose weight safely?",
+      "shortDesc": "Set your daily calorie deficit, estimate timeline to goal weight, and get practical macro targets for fat loss.",
+      "importance": "A structured calorie deficit improves fat-loss predictability and reduces common errors like over-restriction, muscle loss risk, and unsustainable dieting patterns."
+    },
+    {
       "id": "caloriesburned",
       "slug": "calories-burned",
       "title": "Calories Burned Calculator",

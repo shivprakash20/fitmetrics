@@ -1,0 +1,83 @@
+{
+  "id": "weightloss",
+  "metadata": {
+    "title": "Weight Loss Calculator - Healthy Deficit & Timeline | FitMetrics",
+    "description": "Calculate daily calories for healthy weight loss using TDEE minus controlled deficit, with goal-weight timeline and practical macro targets."
+  },
+  "slug": "weight-loss",
+  "title": "Weight Loss Calculator",
+  "fullTitle": "Healthy Weight Loss - Calorie Deficit Planning",
+  "icon": "📉",
+  "iconSrc": "/icons/weightloss.svg",
+  "tagline": "How many calories do you need to lose weight safely?",
+  "shortDesc": "Set your daily calorie deficit, estimate timeline to goal weight, and get practical macros for sustainable fat loss.",
+  "importance": "Unstructured dieting often leads to excessive restriction, poor adherence, and muscle-loss risk. A calibrated deficit with realistic pace supports safer, more sustainable fat loss.",
+  "description": "This calculator estimates maintenance calories (TDEE) using Mifflin-St Jeor plus activity factor, then subtracts a controlled daily deficit based on your selected loss pace. It estimates timeline using the common population-level approximation that 1 kg body weight corresponds to about 7,700 kcal.",
+  "formula": "Step 1 - BMR (Mifflin-St Jeor):\n  Male:   10xW + 6.25xH - 5xA + 5\n  Female: 10xW + 6.25xH - 5xA - 161\n\nStep 2 - TDEE = BMR x Activity Factor\n\nStep 3 - Weight Loss Calories = TDEE - Deficit\n  Gentle:     -250 kcal/day\n  Moderate:   -500 kcal/day\n  Aggressive: -750 kcal/day\n\nStep 4 - Timeline estimate:\n  Weeks ~= (CurrentWeight - GoalWeight) / [ (Deficit x 7) / 7700 ]",
+  "ranges": [
+    { "label": "Gentle Loss", "value": "-250 kcal/day", "color": "#2ecc71" },
+    { "label": "Moderate Loss", "value": "-500 kcal/day", "color": "#3498db" },
+    { "label": "Aggressive Loss", "value": "-750 kcal/day", "color": "#e67e22" }
+  ],
+  "note": "Timeline estimates are approximations. Real outcomes depend on adherence, activity changes, sleep, medications, stress, and adaptive changes in maintenance calories. WHO does not publish a single adult weight-loss equation; this uses open energy-balance methods.",
+  "source": "Mifflin MD et al., Am J Clin Nutr (1990) · FAO/WHO/UNU Human Energy Requirements (2004) · WHO Obesity and Overweight Fact Sheet (2024)",
+  "healthRisks": {
+    "title": "Why Structured Weight Loss Matters",
+    "intro": "Weight loss should reduce health risk while protecting lean mass and long-term adherence.",
+    "overweightItems": [
+      {
+        "condition": "Excessive Deficit",
+        "desc": "Very low calories can increase fatigue, hunger, and rebound risk, and may raise lean-mass loss risk if protein and resistance training are inadequate."
+      },
+      {
+        "condition": "Ignoring Protein and Training",
+        "desc": "Calorie restriction without adequate protein and strength training can reduce resting metabolic rate over time by increasing lean tissue loss."
+      },
+      {
+        "condition": "Unrealistic Timelines",
+        "desc": "Aggressive timelines often lead to poor adherence. A steady, moderate pace is usually more sustainable and easier to maintain after goal weight is reached."
+      }
+    ],
+    "underweightNote": "For diabetes, thyroid disease, eating disorders, pregnancy, or chronic illness, use clinician-guided plans rather than generic deficit calculators."
+  },
+  "limitations": {
+    "title": "How to Use This Calculator Most Effectively",
+    "intro": "Use this as a high-quality starting estimate and personalize with trend-based feedback:",
+    "items": [
+      {
+        "title": "Start moderate, then adjust",
+        "desc": "A -500 kcal/day deficit is a practical default for many adults. Adjust up or down every 2-4 weeks based on progress, hunger, and recovery."
+      },
+      {
+        "title": "Track weekly averages",
+        "desc": "Daily body weight fluctuates from water, sodium, glycogen, and digestion. Use weekly average changes to judge whether your deficit is working."
+      },
+      {
+        "title": "Protect lean mass",
+        "desc": "Keep protein adequate and continue resistance training during fat-loss phases. This improves body-composition quality and supports metabolic health."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "How many calories should I cut to lose weight?",
+      "a": "A common practical range is about 250-750 kcal/day below maintenance, depending on current body size, adherence capacity, and medical context."
+    },
+    {
+      "q": "What is a safe weekly weight-loss pace?",
+      "a": "For many adults, moderate and consistent loss is preferable to aggressive crash dieting. Sustainable pace usually delivers better long-term maintenance."
+    },
+    {
+      "q": "Why does my timeline keep changing?",
+      "a": "As body weight and activity change, maintenance calories also change. Recalculate every few weeks and update your target accordingly."
+    },
+    {
+      "q": "Can I lose fat without losing muscle?",
+      "a": "You can reduce muscle-loss risk by using a controlled deficit, eating enough protein, and doing progressive resistance training."
+    },
+    {
+      "q": "Does this replace medical advice?",
+      "a": "No. This is an educational planning tool. If you have medical conditions or use weight-affecting medications, follow clinician guidance."
+    }
+  ]
+}

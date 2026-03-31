@@ -10,6 +10,7 @@
       { "label": "Calorie Intake", "href": "/calculator/calorie-intake", "desc": "Daily Calorie Needs & Macros" },
       { "label": "Carbohydrate", "href": "/calculator/carbohydrate", "desc": "Daily Carb Intake Target" },
       { "label": "Weight Gain", "href": "/calculator/weight-gain", "desc": "Healthy Calorie Surplus Planner" },
+      { "label": "Weight Loss", "href": "/calculator/weight-loss", "desc": "Healthy Calorie Deficit Planner" },
       { "label": "Calories Burned", "href": "/calculator/calories-burned", "desc": "MET-Based Activity Energy Expenditure" },
       { "label": "Body Type",     "href": "/calculator/body-type",     "desc": "Body Shape & Waist-to-Hip Ratio" },
       { "label": "Protein",       "href": "/calculator/protein",       "desc": "Daily Protein Intake Target" },
