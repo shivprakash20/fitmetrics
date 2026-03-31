@@ -7,6 +7,7 @@ import {
   BodyTypeInput, BodyTypeResult,
   CalorieInput, CalorieResult,
   CarbohydrateInput, CarbohydrateResult,
+  WeightGainInput, WeightGainResult, GainPace,
   CaloriesBurnedInput, CaloriesBurnedResult, CaloriesBurnedActivity,
   ProteinInput, ProteinResult, ProteinGoal,
   WaterInput, WaterResult,
@@ -173,6 +174,49 @@ export function calcCalorie(input: CalorieInput): CalorieResult {
 }
 
 export { GOAL_ADJUSTMENTS };
+
+// ─── Weight Gain ─────────────────────────────────────────────────────────────
+// Calorie target for weight gain using configurable surplus
+// 1 kg body weight roughly equals 7,700 kcal (population-level estimate)
+
+const WEIGHT_GAIN_PACES: Record<GainPace, { label: string; surplus: number }> = {
+  lean:       { label: 'Lean gain (+250 kcal/day)',      surplus: 250 },
+  moderate:   { label: 'Moderate gain (+500 kcal/day)',  surplus: 500 },
+  aggressive: { label: 'Aggressive gain (+750 kcal/day)',surplus: 750 },
+};
+
+export function calcWeightGain(input: WeightGainInput): WeightGainResult {
+  const { bmr } = calcBMR(input);
+  const { factor } = ACTIVITY_MULTIPLIERS[input.activityLevel];
+  const tdee = Math.round(bmr * factor);
+  const { label: gainPaceLabel, surplus } = WEIGHT_GAIN_PACES[input.gainPace];
+
+  const calories = Math.max(1200, tdee + surplus);
+
+  const currentWeightKg = input.unit === 'imperial' ? toKg(input.weight) : input.weight;
+  const targetWeightKg = input.unit === 'imperial' ? toKg(input.targetWeight) : input.targetWeight;
+  const gainKg = Math.max(0, targetWeightKg - currentWeightKg);
+
+  const weeklyGainKg = (surplus * 7) / 7700;
+  const estimatedWeeks = weeklyGainKg > 0 ? Math.max(1, Math.ceil(gainKg / weeklyGainKg)) : 0;
+
+  // Practical weight-gain macro split
+  const carbs = Math.round((calories * 0.50) / 4);
+  const protein = Math.round((calories * 0.25) / 4);
+  const fat = Math.round((calories * 0.25) / 9);
+
+  return {
+    calories,
+    bmr,
+    tdee,
+    surplus,
+    gainPaceLabel,
+    estimatedWeeks,
+    macros: { carbs, protein, fat },
+  };
+}
+
+export { WEIGHT_GAIN_PACES };
 
 // ─── Carbohydrate ────────────────────────────────────────────────────────────
 // Daily carbohydrate grams based on calorie target.

@@ -82,6 +82,17 @@
       "importance": "Carbohydrate targeting helps align energy availability with your goal and training load. It supports better performance, appetite control, and long-term nutrition adherence when paired with overall calorie planning."
     },
     {
+      "id": "weightgain",
+      "slug": "weight-gain",
+      "title": "Weight Gain Calculator",
+      "fullTitle": "Healthy Weight Gain — Calorie Surplus Planning",
+      "icon": "📈",
+      "iconSrc": "/icons/weightgain.svg",
+      "tagline": "How many calories do you need to gain weight effectively?",
+      "shortDesc": "Set your daily calorie surplus, estimate timeline to target weight, and get practical macros for healthy gain.",
+      "importance": "Structured weight gain prevents the common mistake of gaining mostly body fat. Using a controlled surplus with realistic timelines helps improve lean mass outcomes, recovery, and long-term body composition quality."
+    },
+    {
       "id": "caloriesburned",
       "slug": "calories-burned",
       "title": "Calories Burned Calculator",

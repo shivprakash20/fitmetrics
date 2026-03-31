@@ -1,0 +1,91 @@
+{
+  "id": "weightgain",
+  "metadata": {
+    "title": "Weight Gain Calculator - Healthy Surplus & Timeline | FitMetrics",
+    "description": "Calculate your daily calories for healthy weight gain using TDEE + surplus planning, with target-weight timeline and practical macros."
+  },
+  "slug": "weight-gain",
+  "title": "Weight Gain Calculator",
+  "fullTitle": "Healthy Weight Gain - Calorie Surplus Planning",
+  "icon": "📈",
+  "iconSrc": "/icons/weightgain.svg",
+  "tagline": "How many calories do you need to gain weight effectively?",
+  "shortDesc": "Set your daily calorie surplus, estimate timeline to target weight, and get practical macros for healthy gain.",
+  "importance": "Weight gain is easiest to start but hard to do well. Without structure, surplus calories often lead to excess fat gain. A calibrated surplus with realistic pace improves lean mass outcomes and long-term body composition quality.",
+  "description": "This calculator estimates your maintenance calories (TDEE) using Mifflin-St Jeor + activity factor, then adds a controlled daily surplus based on your chosen gain pace. It also estimates the time required to reach your target weight using the common population-level approximation that 1 kg body weight corresponds to about 7,700 kcal.",
+  "formula": "Step 1 - BMR (Mifflin-St Jeor):\n  Male:   10xW + 6.25xH - 5xA + 5\n  Female: 10xW + 6.25xH - 5xA - 161\n\nStep 2 - TDEE = BMR x Activity Factor\n\nStep 3 - Weight Gain Calories = TDEE + Surplus\n  Lean gain: +250 kcal/day\n  Moderate:  +500 kcal/day\n  Aggressive:+750 kcal/day\n\nStep 4 - Timeline estimate:\n  Weeks ~= (TargetWeight - CurrentWeight) / [ (Surplus x 7) / 7700 ]",
+  "ranges": [
+    { "label": "Lean Gain", "value": "+250 kcal/day", "color": "#2ecc71" },
+    { "label": "Moderate Gain", "value": "+500 kcal/day", "color": "#3498db" },
+    { "label": "Aggressive Gain", "value": "+750 kcal/day", "color": "#e67e22" }
+  ],
+  "note": "Timeline estimates are approximations. Real-world gain depends on training quality, sleep, food quality, digestion, stress, and adaptive changes in maintenance calories. Recalculate every 2-4 weeks. WHO does not publish a dedicated adult weight-gain equation; this tool uses open energy-balance methods.",
+  "source": "Mifflin MD et al., Am J Clin Nutr (1990) · FAO/WHO/UNU Human Energy Requirements (2004) · WHO Healthy Diet Fact Sheet (2024)",
+  "healthRisks": {
+    "title": "Why Structured Weight Gain Matters",
+    "intro": "Surplus calories are necessary for weight gain, but pace and quality determine whether gains are mostly lean tissue or mostly fat.",
+    "overweightItems": [
+      {
+        "condition": "Uncontrolled Surplus",
+        "desc": "Large unplanned surpluses increase fat gain disproportionately. A controlled surplus is more effective for body-composition quality."
+      },
+      {
+        "condition": "Insufficient Protein & Training",
+        "desc": "Without progressive resistance training and adequate protein, added calories are less likely to support lean tissue gain."
+      },
+      {
+        "condition": "Ignoring Progress Feedback",
+        "desc": "If body weight is not moving as expected, calories need adjustment. Formula estimates should be refined using 2-4 week trend data."
+      }
+    ],
+    "underweightNote": "Medical causes of low body weight should be considered when appropriate. Persistent unintentional weight loss needs clinician assessment."
+  },
+  "limitations": {
+    "title": "How to Use This Calculator Most Effectively",
+    "intro": "Treat this output as a high-quality starting estimate, then personalize with trend-based adjustments:",
+    "items": [
+      {
+        "title": "Start with moderate pace if unsure",
+        "desc": "A +500 kcal/day surplus is a practical default for many people. Move up or down based on weekly weight trend and body composition response."
+      },
+      {
+        "title": "Track weekly averages, not daily noise",
+        "desc": "Daily body weight fluctuates from hydration, sodium, glycogen, and digestion. Use weekly average changes to judge if your calorie target is working."
+      },
+      {
+        "title": "Prioritize nutrient quality",
+        "desc": "Use whole-food carbohydrates, sufficient protein, healthy fats, and consistent meal timing. Better food quality improves training performance and recovery."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "How many extra calories should I eat to gain weight?",
+      "a": "A common practical range is about +250 to +750 kcal/day above maintenance depending on your target pace and training status."
+    },
+    {
+      "q": "How fast should I gain weight?",
+      "a": "Moderate, steady gain is usually best for body composition quality. Faster gain often increases fat proportion unless training and recovery are exceptional."
+    },
+    {
+      "q": "Can I gain muscle without gaining fat?",
+      "a": "Some fat gain is common during surplus phases, but resistance training, adequate protein, and controlled surplus size can improve lean-to-fat gain ratio."
+    },
+    {
+      "q": "Why is my estimated timeline not exact?",
+      "a": "Metabolism adapts and maintenance calories shift as body weight changes. Timeline is an estimate that should be updated with real progress every few weeks."
+    },
+    {
+      "q": "Should I keep the same calories forever while gaining?",
+      "a": "No. Recalculate and adjust periodically as your body weight and activity change. Fixed calories eventually become less accurate."
+    },
+    {
+      "q": "What macro split should I use for healthy gain?",
+      "a": "This calculator gives a practical split (50% carbs, 25% protein, 25% fat). You can personalize based on digestion, food preference, and performance response."
+    },
+    {
+      "q": "Can this replace professional advice?",
+      "a": "No. This is an educational planning tool. For medical conditions, underweight with symptoms, eating disorders, or endocrine issues, seek clinician-guided care."
+    }
+  ]
+}
