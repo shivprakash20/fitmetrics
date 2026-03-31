@@ -11,7 +11,8 @@
       { "label": "Carbohydrate", "href": "/calculator/carbohydrate", "desc": "Daily Carb Intake Target" },
       { "label": "Calories Burned", "href": "/calculator/calories-burned", "desc": "MET-Based Activity Energy Expenditure" },
       { "label": "Body Type",     "href": "/calculator/body-type",     "desc": "Body Shape & Waist-to-Hip Ratio" },
-      { "label": "Protein",       "href": "/calculator/protein",       "desc": "Daily Protein Intake Target" }
+      { "label": "Protein",       "href": "/calculator/protein",       "desc": "Daily Protein Intake Target" },
+      { "label": "Water Intake",  "href": "/calculator/water",         "desc": "Daily Water Intake Target" }
     ]
   },
   "links": [

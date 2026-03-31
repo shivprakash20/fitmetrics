@@ -9,6 +9,7 @@ import {
   CarbohydrateInput, CarbohydrateResult,
   CaloriesBurnedInput, CaloriesBurnedResult, CaloriesBurnedActivity,
   ProteinInput, ProteinResult, ProteinGoal,
+  WaterInput, WaterResult,
   ActivityLevel,
 } from '@/types';
 
@@ -264,6 +265,41 @@ export function calcProtein(input: ProteinInput): ProteinResult {
 }
 
 export { PROTEIN_GOALS };
+
+// ─── Water Intake ─────────────────────────────────────────────────────────────
+// Base: Weight (kg) × 35 mL/kg/day
+// Activity bonus added on top of base.
+// EFSA (2010) adequate intake: men 2.5 L/day, women 2.0 L/day (from beverages)
+// IOM (2005) total water AI:  men 3.7 L/day, women 2.7 L/day (incl. food water)
+
+const WATER_ACTIVITY_ADJUSTMENTS: Record<ActivityLevel, { label: string; bonusMl: number }> = {
+  sedentary:   { label: 'Sedentary (little or no exercise)',          bonusMl: 0    },
+  light:       { label: 'Lightly active (1–3 days/week)',             bonusMl: 350  },
+  moderate:    { label: 'Moderately active (3–5 days/week)',          bonusMl: 700  },
+  active:      { label: 'Very active (6–7 days/week)',                bonusMl: 1050 },
+  very_active: { label: 'Extra active (physical job or 2× training)', bonusMl: 1400 },
+};
+
+export function calcWater(input: WaterInput): WaterResult {
+  const weightKg = input.unit === 'imperial' ? toKg(input.weight) : input.weight;
+  const { label, bonusMl } = WATER_ACTIVITY_ADJUSTMENTS[input.activityLevel];
+
+  const waterMl     = Math.round(weightKg * 35 + bonusMl);
+  const waterLitres = +(waterMl / 1000).toFixed(2);
+  const waterFlOz   = Math.round(waterMl * 0.033814);
+  const perHourMl   = Math.round(waterMl / 16); // spread across 16 waking hours
+
+  return {
+    waterMl,
+    waterLitres,
+    waterFlOz,
+    perHourMl,
+    activityLabel: label,
+    efsaRef: { men: 2.5, women: 2.0 },
+  };
+}
+
+export { WATER_ACTIVITY_ADJUSTMENTS };
 
 // ─── Body Type ────────────────────────────────────────────────────────────────
 // Body shape derived from bust / waist / hip ratios

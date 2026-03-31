@@ -113,6 +113,17 @@
       "tagline": "How much protein does your body actually need each day?",
       "shortDesc": "Get a daily protein target in grams from your body weight and goal, based on WHO/FAO/UNU safe intake levels.",
       "importance": "Protein is essential for building and repairing muscle tissue, producing enzymes and hormones, and supporting immune function. WHO/FAO/UNU TRS 935 establishes the minimum safe intake at 0.83 g/kg/day — getting it right protects muscle mass, supports recovery, and prevents deficiency conditions including sarcopenia and kwashiorkor."
+    },
+    {
+      "id": "water",
+      "slug": "water",
+      "title": "Water Intake Calculator",
+      "fullTitle": "Daily Water Intake — EFSA / IOM Reference Values",
+      "icon": "💧",
+      "iconSrc": "/icons/water.svg",
+      "tagline": "How much water does your body need every day?",
+      "shortDesc": "Get your personalised daily water target in litres and ml based on body weight and activity level.",
+      "importance": "Water is the most essential nutrient — even mild dehydration of 1–2% of body weight impairs cognitive performance, physical output, and kidney function. EFSA and IOM reference values establish adequate intake at 2.0–2.5 L/day from beverages, adjusted upward for activity and climate."
     }
   ]
 }

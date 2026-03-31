@@ -1,0 +1,92 @@
+{
+  "id": "water",
+  "metadata": {
+    "title": "Water Intake Calculator - Daily Hydration Target | FitMetrics",
+    "description": "Calculate your daily water intake requirement based on body weight and activity level, aligned with EFSA and IOM adequate intake reference values."
+  },
+  "slug": "water",
+  "title": "Water Intake Calculator",
+  "fullTitle": "Daily Water Intake — EFSA / IOM Reference Values",
+  "icon": "💧",
+  "iconSrc": "/icons/water.svg",
+  "tagline": "How much water does your body need every day?",
+  "shortDesc": "Get your personalised daily water target in litres and ml based on body weight and activity level.",
+  "importance": "Water is the most essential nutrient — the human body is approximately 60% water by weight. Even mild dehydration of 1–2% of body weight impairs cognitive performance, physical output, and kidney function. Chronic inadequate hydration is a primary risk factor for kidney stones, urinary tract infections, and heat-related illness.",
+  "description": "This calculator estimates your daily water requirement using a weight-based formula of 35 mL per kilogram of body weight, then adds an evidence-informed activity bonus to account for sweat and metabolic water losses during exercise. The result is expressed in millilitres, litres, and fluid ounces, with a per-hour sipping guide across 16 waking hours. EFSA (2010) adequate intake values and IOM (2005) total water figures are shown as reference benchmarks.",
+  "formula": "Daily Water (mL) = Body Weight (kg) x 35 mL/kg + Activity Bonus\n\nActivity Bonus:\n  Sedentary             +0 mL/day\n  Lightly active        +350 mL/day\n  Moderately active     +700 mL/day\n  Very active           +1,050 mL/day\n  Extra active          +1,400 mL/day\n\nPer-hour guide: Daily total / 16 waking hours",
+  "ranges": [
+    { "label": "EFSA Adequate Intake — Men",    "value": "2.5 L/day (from beverages)",        "color": "#3498db" },
+    { "label": "EFSA Adequate Intake — Women",  "value": "2.0 L/day (from beverages)",        "color": "#2ecc71" },
+    { "label": "IOM Total Water AI — Men",      "value": "3.7 L/day (incl. food water ~20%)", "color": "#9b59b6" },
+    { "label": "IOM Total Water AI — Women",    "value": "2.7 L/day (incl. food water ~20%)", "color": "#e67e22" }
+  ],
+  "note": "About 20% of daily water intake comes from food (fruits, vegetables, soups). Hot climate, fever, pregnancy, and breastfeeding all increase requirements beyond this estimate. Urine colour is the most practical daily hydration check — pale straw yellow indicates adequate hydration; dark yellow or amber signals a deficit.",
+  "source": "EFSA Panel on Dietetic Products, Nutrition and Allergies (2010) · IOM Dietary Reference Intakes for Water (2005) · WHO Water, Sanitation and Health Technical Notes",
+  "healthRisks": {
+    "title": "Why Your Water Target Matters",
+    "intro": "Dehydration and chronic underhydration have measurable effects on physical performance, cognition, and long-term organ health. Even small daily deficits compound over time.",
+    "overweightItems": [
+      {
+        "condition": "Cognitive and Physical Performance Decline",
+        "desc": "A fluid deficit of just 1–2% of body weight — achievable in under an hour of activity without drinking — measurably impairs concentration, working memory, and aerobic performance. WHO identifies this as a major occupational and athletic risk, particularly in warm climates."
+      },
+      {
+        "condition": "Kidney Stones and Urinary Tract Infections",
+        "desc": "Chronically low water intake reduces urine volume and raises the concentration of stone-forming minerals. EFSA notes that adequate fluid intake is the single most modifiable dietary factor for preventing recurrent kidney stones and reducing UTI frequency."
+      },
+      {
+        "condition": "Heat-Related Illness",
+        "desc": "In physically active individuals and older adults, inadequate hydration in hot conditions can progress rapidly from heat cramps and heat exhaustion to life-threatening heat stroke. WHO identifies heat-related illness as an increasing global health risk under climate change, with dehydration as the primary preventable driver."
+      }
+    ],
+    "underweightNote": "Overhydration (hyponatremia) is rare in healthy individuals drinking plain water but can occur during prolonged endurance events if very large volumes of water are consumed without electrolyte replacement. For most people, the risk is dehydration, not overhydration."
+  },
+  "limitations": {
+    "title": "How to Use This Calculator Most Effectively",
+    "intro": "This estimate covers typical conditions. Adjust your intake based on the practical signals below:",
+    "items": [
+      {
+        "title": "Use urine colour as your real-time guide",
+        "desc": "Pale straw yellow urine indicates good hydration. Dark yellow or amber means you need more fluid. Colourless urine after large volumes may indicate overdrinking. This visual check is more responsive than any fixed daily target."
+      },
+      {
+        "title": "Increase intake in heat, illness, and pregnancy",
+        "desc": "Hot or humid environments, fever, diarrhoea, and pregnancy significantly raise fluid needs beyond this estimate. EFSA recommends an additional 300 mL/day during pregnancy and approximately 700 mL/day during exclusive breastfeeding."
+      },
+      {
+        "title": "Count all fluids, not just plain water",
+        "desc": "Tea, coffee, milk, soups, and water-rich foods all contribute to your daily total. Caffeine at moderate intakes (up to 400 mg/day) does not cause net dehydration in habituated adults, per EFSA. Only high-alcohol beverages reliably increase net fluid loss."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Is the 8 glasses a day rule scientifically backed?",
+      "a": "No. The popular '8×8' rule (eight 8-oz glasses = ~1.9 L/day) has no direct scientific basis. EFSA and IOM reference values are weight- and sex-based, and individual needs vary substantially with activity, climate, and body size. This calculator uses the more evidence-based weight-adjusted formula."
+    },
+    {
+      "q": "Does coffee count toward my daily water intake?",
+      "a": "Yes. At moderate intakes, caffeinated drinks including coffee and tea contribute to daily fluid balance. EFSA confirmed that caffeine up to 400 mg/day does not cause net fluid loss in habituated adults. However, pure water remains the best choice for hydration quality."
+    },
+    {
+      "q": "How much extra water do I need during exercise?",
+      "a": "General guidance is 400–600 mL of water in the 2 hours before exercise, and 150–250 mL every 15–20 minutes during sustained activity. This calculator's activity bonus accounts for average session-related losses, but intense exercise in heat may require more."
+    },
+    {
+      "q": "Do I need to drink more water to lose weight?",
+      "a": "Adequate hydration supports metabolism and can reduce caloric intake when water replaces sugary drinks. Some evidence suggests drinking 500 mL of water 30 minutes before meals reduces short-term energy intake. However, water alone does not cause fat loss — overall energy balance remains the primary driver."
+    },
+    {
+      "q": "Can I drink too much water?",
+      "a": "Hyponatremia (dangerously low blood sodium from excess water) can occur in endurance athletes drinking very large volumes without electrolytes, or in individuals with certain medical conditions. For most healthy adults following this estimate, overhydration is not a meaningful risk."
+    },
+    {
+      "q": "Does water intake affect skin health?",
+      "a": "Adequate hydration supports skin elasticity and barrier function. Severe dehydration visibly impairs skin turgor. However, drinking excess water beyond your needs does not provide additional cosmetic benefit — skin health is primarily influenced by overall nutrition, sun exposure, and genetics."
+    },
+    {
+      "q": "Should older adults drink differently?",
+      "a": "Yes. The thirst mechanism weakens with age, meaning older adults often do not feel thirsty even when dehydrated. WHO and geriatric guidelines recommend scheduled drinking rather than thirst-driven drinking in adults over 65, targeting the same daily volume but distributed proactively throughout the day."
+    }
+  ]
+}

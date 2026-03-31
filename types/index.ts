@@ -10,7 +10,8 @@ export type CalculatorType =
   | 'calorie'
   | 'caloriesburned'
   | 'carbohydrate'
-  | 'protein';
+  | 'protein'
+  | 'water';
 
 export type WeightGoal = 'lose_fast' | 'lose' | 'maintain' | 'gain' | 'gain_fast';
 
@@ -182,4 +183,19 @@ export interface ProteinResult {
   goalLabel: string;
   whoMinimum: number;
   perMealTarget: number;
+}
+
+export interface WaterInput {
+  weight: number;
+  unit: UnitSystem;
+  activityLevel: ActivityLevel;
+}
+
+export interface WaterResult {
+  waterMl: number;
+  waterLitres: number;
+  waterFlOz: number;
+  perHourMl: number;
+  activityLabel: string;
+  efsaRef: { men: number; women: number };
 }

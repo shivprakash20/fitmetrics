@@ -5,7 +5,7 @@ import type {
   CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal, CaloriesBurnedActivity, ProteinGoal,
 } from '@/types';
 import {
-  calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, calcCaloriesBurned, calcCarbohydrate, calcProtein,
+  calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, calcCaloriesBurned, calcCarbohydrate, calcProtein, calcWater,
   ACTIVITY_MULTIPLIERS, GOAL_ADJUSTMENTS, CALORIES_BURNED_ACTIVITIES, PROTEIN_GOALS,
 } from '@/lib/calculators';
 import styles from './CalculatorWidget.module.scss';
@@ -90,6 +90,9 @@ export default function CalculatorWidget({ type }: Props) {
       } else if (type === 'protein') {
         if (!validate(weight)) return setError('Please enter a valid weight.');
         setResult(calcProtein({ weight: +weight, unit, goal: proteinGoal }));
+      } else if (type === 'water') {
+        if (!validate(weight)) return setError('Please enter a valid weight.');
+        setResult(calcWater({ weight: +weight, unit, activityLevel: activity }));
       }
     } catch {
       setError('Something went wrong. Please check your inputs.');
@@ -98,10 +101,10 @@ export default function CalculatorWidget({ type }: Props) {
 
   const showGender       = ['bmr', 'ibw', 'bodyfat', 'tdee', 'calorie', 'carbohydrate'].includes(type);
   const showWeight       = !['ibw', 'bodyfat', 'bodytype'].includes(type);
-  const showHeight       = !['bodytype', 'caloriesburned', 'protein'].includes(type);
+  const showHeight       = !['bodytype', 'caloriesburned', 'protein', 'water'].includes(type);
   const showAge          = ['bmr', 'tdee', 'calorie', 'carbohydrate'].includes(type);
   const showBody         = type === 'bodyfat';
-  const showActivity     = ['tdee', 'calorie', 'carbohydrate'].includes(type);
+  const showActivity     = ['tdee', 'calorie', 'carbohydrate', 'water'].includes(type);
   const showGoal         = ['calorie', 'carbohydrate'].includes(type);
   const showBodyType     = type === 'bodytype';
   const showDuration     = type === 'caloriesburned';
@@ -462,6 +465,31 @@ function ResultPanel({ type, result, unit }: { type: CalculatorType; result: any
             <div className={styles.tdeeItem}>
               <span className={styles.tdeeSub}>TDEE (maintenance)</span>
               <span className={styles.tdeeVal}>{result.tdee} kcal/day</span>
+            </div>
+          </div>
+        </>
+      )}
+
+      {type === 'water' && (
+        <>
+          <div className={styles.bigNumber}>{result.waterLitres} <span className={styles.unit}>L/day</span></div>
+          <p className={styles.resultNote}>{result.activityLabel}</p>
+          <div className={styles.tdeeGrid}>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>In millilitres</span>
+              <span className={styles.tdeeVal}>{result.waterMl} mL/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>In fluid ounces</span>
+              <span className={styles.tdeeVal}>{result.waterFlOz} fl oz/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Per-hour sipping guide</span>
+              <span className={styles.tdeeVal}>{result.perHourMl} mL/hour</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>EFSA Reference (men / women)</span>
+              <span className={styles.tdeeVal}>{result.efsaRef.men} L / {result.efsaRef.women} L</span>
             </div>
           </div>
         </>
