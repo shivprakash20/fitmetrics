@@ -6,7 +6,8 @@
       { "label": "BMR",       "href": "/calculator/bmr",       "desc": "Basal Metabolic Rate"        },
       { "label": "IBW",       "href": "/calculator/ibw",       "desc": "Ideal Body Weight"           },
       { "label": "Body Fat",  "href": "/calculator/body-fat",  "desc": "US Navy Body Fat Method"     },
-      { "label": "TDEE",      "href": "/calculator/tdee",      "desc": "Total Daily Energy Expenditure" }
+      { "label": "TDEE",      "href": "/calculator/tdee",      "desc": "Total Daily Energy Expenditure" },
+      { "label": "Body Type", "href": "/calculator/body-type", "desc": "Body Shape & Waist-to-Hip Ratio" }
     ]
   },
   "links": [

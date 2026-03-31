@@ -58,6 +58,17 @@
       "tagline": "How many calories do you need each day to maintain your weight?",
       "shortDesc": "Calculate your total daily calorie burn based on your activity level to manage weight precisely.",
       "importance": "TDEE is the single most practical number for managing your weight. It tells you exactly how many calories you burn every day — at rest and through activity. Use it to create a precise calorie surplus for muscle gain, a deficit for fat loss, or maintenance for weight stability."
+    },
+    {
+      "id": "bodytype",
+      "slug": "body-type",
+      "title": "Body Type Calculator",
+      "fullTitle": "Body Shape & Waist-to-Hip Ratio",
+      "icon": "🧍",
+      "iconSrc": "/icons/bodytype.svg",
+      "tagline": "What is your body shape — and what does it mean for your health?",
+      "shortDesc": "Find your body shape and WHO-classified waist-to-hip ratio to understand your cardiovascular risk profile.",
+      "importance": "Your body shape is a clinically recognised indicator of where your body stores fat and how that affects your health. WHO research shows central fat accumulation (apple shape) is more strongly linked to cardiovascular disease and type 2 diabetes than overall weight. Understanding your shape gives a risk signal that BMI alone cannot provide."
     }
   ]
 }

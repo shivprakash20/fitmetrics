@@ -4,6 +4,7 @@ import {
   IBWInput, IBWResult,
   BodyFatInput, BodyFatResult,
   TDEEInput, TDEEResult,
+  BodyTypeInput, BodyTypeResult,
   ActivityLevel,
 } from '@/types';
 
@@ -138,3 +139,66 @@ export function calcTDEE(input: TDEEInput): TDEEResult {
 }
 
 export { ACTIVITY_MULTIPLIERS };
+
+// ─── Body Type ────────────────────────────────────────────────────────────────
+// Body shape derived from bust / waist / hip ratios
+// WHR (Waist-to-Hip Ratio) uses WHO thresholds for cardiovascular risk
+
+export function calcBodyType(input: BodyTypeInput): BodyTypeResult {
+  const toCmVal = (v: number) => input.unit === 'imperial' ? toCm(v) : v;
+
+  const waist = toCmVal(input.waist);
+  const hip   = toCmVal(input.hip);
+  const bust  = toCmVal(input.bust);
+
+  const whr = +(waist / hip).toFixed(2);
+
+  // WHO WHR thresholds (abdominal obesity risk)
+  // Male thresholds not applicable here — shape calculator is gender-neutral
+  // using female thresholds as the general population baseline
+  let whrCategory: string;
+  let whrColor: string;
+  if (whr < 0.80)       { whrCategory = 'Low Risk';      whrColor = '#2ecc71'; }
+  else if (whr < 0.85)  { whrCategory = 'Moderate Risk'; whrColor = '#e67e22'; }
+  else                  { whrCategory = 'High Risk';      whrColor = '#e74c3c'; }
+
+  // Body shape classification via bust / waist / hip ratios
+  const bustHipDiff  = bust - hip;
+  const hipBustDiff  = hip - bust;
+  const waistHipRatio  = waist / hip;
+  const waistBustRatio = waist / bust;
+
+  let shape: string;
+  let color: string;
+  let desc: string;
+  let riskLevel: string;
+
+  if (waistHipRatio >= 0.85 || waistBustRatio >= 0.85) {
+    shape     = 'Apple';
+    color     = '#e74c3c';
+    desc      = 'Weight is concentrated around the midsection. Central fat distribution is associated with the highest cardiovascular and metabolic risk — the most important shape to address proactively.';
+    riskLevel = 'High';
+  } else if (hipBustDiff >= 5 && waistHipRatio < 0.75) {
+    shape     = 'Pear';
+    color     = '#3498db';
+    desc      = 'Hips are notably wider than bust, with a well-defined waist. Peripheral fat distribution carries significantly lower cardiovascular risk than central fat. A positive shape profile from a metabolic standpoint.';
+    riskLevel = 'Low to Moderate';
+  } else if (Math.abs(bustHipDiff) <= 5 && waistHipRatio < 0.75) {
+    shape     = 'Hourglass';
+    color     = '#9b59b6';
+    desc      = 'Bust and hips are balanced with a clearly defined, narrow waist. Fat is distributed peripherally rather than centrally. Health outcomes depend primarily on overall body fat percentage, not shape alone.';
+    riskLevel = 'Low';
+  } else if (bustHipDiff >= 5 && waistBustRatio >= 0.75) {
+    shape     = 'Inverted Triangle';
+    color     = '#e67e22';
+    desc      = 'Bust and shoulders are wider than hips with less waist definition. Often associated with higher muscle mass in the upper body. Risk depends on total body fat percentage and cardiovascular fitness.';
+    riskLevel = 'Low to Moderate';
+  } else {
+    shape     = 'Rectangle';
+    color     = '#27ae60';
+    desc      = 'Bust, waist, and hips are close in measurement with minimal waist definition. A straight, athletic build. Health risk depends on total body fat and lifestyle — the lack of curvature can occasionally mask early central fat accumulation.';
+    riskLevel = 'Low to Moderate';
+  }
+
+  return { shape, whr, whrCategory, whrColor, color, desc, riskLevel };
+}

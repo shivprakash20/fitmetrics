@@ -1,0 +1,130 @@
+{
+  "id": "bodytype",
+  "metadata": {
+    "title": "Body Type Calculator — Body Shape & WHR | FitMetrics",
+    "description": "Discover your body shape (Apple, Pear, Hourglass, Rectangle, Inverted Triangle) and Waist-to-Hip Ratio with WHO cardiovascular risk classification."
+  },
+  "slug": "body-type",
+  "title": "Body Type Calculator",
+  "fullTitle": "Body Shape & Waist-to-Hip Ratio",
+  "icon": "🧍",
+  "iconSrc": "/icons/bodytype.svg",
+  "tagline": "What is your body shape — and what does it mean for your health?",
+  "shortDesc": "Find your body shape and WHO-classified waist-to-hip ratio to understand your cardiovascular risk profile.",
+  "importance": "Your body shape is not just about appearance — it is a clinically recognised indicator of where your body stores fat and how that distribution affects your health. WHO research shows that central fat accumulation (apple shape) is more strongly linked to cardiovascular disease, type 2 diabetes, and metabolic syndrome than overall body weight. Understanding your shape and waist-to-hip ratio gives you a risk signal that BMI alone cannot provide.",
+  "description": "Body type classification uses the ratios between your bust, waist, and hip measurements to identify your fat distribution pattern. This calculator combines two methods: body shape classification (Apple, Pear, Hourglass, Rectangle, Inverted Triangle) and the WHO Waist-to-Hip Ratio (WHR) — the most clinically validated circumference-based measure of abdominal obesity risk. Together they give a more complete picture of body composition health than weight or BMI alone.",
+  "formula": "Body Shape:  Derived from bust / waist / hip proportions and ratios\nWHR:         Waist circumference ÷ Hip circumference\nWHO Risk:    WHR < 0.80 = Low · 0.80–0.85 = Moderate · > 0.85 = High",
+  "ranges": [
+    { "label": "Apple",             "value": "High central risk",    "color": "#e74c3c" },
+    { "label": "Pear",              "value": "Low peripheral fat",   "color": "#3498db" },
+    { "label": "Hourglass",         "value": "Balanced distribution","color": "#9b59b6" },
+    { "label": "Rectangle",         "value": "Uniform build",        "color": "#27ae60" },
+    { "label": "Inverted Triangle", "value": "Upper-body dominant",  "color": "#e67e22" }
+  ],
+  "note": "Measurements should be taken over bare skin or light clothing. Waist: at the narrowest point between ribs and hips. Hip: at the widest point of the buttocks. Bust/Chest: at the fullest point. Measure each 2–3 times and use the average. Body shape is one indicator — overall body fat percentage and lifestyle remain the primary determinants of health outcomes.",
+  "source": "WHO Expert Consultation on Waist Circumference and WHR (2008) · WHO Global Report on Diabetes (2016) · Ashwell M & Hsieh SD, Int J Obes (2005) · National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)",
+  "bodyShapes": {
+    "title": "The 5 Body Shape Profiles",
+    "intro": "Each shape reflects a distinct fat distribution pattern. Knowing yours helps you understand your metabolic risk profile and target the right lifestyle interventions — not just aesthetic goals.",
+    "items": [
+      {
+        "shape": "Apple",
+        "icon": "🍎",
+        "desc": "Fat is concentrated around the abdomen and midsection. Waist is wider relative to hips and bust.",
+        "risk": "Highest cardiovascular and metabolic risk. Central (visceral) fat actively releases inflammatory compounds that raise blood pressure, impair insulin sensitivity, and elevate LDL cholesterol. WHO identifies abdominal obesity as a primary driver of type 2 diabetes and heart disease.",
+        "action": "Priority focus: reduce waist circumference through sustained caloric deficit, cardiovascular exercise, and stress management (cortisol drives visceral fat storage)."
+      },
+      {
+        "shape": "Pear",
+        "icon": "🍐",
+        "desc": "Hips and thighs are wider than the bust, with a defined waist. Fat is stored peripherally in the lower body.",
+        "risk": "Significantly lower cardiovascular risk than apple shape. Peripheral (subcutaneous) fat in the hips and thighs is metabolically less active than visceral fat. WHR typically falls in the low-risk range.",
+        "action": "Maintain a healthy waist circumference — even with this lower-risk distribution, gaining central fat over time shifts risk upward. Strength training supports long-term metabolic health."
+      },
+      {
+        "shape": "Hourglass",
+        "icon": "⏳",
+        "desc": "Bust and hips are balanced with a well-defined, narrow waist. Fat is distributed symmetrically rather than centrally.",
+        "risk": "Generally the lowest risk profile in terms of fat distribution. Health outcomes depend primarily on total body fat percentage and lifestyle rather than shape alone.",
+        "action": "Focus on maintaining healthy overall body fat percentage. This shape naturally limits central fat accumulation, but total fat mass still influences long-term metabolic health."
+      },
+      {
+        "shape": "Rectangle",
+        "icon": "▬",
+        "desc": "Bust, waist, and hips are close in measurement with minimal waist definition. An athletic, straight build.",
+        "risk": "Moderate and lifestyle-dependent. The absence of waist definition can occasionally mask gradual central fat accumulation. Monitor waist circumference alongside overall weight.",
+        "action": "Track waist circumference periodically — not just total weight. Resistance training builds muscle that naturally increases waist-to-hip definition and supports a higher resting metabolism."
+      },
+      {
+        "shape": "Inverted Triangle",
+        "icon": "🔻",
+        "desc": "Bust and shoulders are broader than hips, with less waist definition. Often correlates with higher upper-body muscle mass.",
+        "risk": "Generally lower metabolic risk, particularly when the broader upper body reflects muscle rather than fat. Total body fat percentage and cardiovascular fitness are the key health determinants.",
+        "action": "Pair this calculator with a body fat percentage measurement. A broad upper body driven by lean muscle mass is a positive health indicator; a broad upper body driven by fat mass carries different implications."
+      }
+    ]
+  },
+  "healthRisks": {
+    "title": "Why Your Body Shape Result Matters",
+    "intro": "Body shape is a clinically validated proxy for fat distribution — and where fat is stored matters as much as how much fat you carry. WHO research consistently links central fat accumulation to the most serious preventable health conditions.",
+    "overweightItems": [
+      {
+        "condition": "Cardiovascular Disease",
+        "desc": "Visceral fat (the central fat driving apple shape) releases cytokines that promote arterial inflammation, raise LDL cholesterol, and lower HDL — a direct pathway to heart attack and stroke. WHO identifies WHR as an independent cardiovascular risk marker beyond BMI."
+      },
+      {
+        "condition": "Type 2 Diabetes & Metabolic Syndrome",
+        "desc": "Central fat accumulation is the primary driver of insulin resistance — the root cause of type 2 diabetes and metabolic syndrome. Even people with a normal BMI can carry dangerous levels of visceral fat if their waist-to-hip ratio is elevated."
+      },
+      {
+        "condition": "Hormonal Disruption",
+        "desc": "Body fat distribution directly influences sex hormone levels. Excess central fat elevates oestrogen in men and disrupts the oestrogen-testosterone balance in women, affecting reproductive health, mood, and long-term disease risk."
+      }
+    ],
+    "underweightNote": "Body shape matters at all body fat levels. Even individuals with a low overall weight can carry disproportionate central fat and face elevated metabolic risk. Your WHR is the most reliable indicator — target keeping it below 0.80 (women) or 0.90 (men) regardless of your shape category."
+  },
+  "limitations": {
+    "title": "How to Use This Result Most Effectively",
+    "intro": "Body shape classification is a useful screening tool, not a clinical diagnosis. Understanding how to apply it correctly gives you the most actionable health insight:",
+    "items": [
+      {
+        "title": "Use WHR alongside your shape — it is the clinically validated number",
+        "desc": "Body shape gives you a visual pattern; WHR is the measurable risk metric. WHO classifies WHR > 0.85 (women) and > 0.90 (men) as high cardiovascular risk. Always check your WHR value alongside your shape label for the most meaningful health signal."
+      },
+      {
+        "title": "Shape reflects distribution, not total fat — pair with body fat %",
+        "desc": "Two people with the same shape can have very different health outcomes depending on their total body fat percentage. A lean apple shape carries far less risk than an obese apple shape. Use this result alongside your body fat percentage for the complete picture."
+      },
+      {
+        "title": "Shape can change — lifestyle determines the direction",
+        "desc": "Genetics set a baseline for fat distribution, but lifestyle — diet, exercise, hormonal changes, and age — significantly influences where fat accumulates. Central fat is particularly responsive to sustained caloric deficits, cardiovascular training, and stress reduction."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What is the most important number from this calculator?",
+      "a": "Your Waist-to-Hip Ratio (WHR). It is the WHO-validated metric for cardiovascular and metabolic risk from body shape. A WHR above 0.85 in women or 0.90 in men indicates abdominal obesity and elevated risk. Your shape category gives context; your WHR gives the clinical signal."
+    },
+    {
+      "q": "Why is the apple shape considered the highest risk?",
+      "a": "Apple shape indicates central fat accumulation — primarily visceral fat around internal organs. Visceral fat is metabolically active, releasing inflammatory cytokines and free fatty acids that directly impair insulin sensitivity, raise blood pressure, and promote arterial plaque formation. This is why WHO identifies WHR as an independent predictor of cardiovascular disease, separate from total body weight."
+    },
+    {
+      "q": "Can I have a normal BMI but still be at risk?",
+      "a": "Yes — this is known as 'normal weight obesity' or 'TOFI' (Thin Outside, Fat Inside). A person with a healthy BMI but high WHR (above 0.85 in women, 0.90 in men) carries significant metabolic risk. This is exactly the gap that WHR and body shape analysis fills that BMI cannot."
+    },
+    {
+      "q": "Can my body shape change over time?",
+      "a": "Yes. Genetics determine your baseline fat distribution pattern, but lifestyle significantly influences where fat is stored. Central fat — the apple pattern — is particularly responsive to sustained caloric deficit, regular cardiovascular exercise, and reduced cortisol (stress). Many people shift from apple toward rectangle or pear patterns with consistent lifestyle changes."
+    },
+    {
+      "q": "Is this calculator relevant for men as well as women?",
+      "a": "Yes, with a note: men naturally tend toward the apple distribution (central fat) while women more commonly show pear patterns. The WHO WHR thresholds differ by sex — high risk is WHR > 0.90 for men and > 0.85 for women. This calculator uses the measurement ratios to determine shape, which applies to all adults."
+    },
+    {
+      "q": "What should I do if my result shows high risk?",
+      "a": "An apple shape or high WHR is a signal for further assessment, not a diagnosis. Steps to take: consult a doctor for a full cardiovascular risk profile (blood pressure, fasting glucose, lipid panel), aim to reduce waist circumference through a moderate caloric deficit and increased cardiovascular activity, and consider pairing this result with a body fat percentage measurement for a complete picture."
+    }
+  ]
+}

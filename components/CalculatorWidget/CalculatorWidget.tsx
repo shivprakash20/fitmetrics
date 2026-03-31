@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import type { CalculatorType, Gender, UnitSystem, ActivityLevel } from '@/types';
-import { calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, ACTIVITY_MULTIPLIERS } from '@/lib/calculators';
+import { calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, ACTIVITY_MULTIPLIERS } from '@/lib/calculators';
 import styles from './CalculatorWidget.module.scss';
 
 type Props = { type: CalculatorType };
@@ -16,6 +16,7 @@ export default function CalculatorWidget({ type }: Props) {
   const [neck, setNeck]         = useState('');
   const [waist, setWaist]       = useState('');
   const [hip, setHip]           = useState('');
+  const [bust, setBust]         = useState('');
   const [activity, setActivity] = useState<ActivityLevel>('sedentary');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [result, setResult]     = useState<any | null>(null);
@@ -28,7 +29,7 @@ export default function CalculatorWidget({ type }: Props) {
 
   function handleUnitChange(u: UnitSystem) {
     setUnit(u); reset();
-    setWeight(''); setHeight(''); setNeck(''); setWaist(''); setHip('');
+    setWeight(''); setHeight(''); setNeck(''); setWaist(''); setHip(''); setBust('');
   }
 
   function validate(...vals: string[]) {
@@ -57,6 +58,9 @@ export default function CalculatorWidget({ type }: Props) {
       } else if (type === 'tdee') {
         if (!validate(weight, height, age)) return setError('Please enter valid weight, height, and age.');
         setResult(calcTDEE({ weight: +weight, height: +height, age: +age, gender, unit, activityLevel: activity }));
+      } else if (type === 'bodytype') {
+        if (!validate(waist, hip, bust)) return setError('Please enter valid waist, hip, and bust measurements.');
+        setResult(calcBodyType({ waist: +waist, hip: +hip, bust: +bust, unit }));
       }
     } catch {
       setError('Something went wrong. Please check your inputs.');
@@ -64,10 +68,12 @@ export default function CalculatorWidget({ type }: Props) {
   }
 
   const showGender   = ['bmr', 'ibw', 'bodyfat', 'tdee'].includes(type);
-  const showWeight   = !['ibw', 'bodyfat'].includes(type);
+  const showWeight   = !['ibw', 'bodyfat', 'bodytype'].includes(type);
+  const showHeight   = !['bodytype'].includes(type);
   const showAge      = ['bmr', 'tdee'].includes(type);
   const showBody     = type === 'bodyfat';
   const showActivity = type === 'tdee';
+  const showBodyType = type === 'bodytype';
 
   return (
     <div className={styles.card}>
@@ -122,16 +128,41 @@ export default function CalculatorWidget({ type }: Props) {
             </div>
           )}
 
-          <div className={styles.field}>
-            <label className={styles.label}>Height ({hLabel})</label>
-            <input
-              className={styles.input}
-              type="number" min="1"
-              placeholder={unit === 'metric' ? 'e.g. 175' : 'e.g. 69'}
-              value={height}
-              onChange={e => { setHeight(e.target.value); reset(); }}
-            />
-          </div>
+          {showHeight && (
+            <div className={styles.field}>
+              <label className={styles.label}>Height ({hLabel})</label>
+              <input
+                className={styles.input}
+                type="number" min="1"
+                placeholder={unit === 'metric' ? 'e.g. 175' : 'e.g. 69'}
+                value={height}
+                onChange={e => { setHeight(e.target.value); reset(); }}
+              />
+            </div>
+          )}
+
+          {showBodyType && (
+            <>
+              <div className={styles.field}>
+                <label className={styles.label}>Bust ({hLabel})</label>
+                <input className={styles.input} type="number" min="1"
+                  placeholder={unit === 'metric' ? 'e.g. 90' : 'e.g. 35'}
+                  value={bust} onChange={e => { setBust(e.target.value); reset(); }} />
+              </div>
+              <div className={styles.field}>
+                <label className={styles.label}>Waist ({hLabel})</label>
+                <input className={styles.input} type="number" min="1"
+                  placeholder={unit === 'metric' ? 'e.g. 70' : 'e.g. 28'}
+                  value={waist} onChange={e => { setWaist(e.target.value); reset(); }} />
+              </div>
+              <div className={styles.field}>
+                <label className={styles.label}>Hip ({hLabel})</label>
+                <input className={styles.input} type="number" min="1"
+                  placeholder={unit === 'metric' ? 'e.g. 95' : 'e.g. 37'}
+                  value={hip} onChange={e => { setHip(e.target.value); reset(); }} />
+              </div>
+            </>
+          )}
 
           {showAge && (
             <div className={styles.field}>
@@ -252,6 +283,27 @@ function ResultPanel({ type, result, unit }: { type: CalculatorType; result: any
             <div className={styles.tdeeItem}>
               <span className={styles.tdeeSub}>To gain weight</span>
               <span className={styles.tdeeVal}>{result.tdee + 500} kcal/day</span>
+            </div>
+          </div>
+        </>
+      )}
+
+      {type === 'bodytype' && (
+        <>
+          <div className={styles.bigNumber} style={{ color: result.color }}>{result.shape}</div>
+          <p className={styles.resultNote}>{result.desc}</p>
+          <div className={styles.tdeeGrid}>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Waist-to-Hip Ratio</span>
+              <span className={styles.tdeeVal}>{result.whr}</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>WHO Risk Level</span>
+              <span className={styles.tdeeVal} style={{ color: result.whrColor }}>{result.whrCategory}</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Shape Risk Profile</span>
+              <span className={styles.tdeeVal}>{result.riskLevel}</span>
             </div>
           </div>
         </>

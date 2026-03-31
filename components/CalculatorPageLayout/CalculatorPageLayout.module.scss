@@ -193,6 +193,83 @@
   font-style: italic;
 }
 
+// ─── Body Shapes Section ──────────────────────────────────────────────────────
+.shapesList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.shapeItem {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: g.$radius-sm;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color g.$transition, box-shadow g.$transition;
+
+  &:hover {
+    border-color: var(--primary-a40);
+    box-shadow: var(--shadow);
+  }
+}
+
+.shapeHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.shapeIcon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.shapeTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.shapeDesc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.shapeRisk, .shapeAction {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shapeRiskLabel, .shapeActionLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+.shapeRiskText, .shapeActionText {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
 // ─── Activity Guide Section ───────────────────────────────────────────────────
 .activityList {
   display: flex;

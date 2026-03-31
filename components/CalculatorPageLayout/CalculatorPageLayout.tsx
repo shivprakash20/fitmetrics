@@ -11,6 +11,7 @@ type FAQ = { q: string; a: string };
 type HealthRiskItem = { condition: string; desc: string };
 type LimitationItem = { title: string; desc: string };
 type ActivityItem = { level: string; multiplier: string; desc: string; examples: string[] };
+type BodyShapeItem = { shape: string; icon: string; desc: string; risk: string; action: string };
 
 type Props = {
   id: CalculatorType;
@@ -28,6 +29,11 @@ type Props = {
     title: string;
     intro: string;
     items: ActivityItem[];
+  };
+  bodyShapes?: {
+    title: string;
+    intro: string;
+    items: BodyShapeItem[];
   };
   healthRisks?: {
     title: string;
@@ -63,7 +69,7 @@ function FAQItem({ q, a }: FAQ) {
 
 export default function CalculatorPageLayout({
   id, iconSrc, title, tagline, description, formula, ranges, note, source, faq,
-  activityGuide, healthRisks, limitations,
+  activityGuide, bodyShapes, healthRisks, limitations,
 }: Props) {
   return (
     <main className={styles.main}>
@@ -109,6 +115,33 @@ export default function CalculatorPageLayout({
 
           <p className={styles.source}>Source: {source}</p>
         </section>
+
+        {/* Body Shapes section — optional, currently used by Body Type */}
+        {bodyShapes && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>{bodyShapes.title}</h2>
+            <p className={styles.description}>{bodyShapes.intro}</p>
+            <div className={styles.shapesList}>
+              {bodyShapes.items.map(item => (
+                <div key={item.shape} className={styles.shapeItem}>
+                  <div className={styles.shapeHeader}>
+                    <span className={styles.shapeIcon}>{item.icon}</span>
+                    <p className={styles.shapeTitle}>{item.shape}</p>
+                  </div>
+                  <p className={styles.shapeDesc}>{item.desc}</p>
+                  <div className={styles.shapeRisk}>
+                    <span className={styles.shapeRiskLabel}>Health implication</span>
+                    <p className={styles.shapeRiskText}>{item.risk}</p>
+                  </div>
+                  <div className={styles.shapeAction}>
+                    <span className={styles.shapeActionLabel}>Action</span>
+                    <p className={styles.shapeActionText}>{item.action}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Activity Guide section — optional, currently used by BMR */}
         {activityGuide && (

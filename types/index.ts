@@ -1,6 +1,6 @@
 // ─── Calculator Types ─────────────────────────────────────────────────────────
 
-export type CalculatorType = 'bmi' | 'bmr' | 'ibw' | 'bodyfat' | 'tdee';
+export type CalculatorType = 'bmi' | 'bmr' | 'ibw' | 'bodyfat' | 'tdee' | 'bodytype';
 
 export type Gender = 'male' | 'female';
 
@@ -48,6 +48,13 @@ export interface TDEEInput extends BMRInput {
   activityLevel: ActivityLevel;
 }
 
+export interface BodyTypeInput {
+  waist: number;   // cm or inches
+  hip: number;     // cm or inches
+  bust: number;    // cm or inches
+  unit: UnitSystem;
+}
+
 // ─── Result Shapes ────────────────────────────────────────────────────────────
 
 export interface BMIResult {
@@ -75,4 +82,14 @@ export interface TDEEResult {
   tdee: number;
   bmr: number;
   activityLabel: string;
+}
+
+export interface BodyTypeResult {
+  shape: string;
+  whr: number;
+  whrCategory: string;
+  whrColor: string;
+  color: string;
+  desc: string;
+  riskLevel: string;
 }
