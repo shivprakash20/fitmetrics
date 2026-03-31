@@ -8,7 +8,8 @@ export type CalculatorType =
   | 'tdee'
   | 'bodytype'
   | 'calorie'
-  | 'caloriesburned';
+  | 'caloriesburned'
+  | 'carbohydrate';
 
 export type WeightGoal = 'lose_fast' | 'lose' | 'maintain' | 'gain' | 'gain_fast';
 
@@ -89,6 +90,11 @@ export interface CaloriesBurnedInput {
   unit: UnitSystem;
 }
 
+export interface CarbohydrateInput extends BMRInput {
+  activityLevel: ActivityLevel;
+  goal: WeightGoal;
+}
+
 // ─── Result Shapes ────────────────────────────────────────────────────────────
 
 export interface BMIResult {
@@ -142,4 +148,14 @@ export interface CaloriesBurnedResult {
   caloriesPerHour: number;
   met: number;
   activityLabel: string;
+}
+
+export interface CarbohydrateResult {
+  carbsGrams: number;
+  carbPercent: number;
+  calories: number;
+  bmr: number;
+  tdee: number;
+  goalLabel: string;
+  whoRange: { min: number; max: number };
 }

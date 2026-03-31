@@ -6,6 +6,7 @@ import {
   TDEEInput, TDEEResult,
   BodyTypeInput, BodyTypeResult,
   CalorieInput, CalorieResult,
+  CarbohydrateInput, CarbohydrateResult,
   CaloriesBurnedInput, CaloriesBurnedResult, CaloriesBurnedActivity,
   ActivityLevel,
 } from '@/types';
@@ -170,6 +171,36 @@ export function calcCalorie(input: CalorieInput): CalorieResult {
 }
 
 export { GOAL_ADJUSTMENTS };
+
+// ─── Carbohydrate ────────────────────────────────────────────────────────────
+// Daily carbohydrate grams based on calorie target.
+// Single estimate uses 55% as a practical midpoint and always shows WHO range.
+// carbs grams = (calories × carbohydrate %) / 4 kcal per gram
+
+export function calcCarbohydrate(input: CarbohydrateInput): CarbohydrateResult {
+  const { bmr } = calcBMR(input);
+  const { factor } = ACTIVITY_MULTIPLIERS[input.activityLevel];
+  const tdee = Math.round(bmr * factor);
+
+  const { label: goalLabel, delta } = GOAL_ADJUSTMENTS[input.goal];
+  const calories = Math.max(1200, Math.round(tdee + delta));
+
+  const percent = 0.55;
+  const carbsGrams = Math.round((calories * percent) / 4);
+
+  return {
+    carbsGrams,
+    carbPercent: Math.round(percent * 100),
+    calories,
+    bmr,
+    tdee,
+    goalLabel,
+    whoRange: {
+      min: Math.round((calories * 0.45) / 4),
+      max: Math.round((calories * 0.75) / 4),
+    },
+  };
+}
 
 // ─── Calories Burned ─────────────────────────────────────────────────────────
 // Calories burned = MET × body weight (kg) × duration (hours)

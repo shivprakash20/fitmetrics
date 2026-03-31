@@ -1,0 +1,91 @@
+{
+  "id": "carbohydrate",
+  "metadata": {
+    "title": "Carbohydrate Calculator - Daily Carb Intake | FitMetrics",
+    "description": "Calculate your daily carbohydrate intake target using WHO-aligned carbohydrate energy ranges, your activity level, and your weight goal."
+  },
+  "slug": "carbohydrate",
+  "title": "Carbohydrate Calculator",
+  "fullTitle": "Daily Carbohydrate Intake - WHO Aligned",
+  "icon": "🍞",
+  "iconSrc": "/icons/carbohydrate.svg",
+  "tagline": "How many carbs should you eat per day?",
+  "shortDesc": "Get a daily carbohydrate target in grams based on calorie needs, activity, and WHO-aligned ranges.",
+  "importance": "Carbohydrates are the body and brain's primary fuel source for most daily activity and training. Getting carb intake right improves workout performance, energy stability, and long-term adherence to nutrition plans.",
+  "description": "This calculator estimates your daily carbohydrate target from your calorie need. First, it calculates BMR using Mifflin-St Jeor, then estimates TDEE from activity level, adjusts calories for your goal, and converts carbohydrates into grams using 4 kcal per gram. It provides a practical single estimate at 55% carbohydrate and also shows the WHO-compatible range in grams.",
+  "formula": "Step 1 - BMR (Mifflin-St Jeor):\n  Male:   10xW + 6.25xH - 5xA + 5\n  Female: 10xW + 6.25xH - 5xA - 161\n\nStep 2 - TDEE: BMR x Activity Factor\n\nStep 3 - Goal calories: TDEE + Goal Delta\n\nStep 4 - Carbohydrate grams:\n  Carbs (g/day) = [Calories x Carb %] / 4",
+  "ranges": [
+    { "label": "WHO-Compatible Range", "value": "45-75% of total energy", "color": "#3498db" },
+    { "label": "Calculator Midpoint", "value": "55% of total energy", "color": "#2ecc71" },
+    { "label": "Energy Conversion", "value": "1 g carbohydrate = 4 kcal", "color": "#e67e22" }
+  ],
+  "note": "Public-health guidance also emphasizes carbohydrate quality, not only quantity: prioritize whole grains, legumes, vegetables, and fruit. WHO recommends keeping free sugars below 10% of total energy intake and, for additional benefit, below 5%.",
+  "source": "WHO Healthy Diet Fact Sheet (2024) · WHO guideline on carbohydrate intake for adults and children (2023) · Mifflin-St Jeor (Am J Clin Nutr, 1990)",
+  "healthRisks": {
+    "title": "Why Your Carbohydrate Target Matters",
+    "intro": "Both too little and too much carbohydrate can affect metabolic health, performance, and appetite control. Targeting an appropriate range supports consistency and outcomes.",
+    "overweightItems": [
+      {
+        "condition": "Insufficient Carbohydrate Intake",
+        "desc": "Very low carbohydrate intake can reduce training quality and increase fatigue in active individuals, making plans harder to sustain over time."
+      },
+      {
+        "condition": "Excess Energy from Refined Carbs",
+        "desc": "High intake of sugar-rich and ultra-processed carbohydrates can increase total energy intake and worsen glycemic control when quality is poor."
+      },
+      {
+        "condition": "Low Fiber Pattern",
+        "desc": "Low-fiber carbohydrate choices are linked to poorer satiety and higher cardiometabolic risk. WHO recommends at least 25 g/day of naturally occurring dietary fiber for adults."
+      }
+    ],
+    "underweightNote": "Carbohydrate planning should always be interpreted with total calories, protein, fats, micronutrients, and individual clinical needs."
+  },
+  "limitations": {
+    "title": "How to Use This Calculator Most Effectively",
+    "intro": "Treat this result as a practical starting point and refine it using real-world progress and health markers:",
+    "items": [
+      {
+        "title": "Use the midpoint as a start, then personalise",
+        "desc": "This calculator provides one practical estimate at 55% carbohydrate and also shows the WHO-compatible gram range. If needed, adjust within the range based on your activity and response."
+      },
+      {
+        "title": "Prioritize carbohydrate quality",
+        "desc": "Whole grains, pulses, fruit, and vegetables provide fiber and micronutrients that improve satiety and metabolic outcomes compared with refined sugars."
+      },
+      {
+        "title": "Adjust every 2-4 weeks",
+        "desc": "As body weight and activity change, calorie needs shift. Recalculate regularly and adjust by 25-50 g/day if progress, recovery, or hunger are not aligned with your goal."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "How many carbs should I eat daily?",
+      "a": "A useful public-health range is about 45-75% of daily energy intake, then converted to grams using 4 kcal per gram of carbohydrate. Your exact target depends on total calorie needs and activity."
+    },
+    {
+      "q": "Why does this calculator ask for age, height, weight, and activity level?",
+      "a": "These inputs are used to estimate calorie needs (BMR and TDEE). Carbohydrate grams are then calculated as a percentage of that calorie target, so better energy estimation gives better carb targets."
+    },
+    {
+      "q": "Are low-carb diets always better for fat loss?",
+      "a": "Not always. Fat loss is primarily driven by sustained energy deficit and adherence. Different carb levels can work if calories, protein adequacy, and food quality are well managed."
+    },
+    {
+      "q": "Do athletes need more carbohydrates?",
+      "a": "Usually yes. As training intensity and duration increase, carbohydrate demand rises to support performance, glycogen restoration, and recovery."
+    },
+    {
+      "q": "Should I count only net carbs?",
+      "a": "For general health planning, total carbohydrates with attention to fiber quality is usually more practical. If you follow a specific medical protocol, follow your clinician's advice."
+    },
+    {
+      "q": "How much fiber should I aim for?",
+      "a": "WHO guidance supports at least 25 g/day of naturally occurring dietary fiber in adults, ideally from whole-food carbohydrate sources."
+    },
+    {
+      "q": "Can this replace medical nutrition advice?",
+      "a": "No. This is an educational estimate. For diabetes, pregnancy, kidney disease, gastrointestinal disorders, or medication-dependent conditions, use clinician-guided nutrition planning."
+    }
+  ]
+}

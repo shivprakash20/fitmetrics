@@ -8,6 +8,7 @@
       { "label": "Body Fat",  "href": "/calculator/body-fat",  "desc": "US Navy Body Fat Method"     },
       { "label": "TDEE",      "href": "/calculator/tdee",      "desc": "Total Daily Energy Expenditure" },
       { "label": "Calorie Intake", "href": "/calculator/calorie-intake", "desc": "Daily Calorie Needs & Macros" },
+      { "label": "Carbohydrate", "href": "/calculator/carbohydrate", "desc": "Daily Carb Intake Target" },
       { "label": "Calories Burned", "href": "/calculator/calories-burned", "desc": "MET-Based Activity Energy Expenditure" },
       { "label": "Body Type",     "href": "/calculator/body-type",     "desc": "Body Shape & Waist-to-Hip Ratio" }
     ]

@@ -71,6 +71,17 @@
       "importance": "Calories are the single most important variable in any weight management goal. WHO identifies energy imbalance as the primary driver of the global obesity epidemic. Knowing your exact daily calorie target removes guesswork and gives you a precise, evidence-based number to work from."
     },
     {
+      "id": "carbohydrate",
+      "slug": "carbohydrate",
+      "title": "Carbohydrate Calculator",
+      "fullTitle": "Daily Carbohydrate Intake — WHO Aligned",
+      "icon": "🍞",
+      "iconSrc": "/icons/carbohydrate.svg",
+      "tagline": "How many carbs should you eat per day?",
+      "shortDesc": "Get a daily carbohydrate target in grams based on calorie needs, activity, and WHO-aligned carb ratios.",
+      "importance": "Carbohydrate targeting helps align energy availability with your goal and training load. It supports better performance, appetite control, and long-term nutrition adherence when paired with overall calorie planning."
+    },
+    {
       "id": "caloriesburned",
       "slug": "calories-burned",
       "title": "Calories Burned Calculator",

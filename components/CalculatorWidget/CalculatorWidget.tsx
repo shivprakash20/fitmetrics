@@ -5,7 +5,7 @@ import type {
   CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal, CaloriesBurnedActivity,
 } from '@/types';
 import {
-  calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, calcCaloriesBurned,
+  calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, calcCaloriesBurned, calcCarbohydrate,
   ACTIVITY_MULTIPLIERS, GOAL_ADJUSTMENTS, CALORIES_BURNED_ACTIVITIES,
 } from '@/lib/calculators';
 import styles from './CalculatorWidget.module.scss';
@@ -75,19 +75,30 @@ export default function CalculatorWidget({ type }: Props) {
       } else if (type === 'caloriesburned') {
         if (!validate(weight, minutes)) return setError('Please enter valid weight and duration.');
         setResult(calcCaloriesBurned({ weight: +weight, minutes: +minutes, activity: burnActivity, unit }));
+      } else if (type === 'carbohydrate') {
+        if (!validate(weight, height, age)) return setError('Please enter valid weight, height, and age.');
+        setResult(calcCarbohydrate({
+          weight: +weight,
+          height: +height,
+          age: +age,
+          gender,
+          unit,
+          activityLevel: activity,
+          goal,
+        }));
       }
     } catch {
       setError('Something went wrong. Please check your inputs.');
     }
   }
 
-  const showGender   = ['bmr', 'ibw', 'bodyfat', 'tdee', 'calorie'].includes(type);
+  const showGender   = ['bmr', 'ibw', 'bodyfat', 'tdee', 'calorie', 'carbohydrate'].includes(type);
   const showWeight   = !['ibw', 'bodyfat', 'bodytype'].includes(type);
   const showHeight   = !['bodytype', 'caloriesburned'].includes(type);
-  const showAge      = ['bmr', 'tdee', 'calorie'].includes(type);
+  const showAge      = ['bmr', 'tdee', 'calorie', 'carbohydrate'].includes(type);
   const showBody     = type === 'bodyfat';
-  const showActivity = ['tdee', 'calorie'].includes(type);
-  const showGoal     = type === 'calorie';
+  const showActivity = ['tdee', 'calorie', 'carbohydrate'].includes(type);
+  const showGoal     = ['calorie', 'carbohydrate'].includes(type);
   const showBodyType = type === 'bodytype';
   const showDuration = type === 'caloriesburned';
   const showBurnActivity = type === 'caloriesburned';
@@ -409,6 +420,31 @@ function ResultPanel({ type, result, unit }: { type: CalculatorType; result: any
             <div className={styles.tdeeItem}>
               <span className={styles.tdeeSub}>Estimated burn rate</span>
               <span className={styles.tdeeVal}>{result.caloriesPerHour} kcal/hour</span>
+            </div>
+          </div>
+        </>
+      )}
+
+      {type === 'carbohydrate' && (
+        <>
+          <div className={styles.bigNumber}>{result.carbsGrams} <span className={styles.unit}>g/day</span></div>
+          <p className={styles.resultNote}>Midpoint estimate ({result.carbPercent}%) • {result.goalLabel}</p>
+          <div className={styles.tdeeGrid}>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Calorie Target</span>
+              <span className={styles.tdeeVal}>{result.calories} kcal/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Carbohydrate Ratio</span>
+              <span className={styles.tdeeVal}>{result.carbPercent}%</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>WHO Carb Range</span>
+              <span className={styles.tdeeVal}>{result.whoRange.min}–{result.whoRange.max} g/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>TDEE (maintenance)</span>
+              <span className={styles.tdeeVal}>{result.tdee} kcal/day</span>
             </div>
           </div>
         </>
