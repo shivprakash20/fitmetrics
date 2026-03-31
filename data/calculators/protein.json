@@ -1,0 +1,92 @@
+{
+  "id": "protein",
+  "metadata": {
+    "title": "Protein Intake Calculator - Daily Protein Target | FitMetrics",
+    "description": "Calculate your daily protein requirement in grams based on your body weight and goal, aligned with WHO/FAO/UNU safe intake levels and ISSN evidence-based recommendations."
+  },
+  "slug": "protein",
+  "title": "Protein Intake Calculator",
+  "fullTitle": "Daily Protein Intake — WHO / FAO / UNU Aligned",
+  "icon": "🥚",
+  "iconSrc": "/icons/protein.svg",
+  "tagline": "How much protein does your body actually need each day?",
+  "shortDesc": "Get a daily protein target in grams from your body weight and goal, based on WHO/FAO/UNU safe intake levels.",
+  "importance": "Protein is essential for building and repairing muscle tissue, producing enzymes and hormones, and supporting immune function. Inadequate protein causes muscle loss; excessive intake without clinical need offers no additional benefit and may strain the kidneys in vulnerable individuals.",
+  "description": "This calculator estimates your daily protein target using the most direct and evidence-based method: multiplying body weight in kilograms by a goal-specific protein factor. The WHO/FAO/UNU Technical Report Series 935 (2007) establishes the population safe intake at 0.83 g/kg/day for sedentary adults — the minimum to prevent deficiency. Higher multipliers are derived from the International Society of Sports Nutrition (ISSN) Position Stand and meta-analysis evidence for active populations. The result is expressed in grams per day, calories from protein, and a per-meal target to support muscle protein synthesis throughout the day.",
+  "formula": "Protein (g/day) = Body Weight (kg) x Protein Multiplier (g/kg/day)\n\nGoal Multipliers (WHO/FAO/UNU TRS 935 + ISSN evidence):\n  Sedentary Adult    0.83 g/kg/day   (WHO population safe level)\n  Weight Loss        1.20 g/kg/day   (preserve lean mass in deficit)\n  Active / Fitness   1.40 g/kg/day   (support regular training)\n  Muscle Gain        1.80 g/kg/day   (hypertrophy stimulus range)\n  Athlete            2.00 g/kg/day   (intense or twice-daily training)\n  Elderly (65+)      1.20 g/kg/day   (counteract sarcopenia)\n\nProtein energy: 1 g protein = 4 kcal\nPer-meal target: Daily grams / 3 meals",
+  "ranges": [
+    { "label": "WHO Safe Level (sedentary adult)", "value": "0.83 g/kg/day", "color": "#3498db" },
+    { "label": "Active / Fitness Training",        "value": "1.2–1.6 g/kg/day", "color": "#2ecc71" },
+    { "label": "Muscle Gain / Recomposition",      "value": "1.6–2.2 g/kg/day", "color": "#e67e22" },
+    { "label": "Energy Yield from Protein",        "value": "4 kcal per gram",   "color": "#9b59b6" }
+  ],
+  "note": "Protein quality matters as well as quantity. Complete proteins (eggs, dairy, meat, fish, soy) provide all essential amino acids. Plant-based eaters should combine sources (e.g. legumes + grains) or use fortified foods. WHO and FAO note that requirements stated in g/kg/day assume a diet of mixed protein quality.",
+  "source": "WHO/FAO/UNU Technical Report Series 935 (2007) · ISSN Position Stand: Protein and Exercise (2017, updated 2022) · Morton et al. Br J Sports Med (2018)",
+  "healthRisks": {
+    "title": "Why Your Protein Target Matters",
+    "intro": "Protein intake that is consistently too low or inappropriately distributed carries measurable health consequences. Getting the target right supports body composition, function, and long-term metabolic health.",
+    "overweightItems": [
+      {
+        "condition": "Sarcopenia and Muscle Loss",
+        "desc": "Chronically low protein accelerates age-related muscle loss (sarcopenia). WHO identifies sarcopenia as a major contributor to frailty and loss of independence in older adults. Adequate protein is the single most modifiable dietary factor for preserving lean mass."
+      },
+      {
+        "condition": "Impaired Recovery and Adaptation",
+        "desc": "Insufficient protein blunts the muscle protein synthesis response to training. Without adequate amino acid availability, resistance and endurance training adaptations are compromised, increasing injury risk and slowing performance gains."
+      },
+      {
+        "condition": "Protein Deficiency Disorders",
+        "desc": "Severe or prolonged protein deficiency causes kwashiorkor and marasmus — conditions characterised by oedema, immune suppression, and organ dysfunction. Even moderate deficiency impairs wound healing, immune response, and hormone production."
+      }
+    ],
+    "underweightNote": "Very high protein intakes (above 2.5 g/kg/day) are not demonstrated to provide additional benefit and may place unnecessary burden on renal function in individuals with pre-existing kidney disease. Healthy adults with normal renal function tolerate higher intakes without harm, but clinically supervised planning is advised for anyone with a kidney, liver, or metabolic condition."
+  },
+  "limitations": {
+    "title": "How to Use This Calculator Most Effectively",
+    "intro": "This result is a practical daily target. Refine it over time based on your progress, training response, and individual health context:",
+    "items": [
+      {
+        "title": "Use lean body mass if you carry significant body fat",
+        "desc": "Protein requirements are driven by metabolically active tissue, not total mass. Very high body fat can cause this calculator to over-prescribe. In that case, using lean body mass as the input weight gives a more appropriate target."
+      },
+      {
+        "title": "Distribute protein across meals",
+        "desc": "Research shows muscle protein synthesis is maximised when protein is spread across 3–4 meals of 20–40 g rather than concentrated in one meal. The per-meal target shown in your result is a useful practical guide."
+      },
+      {
+        "title": "Prioritise whole-food protein sources",
+        "desc": "Eggs, fish, lean meat, dairy, legumes, and soy provide protein alongside micronutrients not available in supplements. Supplements can fill gaps but should not replace dietary sources as the primary protein strategy."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What is the minimum protein intake recommended by WHO?",
+      "a": "WHO/FAO/UNU TRS 935 (2007) sets the population safe intake at 0.83 g per kilogram of body weight per day for sedentary adults. This is the level sufficient to meet the needs of 97.5% of the healthy adult population — the minimum to avoid deficiency, not the optimal intake for active individuals."
+    },
+    {
+      "q": "How much protein do I need to build muscle?",
+      "a": "Meta-analysis evidence (Morton et al., 2018) shows a total protein intake of approximately 1.62 g/kg/day maximises resistance-training-induced muscle gain in most people. Intakes up to 2.2 g/kg/day show no further benefit on average. This calculator uses 1.8 g/kg for muscle gain as a practical midpoint in the evidence range."
+    },
+    {
+      "q": "Do older adults need more protein?",
+      "a": "Yes. Ageing reduces the anabolic response to protein — a phenomenon called anabolic resistance. Evidence supports 1.0–1.2 g/kg/day as a minimum for adults over 65, and up to 1.6 g/kg/day during illness or rehabilitation. This calculator uses 1.2 g/kg as the elderly target."
+    },
+    {
+      "q": "Does eating more protein damage your kidneys?",
+      "a": "In healthy individuals with normal kidney function, high protein intakes are not associated with kidney damage. The concern applies specifically to people with existing chronic kidney disease, for whom protein restriction may be clinically indicated. Always consult a nephrologist or dietitian if you have kidney disease."
+    },
+    {
+      "q": "Is plant protein as good as animal protein?",
+      "a": "Plant proteins are generally less bioavailable and often incomplete (lacking one or more essential amino acids). WHO notes that requirements stated in g/kg/day assume mixed protein quality. Plant-based eaters should combine sources (e.g. legumes and grains) and may need a 10–20% higher total intake to achieve equivalent essential amino acid delivery."
+    },
+    {
+      "q": "How much protein can I absorb per meal?",
+      "a": "The body can absorb all dietary protein, but muscle protein synthesis is stimulated most efficiently with approximately 20–40 g of high-quality protein per meal. Spreading your daily total across 3–4 meals is more effective than consuming it in one or two large sittings."
+    },
+    {
+      "q": "Should I use body weight or lean body mass for this calculation?",
+      "a": "For most people, total body weight gives a reliable estimate. If you have a significantly high body fat percentage, using lean body mass (total weight minus fat mass) prevents over-prescribing. The calculator uses total weight by default as the lean mass requires additional measurements."
+    }
+  ]
+}

@@ -102,6 +102,17 @@
       "tagline": "What is your body shape — and what does it mean for your health?",
       "shortDesc": "Find your body shape and WHO-classified waist-to-hip ratio to understand your cardiovascular risk profile.",
       "importance": "Your body shape is a clinically recognised indicator of where your body stores fat and how that affects your health. WHO research shows central fat accumulation (apple shape) is more strongly linked to cardiovascular disease and type 2 diabetes than overall weight. Understanding your shape gives a risk signal that BMI alone cannot provide."
+    },
+    {
+      "id": "protein",
+      "slug": "protein",
+      "title": "Protein Intake Calculator",
+      "fullTitle": "Daily Protein Intake — WHO / FAO / UNU Aligned",
+      "icon": "🥚",
+      "iconSrc": "/icons/protein.svg",
+      "tagline": "How much protein does your body actually need each day?",
+      "shortDesc": "Get a daily protein target in grams from your body weight and goal, based on WHO/FAO/UNU safe intake levels.",
+      "importance": "Protein is essential for building and repairing muscle tissue, producing enzymes and hormones, and supporting immune function. WHO/FAO/UNU TRS 935 establishes the minimum safe intake at 0.83 g/kg/day — getting it right protects muscle mass, supports recovery, and prevents deficiency conditions including sarcopenia and kwashiorkor."
     }
   ]
 }

@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import type {
-  CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal, CaloriesBurnedActivity,
+  CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal, CaloriesBurnedActivity, ProteinGoal,
 } from '@/types';
 import {
-  calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, calcCaloriesBurned, calcCarbohydrate,
-  ACTIVITY_MULTIPLIERS, GOAL_ADJUSTMENTS, CALORIES_BURNED_ACTIVITIES,
+  calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, calcCaloriesBurned, calcCarbohydrate, calcProtein,
+  ACTIVITY_MULTIPLIERS, GOAL_ADJUSTMENTS, CALORIES_BURNED_ACTIVITIES, PROTEIN_GOALS,
 } from '@/lib/calculators';
 import styles from './CalculatorWidget.module.scss';
 
@@ -26,6 +26,7 @@ export default function CalculatorWidget({ type }: Props) {
   const [activity, setActivity] = useState<ActivityLevel>('sedentary');
   const [goal, setGoal]         = useState<WeightGoal>('maintain');
   const [burnActivity, setBurnActivity] = useState<CaloriesBurnedActivity>('walking_brisk');
+  const [proteinGoal, setProteinGoal]   = useState<ProteinGoal>('sedentary');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [result, setResult]     = useState<any | null>(null);
   const [error, setError]       = useState('');
@@ -86,22 +87,26 @@ export default function CalculatorWidget({ type }: Props) {
           activityLevel: activity,
           goal,
         }));
+      } else if (type === 'protein') {
+        if (!validate(weight)) return setError('Please enter a valid weight.');
+        setResult(calcProtein({ weight: +weight, unit, goal: proteinGoal }));
       }
     } catch {
       setError('Something went wrong. Please check your inputs.');
     }
   }
 
-  const showGender   = ['bmr', 'ibw', 'bodyfat', 'tdee', 'calorie', 'carbohydrate'].includes(type);
-  const showWeight   = !['ibw', 'bodyfat', 'bodytype'].includes(type);
-  const showHeight   = !['bodytype', 'caloriesburned'].includes(type);
-  const showAge      = ['bmr', 'tdee', 'calorie', 'carbohydrate'].includes(type);
-  const showBody     = type === 'bodyfat';
-  const showActivity = ['tdee', 'calorie', 'carbohydrate'].includes(type);
-  const showGoal     = ['calorie', 'carbohydrate'].includes(type);
-  const showBodyType = type === 'bodytype';
-  const showDuration = type === 'caloriesburned';
+  const showGender       = ['bmr', 'ibw', 'bodyfat', 'tdee', 'calorie', 'carbohydrate'].includes(type);
+  const showWeight       = !['ibw', 'bodyfat', 'bodytype'].includes(type);
+  const showHeight       = !['bodytype', 'caloriesburned', 'protein'].includes(type);
+  const showAge          = ['bmr', 'tdee', 'calorie', 'carbohydrate'].includes(type);
+  const showBody         = type === 'bodyfat';
+  const showActivity     = ['tdee', 'calorie', 'carbohydrate'].includes(type);
+  const showGoal         = ['calorie', 'carbohydrate'].includes(type);
+  const showBodyType     = type === 'bodytype';
+  const showDuration     = type === 'caloriesburned';
   const showBurnActivity = type === 'caloriesburned';
+  const showProteinGoal  = type === 'protein';
 
   return (
     <div className={styles.card}>
@@ -279,6 +284,18 @@ export default function CalculatorWidget({ type }: Props) {
               </select>
             </div>
           )}
+
+          {showProteinGoal && (
+            <div className={`${styles.field} ${styles.fieldFull}`}>
+              <label className={styles.label}>Goal</label>
+              <select className={styles.select} value={proteinGoal}
+                onChange={e => { setProteinGoal(e.target.value as ProteinGoal); reset(); }}>
+                {Object.entries(PROTEIN_GOALS).map(([key, val]) => (
+                  <option key={key} value={key}>{val.label}</option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
 
         {error && <p className={styles.error}>{error}</p>}
@@ -445,6 +462,31 @@ function ResultPanel({ type, result, unit }: { type: CalculatorType; result: any
             <div className={styles.tdeeItem}>
               <span className={styles.tdeeSub}>TDEE (maintenance)</span>
               <span className={styles.tdeeVal}>{result.tdee} kcal/day</span>
+            </div>
+          </div>
+        </>
+      )}
+
+      {type === 'protein' && (
+        <>
+          <div className={styles.bigNumber}>{result.proteinGrams} <span className={styles.unit}>g/day</span></div>
+          <p className={styles.resultNote}>{result.goalLabel}</p>
+          <div className={styles.tdeeGrid}>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Multiplier Used</span>
+              <span className={styles.tdeeVal}>{result.multiplier} g/kg/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Calories from Protein</span>
+              <span className={styles.tdeeVal}>{result.proteinCalories} kcal/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>WHO Minimum (0.83 g/kg)</span>
+              <span className={styles.tdeeVal}>{result.whoMinimum} g/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Per-Meal Target (÷3)</span>
+              <span className={styles.tdeeVal}>{result.perMealTarget} g/meal</span>
             </div>
           </div>
         </>

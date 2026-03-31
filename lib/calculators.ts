@@ -8,6 +8,7 @@ import {
   CalorieInput, CalorieResult,
   CarbohydrateInput, CarbohydrateResult,
   CaloriesBurnedInput, CaloriesBurnedResult, CaloriesBurnedActivity,
+  ProteinInput, ProteinResult, ProteinGoal,
   ActivityLevel,
 } from '@/types';
 
@@ -235,6 +236,34 @@ export function calcCaloriesBurned(input: CaloriesBurnedInput): CaloriesBurnedRe
 }
 
 export { CALORIES_BURNED_ACTIVITIES };
+
+// ─── Protein Intake ───────────────────────────────────────────────────────────
+// Formula: Protein (g/day) = Body Weight (kg) × Goal Multiplier (g/kg/day)
+// WHO/FAO/UNU TRS 935 safe level: 0.83 g/kg/day
+// Ranges from ISSN Position Stand (2017) and WHO/FAO/UNU evidence review
+
+const PROTEIN_GOALS: Record<ProteinGoal, { label: string; multiplier: number }> = {
+  sedentary:   { label: 'Sedentary adult (WHO safe level)',              multiplier: 0.83 },
+  weight_loss: { label: 'Weight loss (preserve lean mass)',              multiplier: 1.2  },
+  active:      { label: 'Active / regular fitness training',             multiplier: 1.4  },
+  muscle_gain: { label: 'Muscle gain / body recomposition',              multiplier: 1.8  },
+  athlete:     { label: 'Athlete (intense or twice-daily training)',     multiplier: 2.0  },
+  elderly:     { label: 'Elderly (65+, preserve muscle mass)',           multiplier: 1.2  },
+};
+
+export function calcProtein(input: ProteinInput): ProteinResult {
+  const weightKg = input.unit === 'imperial' ? toKg(input.weight) : input.weight;
+  const { label, multiplier } = PROTEIN_GOALS[input.goal];
+
+  const proteinGrams   = Math.round(weightKg * multiplier);
+  const proteinCalories = proteinGrams * 4;
+  const whoMinimum     = Math.round(weightKg * 0.83);
+  const perMealTarget  = Math.round(proteinGrams / 3);
+
+  return { proteinGrams, proteinCalories, multiplier, goalLabel: label, whoMinimum, perMealTarget };
+}
+
+export { PROTEIN_GOALS };
 
 // ─── Body Type ────────────────────────────────────────────────────────────────
 // Body shape derived from bust / waist / hip ratios

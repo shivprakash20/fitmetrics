@@ -9,7 +9,8 @@ export type CalculatorType =
   | 'bodytype'
   | 'calorie'
   | 'caloriesburned'
-  | 'carbohydrate';
+  | 'carbohydrate'
+  | 'protein';
 
 export type WeightGoal = 'lose_fast' | 'lose' | 'maintain' | 'gain' | 'gain_fast';
 
@@ -95,6 +96,20 @@ export interface CarbohydrateInput extends BMRInput {
   goal: WeightGoal;
 }
 
+export type ProteinGoal =
+  | 'sedentary'
+  | 'weight_loss'
+  | 'active'
+  | 'muscle_gain'
+  | 'athlete'
+  | 'elderly';
+
+export interface ProteinInput {
+  weight: number;
+  unit: UnitSystem;
+  goal: ProteinGoal;
+}
+
 // ─── Result Shapes ────────────────────────────────────────────────────────────
 
 export interface BMIResult {
@@ -158,4 +173,13 @@ export interface CarbohydrateResult {
   tdee: number;
   goalLabel: string;
   whoRange: { min: number; max: number };
+}
+
+export interface ProteinResult {
+  proteinGrams: number;
+  proteinCalories: number;
+  multiplier: number;
+  goalLabel: string;
+  whoMinimum: number;
+  perMealTarget: number;
 }
