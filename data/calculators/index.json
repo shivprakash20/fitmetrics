@@ -60,6 +60,17 @@
       "importance": "TDEE is the single most practical number for managing your weight. It tells you exactly how many calories you burn every day — at rest and through activity. Use it to create a precise calorie surplus for muscle gain, a deficit for fat loss, or maintenance for weight stability."
     },
     {
+      "id": "calorie",
+      "slug": "calorie-intake",
+      "title": "Calorie Intake Calculator",
+      "fullTitle": "Daily Calorie Intake — WHO Guidelines",
+      "icon": "🥗",
+      "iconSrc": "/icons/calorie.svg",
+      "tagline": "How many calories does your body actually need each day?",
+      "shortDesc": "Get your personalised daily calorie target for weight loss, maintenance, or gain — with macros included.",
+      "importance": "Calories are the single most important variable in any weight management goal. WHO identifies energy imbalance as the primary driver of the global obesity epidemic. Knowing your exact daily calorie target removes guesswork and gives you a precise, evidence-based number to work from."
+    },
+    {
       "id": "bodytype",
       "slug": "body-type",
       "title": "Body Type Calculator",

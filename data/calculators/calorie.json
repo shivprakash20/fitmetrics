@@ -1,0 +1,94 @@
+{
+  "id": "calorie",
+  "metadata": {
+    "title": "Calorie Intake Calculator — Daily Calorie Needs | FitMetrics",
+    "description": "Calculate your daily calorie needs based on WHO guidelines and the Mifflin-St Jeor equation. Get personalised targets for weight loss, maintenance, or gain — with macronutrient breakdown."
+  },
+  "slug": "calorie-intake",
+  "title": "Calorie Intake Calculator",
+  "fullTitle": "Daily Calorie Intake — WHO Guidelines",
+  "icon": "🥗",
+  "iconSrc": "/icons/calorie.svg",
+  "tagline": "How many calories does your body actually need each day?",
+  "shortDesc": "Get your personalised daily calorie target for weight loss, maintenance, or gain — with macros included.",
+  "importance": "Calories are the single most important variable in any weight management or body composition goal. WHO identifies energy imbalance — consistently eating too much or too little — as the primary driver of the global obesity epidemic, which affects over 1 billion people worldwide. Knowing your exact daily calorie target removes guesswork and gives you a precise, evidence-based number to work from.",
+  "description": "Your daily calorie intake need is your Total Daily Energy Expenditure (TDEE) — the sum of your Basal Metabolic Rate and all physical activity — adjusted for your weight goal. This calculator uses the Mifflin-St Jeor equation (the most accurate BMR formula for the general population) multiplied by your activity level, then applies a WHO-aligned deficit or surplus to generate your personalised daily target. The result also includes a macronutrient breakdown following WHO dietary guidelines: 50% carbohydrates, 20% protein, 30% fat.",
+  "formula": "Step 1 — BMR (Mifflin-St Jeor):\n  Male:   10×W + 6.25×H − 5×A + 5\n  Female: 10×W + 6.25×H − 5×A − 161\n\nStep 2 — TDEE: BMR × Activity Factor (1.2 – 1.9)\n\nStep 3 — Goal Adjustment:\n  Lose fast:  TDEE − 1,000 kcal  (−1 kg/week)\n  Lose:       TDEE − 500 kcal   (−0.5 kg/week)\n  Maintain:   TDEE ± 0\n  Gain:       TDEE + 500 kcal   (+0.5 kg/week)\n  Gain fast:  TDEE + 1,000 kcal (+1 kg/week)",
+  "ranges": [
+    { "label": "Women — Sedentary",         "value": "~1,600 kcal/day", "color": "#3498db" },
+    { "label": "Women — Moderately Active", "value": "~2,000 kcal/day", "color": "#2ecc71" },
+    { "label": "Women — Very Active",       "value": "~2,400 kcal/day", "color": "#27ae60" },
+    { "label": "Men — Sedentary",           "value": "~2,200 kcal/day", "color": "#e67e22" },
+    { "label": "Men — Moderately Active",   "value": "~2,600 kcal/day", "color": "#e74c3c" },
+    { "label": "Men — Very Active",         "value": "~3,000 kcal/day", "color": "#c0392b" }
+  ],
+  "note": "WHO and NIH set safe minimum calorie floors at 1,200 kcal/day for women and 1,500 kcal/day for men when unsupervised. This calculator enforces a 1,200 kcal floor. A deficit greater than 1,000 kcal/day is not recommended without clinical supervision — losing more than 1 kg per week risks muscle loss and metabolic slowdown.",
+  "source": "Mifflin MD et al., 1990 — Am J Clin Nutr · WHO/FAO/UNU Human Energy Requirements Report (2004) · WHO Healthy Diet Fact Sheet (2024) · U.S. Dietary Guidelines 2020–2025",
+  "healthRisks": {
+    "title": "Why Your Calorie Target Matters",
+    "intro": "Chronic energy imbalance — in either direction — is the root cause of most preventable metabolic disease. Your daily calorie target is not just a weight number; it is the foundation of your hormonal health, metabolic rate, and long-term wellbeing.",
+    "overweightItems": [
+      {
+        "condition": "Sustained Overconsumption",
+        "desc": "Consistently eating above TDEE drives fat accumulation, insulin resistance, and chronic low-grade inflammation — the shared pathway to type 2 diabetes, cardiovascular disease, and metabolic syndrome. Even a modest 200–300 kcal daily surplus compounds significantly over months."
+      },
+      {
+        "condition": "Sustained Underconsumption",
+        "desc": "Eating below your BMR forces the body to break down muscle for energy and lower its metabolic rate — making future fat loss progressively harder. Chronic undereating disrupts cortisol, thyroid hormones, and reproductive function. WHO identifies severe dietary restriction as a direct cause of malnutrition even in high-income populations."
+      },
+      {
+        "condition": "Calorie Quality vs. Quantity",
+        "desc": "Equal calorie amounts do not produce equal metabolic effects. 500 kcal from whole grains, lean protein, and vegetables triggers a very different hormonal response than 500 kcal from refined sugar and processed fat. WHO recommends deriving calories from nutrient-dense whole foods, limiting free sugars to less than 10% of total energy intake."
+      }
+    ],
+    "underweightNote": "Your calorie target is a two-way goal. Whether you are working to reduce, maintain, or increase — the precision matters equally in all directions. A target that is even 300 kcal off from your true TDEE will produce meaningfully different outcomes over weeks and months."
+  },
+  "limitations": {
+    "title": "How to Use Your Calorie Target Most Effectively",
+    "intro": "A calorie target is a starting estimate, not a fixed prescription. Understanding how to apply it gives you far better long-term results than following a number rigidly:",
+    "items": [
+      {
+        "title": "Your TDEE is an estimate — adjust based on real results",
+        "desc": "Calorie calculators are accurate within ±10% for most people. Track your weight over 2–3 weeks at your target intake. If you are not seeing the expected change (roughly 0.5 kg/week), adjust by 100–200 kcal in the appropriate direction. Real-world feedback is more reliable than any formula."
+      },
+      {
+        "title": "Pair calorie targets with macronutrient quality",
+        "desc": "WHO recommends 45–75% of calories from carbohydrates, 10–15% from protein, and 15–30% from fat — prioritising whole grains, lean proteins, and unsaturated fats. Hitting your calorie number with poor food quality undermines hormonal health, satiety, and muscle preservation even when the number is correct."
+      },
+      {
+        "title": "Recalculate as your body changes",
+        "desc": "As you lose or gain weight, your BMR and TDEE shift. Recalculate every 4–6 weeks or after every 3–5 kg of body weight change. Stalling on a weight loss plan is almost always a sign that your TDEE has decreased and your target needs downward adjustment."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "How many calories does an average adult need per day?",
+      "a": "WHO and dietary guidelines estimate 1,600–2,400 kcal/day for adult women and 2,000–3,000 kcal/day for adult men, depending on age and activity level. These are population averages — your individual need is determined by your specific BMR and activity factor, which this calculator computes precisely."
+    },
+    {
+      "q": "What is the difference between BMR, TDEE, and calorie intake target?",
+      "a": "BMR is the calories your body burns at complete rest. TDEE (Total Daily Energy Expenditure) adds the calories burned through physical activity. Your calorie intake target is TDEE adjusted for your goal — at a deficit to lose weight, at maintenance to hold weight, or at a surplus to gain. Eating at your TDEE maintains your current weight."
+    },
+    {
+      "q": "What is the minimum safe calorie intake?",
+      "a": "WHO and NIH guidelines set unsupervised minimums at 1,200 kcal/day for women and 1,500 kcal/day for men. Below these levels, it becomes very difficult to meet daily nutritional requirements for vitamins, minerals, and protein. This calculator enforces a 1,200 kcal floor. Intakes below 1,000 kcal/day should only be undertaken with clinical supervision."
+    },
+    {
+      "q": "How fast is it safe to lose weight?",
+      "a": "WHO and most clinical guidelines recommend a maximum deficit of 500–1,000 kcal/day, corresponding to 0.5–1 kg (1–2 lbs) of fat loss per week. Faster loss risks muscle breakdown, metabolic adaptation, gallstone formation, and nutritional deficiency. Sustainable fat loss is almost always slower than people expect — and that is healthy."
+    },
+    {
+      "q": "What macronutrient split should I follow?",
+      "a": "WHO dietary guidelines recommend: carbohydrates 45–75% of total energy (prioritise whole grains, fruits, and vegetables), protein 10–15% (lean meat, fish, legumes, eggs), and total fat 15–30% (favour unsaturated sources). Free sugars should be kept below 10% of total energy. This calculator uses a 50/20/30 split (carbs/protein/fat) as a practical WHO-aligned starting point."
+    },
+    {
+      "q": "Does my calorie need change as I lose weight?",
+      "a": "Yes — this is one of the most important things to understand. As body weight decreases, both BMR and TDEE decrease. A calorie target that produces a 500 kcal deficit today will produce a smaller deficit in 3 months if you have lost weight. Recalculate every 4–6 weeks to keep your target accurate and avoid the common plateau."
+    },
+    {
+      "q": "Are all calories equal?",
+      "a": "No. Equal calorie amounts from different food sources produce different hormonal and metabolic responses. 500 kcal from refined sugar elevates insulin rapidly and promotes fat storage; 500 kcal from whole grains and protein sustains energy, supports muscle, and improves satiety. WHO specifically recommends limiting free sugars and ultra-processed foods regardless of total calorie intake."
+    }
+  ]
+}

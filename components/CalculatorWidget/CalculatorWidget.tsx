@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import type { CalculatorType, Gender, UnitSystem, ActivityLevel } from '@/types';
-import { calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, ACTIVITY_MULTIPLIERS } from '@/lib/calculators';
+import type { CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal } from '@/types';
+import { calcBMI, calcBMR, calcIBW, calcBodyFat, calcTDEE, calcBodyType, calcCalorie, ACTIVITY_MULTIPLIERS, GOAL_ADJUSTMENTS } from '@/lib/calculators';
 import styles from './CalculatorWidget.module.scss';
 
 type Props = { type: CalculatorType };
@@ -18,6 +18,7 @@ export default function CalculatorWidget({ type }: Props) {
   const [hip, setHip]           = useState('');
   const [bust, setBust]         = useState('');
   const [activity, setActivity] = useState<ActivityLevel>('sedentary');
+  const [goal, setGoal]         = useState<WeightGoal>('maintain');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [result, setResult]     = useState<any | null>(null);
   const [error, setError]       = useState('');
@@ -58,6 +59,9 @@ export default function CalculatorWidget({ type }: Props) {
       } else if (type === 'tdee') {
         if (!validate(weight, height, age)) return setError('Please enter valid weight, height, and age.');
         setResult(calcTDEE({ weight: +weight, height: +height, age: +age, gender, unit, activityLevel: activity }));
+      } else if (type === 'calorie') {
+        if (!validate(weight, height, age)) return setError('Please enter valid weight, height, and age.');
+        setResult(calcCalorie({ weight: +weight, height: +height, age: +age, gender, unit, activityLevel: activity, goal }));
       } else if (type === 'bodytype') {
         if (!validate(waist, hip, bust)) return setError('Please enter valid waist, hip, and bust measurements.');
         setResult(calcBodyType({ waist: +waist, hip: +hip, bust: +bust, unit }));
@@ -67,12 +71,13 @@ export default function CalculatorWidget({ type }: Props) {
     }
   }
 
-  const showGender   = ['bmr', 'ibw', 'bodyfat', 'tdee'].includes(type);
+  const showGender   = ['bmr', 'ibw', 'bodyfat', 'tdee', 'calorie'].includes(type);
   const showWeight   = !['ibw', 'bodyfat', 'bodytype'].includes(type);
   const showHeight   = !['bodytype'].includes(type);
-  const showAge      = ['bmr', 'tdee'].includes(type);
+  const showAge      = ['bmr', 'tdee', 'calorie'].includes(type);
   const showBody     = type === 'bodyfat';
-  const showActivity = type === 'tdee';
+  const showActivity = ['tdee', 'calorie'].includes(type);
+  const showGoal     = type === 'calorie';
   const showBodyType = type === 'bodytype';
 
   return (
@@ -213,6 +218,18 @@ export default function CalculatorWidget({ type }: Props) {
               </select>
             </div>
           )}
+
+          {showGoal && (
+            <div className={`${styles.field} ${styles.fieldFull}`}>
+              <label className={styles.label}>Goal</label>
+              <select className={styles.select} value={goal}
+                onChange={e => { setGoal(e.target.value as WeightGoal); reset(); }}>
+                {Object.entries(GOAL_ADJUSTMENTS).map(([key, val]) => (
+                  <option key={key} value={key}>{val.label}</option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
 
         {error && <p className={styles.error}>{error}</p>}
@@ -283,6 +300,35 @@ function ResultPanel({ type, result, unit }: { type: CalculatorType; result: any
             <div className={styles.tdeeItem}>
               <span className={styles.tdeeSub}>To gain weight</span>
               <span className={styles.tdeeVal}>{result.tdee + 500} kcal/day</span>
+            </div>
+          </div>
+        </>
+      )}
+
+      {type === 'calorie' && (
+        <>
+          <div className={styles.bigNumber}>{result.calories}</div>
+          <p className={styles.resultNote}>{result.goalLabel}</p>
+          <div className={styles.tdeeGrid}>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>BMR</span>
+              <span className={styles.tdeeVal}>{result.bmr} kcal</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>TDEE (maintenance)</span>
+              <span className={styles.tdeeVal}>{result.tdee} kcal</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Carbohydrates</span>
+              <span className={styles.tdeeVal}>{result.macros.carbs} g/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Protein</span>
+              <span className={styles.tdeeVal}>{result.macros.protein} g/day</span>
+            </div>
+            <div className={styles.tdeeItem}>
+              <span className={styles.tdeeSub}>Fat</span>
+              <span className={styles.tdeeVal}>{result.macros.fat} g/day</span>
             </div>
           </div>
         </>

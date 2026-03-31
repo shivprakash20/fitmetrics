@@ -7,7 +7,8 @@
       { "label": "IBW",       "href": "/calculator/ibw",       "desc": "Ideal Body Weight"           },
       { "label": "Body Fat",  "href": "/calculator/body-fat",  "desc": "US Navy Body Fat Method"     },
       { "label": "TDEE",      "href": "/calculator/tdee",      "desc": "Total Daily Energy Expenditure" },
-      { "label": "Body Type", "href": "/calculator/body-type", "desc": "Body Shape & Waist-to-Hip Ratio" }
+      { "label": "Calorie Intake", "href": "/calculator/calorie-intake", "desc": "Daily Calorie Needs & Macros" },
+      { "label": "Body Type",     "href": "/calculator/body-type",     "desc": "Body Shape & Waist-to-Hip Ratio" }
     ]
   },
   "links": [

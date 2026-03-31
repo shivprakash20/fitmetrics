@@ -5,6 +5,7 @@ import {
   BodyFatInput, BodyFatResult,
   TDEEInput, TDEEResult,
   BodyTypeInput, BodyTypeResult,
+  CalorieInput, CalorieResult,
   ActivityLevel,
 } from '@/types';
 
@@ -139,6 +140,35 @@ export function calcTDEE(input: TDEEInput): TDEEResult {
 }
 
 export { ACTIVITY_MULTIPLIERS };
+
+// ─── Calorie Intake ───────────────────────────────────────────────────────────
+// TDEE adjusted by weight goal delta
+// WHO macronutrient split: Carbs 50%, Protein 20%, Fat 30%
+
+const GOAL_ADJUSTMENTS: Record<string, { label: string; delta: number }> = {
+  lose_fast: { label: 'Lose weight fast (−1 kg/week)',   delta: -1000 },
+  lose:      { label: 'Lose weight (−0.5 kg/week)',      delta: -500  },
+  maintain:  { label: 'Maintain current weight',         delta: 0     },
+  gain:      { label: 'Gain weight (+0.5 kg/week)',      delta: +500  },
+  gain_fast: { label: 'Gain weight fast (+1 kg/week)',   delta: +1000 },
+};
+
+export function calcCalorie(input: CalorieInput): CalorieResult {
+  const { bmr }           = calcBMR(input);
+  const { factor }        = ACTIVITY_MULTIPLIERS[input.activityLevel];
+  const tdee              = Math.round(bmr * factor);
+  const { label, delta }  = GOAL_ADJUSTMENTS[input.goal];
+  const calories          = Math.max(1200, Math.round(tdee + delta));
+
+  // WHO macronutrient distribution: Carbs 50%, Protein 20%, Fat 30%
+  const carbs   = Math.round((calories * 0.50) / 4);   // 4 kcal/g
+  const protein = Math.round((calories * 0.20) / 4);   // 4 kcal/g
+  const fat     = Math.round((calories * 0.30) / 9);   // 9 kcal/g
+
+  return { calories, bmr, tdee, delta, goalLabel: label, macros: { carbs, protein, fat } };
+}
+
+export { GOAL_ADJUSTMENTS };
 
 // ─── Body Type ────────────────────────────────────────────────────────────────
 // Body shape derived from bust / waist / hip ratios
