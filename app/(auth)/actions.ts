@@ -2,6 +2,7 @@
 
 import { OtpPurpose } from '@prisma/client';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import {
   createOtpCode,
@@ -435,6 +436,7 @@ export async function updateProfileAction(formData: FormData) {
     mobile: parsed.data.mobile,
   });
 
+  revalidatePath('/profile');
   redirect(buildUrl('/profile/settings', { message: 'Profile updated successfully.' }));
 }
 

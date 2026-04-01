@@ -12,6 +12,16 @@ export default function FlashMessage({ type, children }: FlashMessageProps) {
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
+    // Clean up the URL so the message doesn't persist on page reload
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('message') || url.searchParams.has('error')) {
+        url.searchParams.delete('message');
+        url.searchParams.delete('error');
+        window.history.replaceState({}, '', url.toString());
+      }
+    }
+
     const timer = setTimeout(() => setFading(true), 9000);
     return () => clearTimeout(timer);
   }, []);

@@ -6,6 +6,7 @@ import {
 } from '@/app/(auth)/actions';
 import { getQueryValue, type QueryParams } from '@/app/(auth)/query';
 import FlashMessage from './FlashMessage';
+import SubmitButton from './SubmitButton';
 import styles from './page.module.scss';
 import profile from '@/data/profile.json';
 
@@ -111,17 +112,19 @@ export default async function ProfileSettingsPage({
                 <input id="mobile" name="mobile" defaultValue={profileData.mobile} className={styles.input} required />
               </div>
             </div>
-          </form>
 
-          {/* Actions row — both buttons here, no nested forms */}
-          <div className={styles.actionsRow}>
-            <button type="submit" form="profile-form" className={styles.submitBtn}>
-              {profile.submitButton}
-            </button>
-            <form action={logoutAction}>
-              <button type="submit" className={styles.logoutBtn}>{profile.logoutButton}</button>
-            </form>
-          </div>
+            {/* Actions row — inside the form so SubmitButton hooks into useFormStatus */}
+            <div className={styles.actionsRow}>
+              <SubmitButton label={profile.submitButton} />
+              <button 
+                formAction={logoutAction} 
+                formNoValidate 
+                className={styles.logoutBtn}
+              >
+                {profile.logoutButton}
+              </button>
+            </div>
+          </form>
         </section>
 
       </div>
