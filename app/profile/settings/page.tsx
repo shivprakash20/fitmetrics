@@ -5,6 +5,7 @@ import {
   updateProfileAction,
 } from '@/app/(auth)/actions';
 import { getQueryValue, type QueryParams } from '@/app/(auth)/query';
+import FlashMessage from './FlashMessage';
 import styles from './page.module.scss';
 import profile from '@/data/profile.json';
 
@@ -77,8 +78,8 @@ export default async function ProfileSettingsPage({
         <section className={styles.card}>
           <h2 className={styles.cardTitle}>Personal Details</h2>
 
-          {message && <p className={`${styles.msg} ${styles.msgInfo}`}>{message}</p>}
-          {error   && <p className={`${styles.msg} ${styles.msgError}`}>{error}</p>}
+          {message && <FlashMessage type="info">{message}</FlashMessage>}
+          {error   && <FlashMessage type="error">{error}</FlashMessage>}
 
           {/* Fields — submit button lives outside via form="profile-form" */}
           <form id="profile-form" action={updateProfileAction} className={styles.form}>

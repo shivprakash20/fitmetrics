@@ -256,23 +256,19 @@ export default function Navbar({ user }: NavbarProps) {
       {mobileMenuOpen && (
         <div id="mobile-nav-menu" className={styles.mobileMenu}>
           <div className={`${styles.mobileMenuInner} container`}>
-            <p className={styles.mobileSectionTitle}>{navigation.calculators.label}</p>
+            <p className={styles.mobileSectionTitle}>Navigation</p>
             <div className={styles.mobileLinks}>
-              {navigation.calculators.items.map(item => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`${styles.mobileLink} ${pathname === item.href ? styles.mobileLinkActive : ''}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className={styles.mobileLinkTitle}>{item.label}</span>
-                  <span className={styles.mobileLinkDesc}>{item.desc}</span>
-                </Link>
-              ))}
-            </div>
+              {/* Calculators top-level link → home page calculator section */}
+              <Link
+                href="/#calculators"
+                className={`${styles.mobileLink} ${isCalcActive ? styles.mobileLinkActive : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className={styles.mobileLinkTitle}>{navigation.calculators.label}</span>
+                <span className={styles.mobileLinkDesc}>Browse all health &amp; fitness calculators</span>
+              </Link>
 
-            <p className={styles.mobileSectionTitle}>Pages</p>
-            <div className={styles.mobileLinks}>
+              {/* Regular page links (About, Contact) */}
               {navigation.links.map(link => (
                 <Link
                   key={link.href}
@@ -283,30 +279,6 @@ export default function Navbar({ user }: NavbarProps) {
                   <span className={styles.mobileLinkTitle}>{link.label}</span>
                 </Link>
               ))}
-
-              {user ? (
-                <>
-                  <Link
-                    href={navigation.userMenu.profile.href}
-                    className={`${styles.mobileLink} ${pathname === navigation.userMenu.profile.href ? styles.mobileLinkActive : ''}`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <span className={styles.mobileLinkTitle}>{navigation.userMenu.profile.label}</span>
-                  </Link>
-                  <form action={logoutAction}>
-                    <input type="hidden" name="from" value={pathname} />
-                    <button type="submit" className={styles.mobileAction}>{navigation.userMenu.signOut}</button>
-                  </form>
-                </>
-              ) : (
-                <Link
-                  href={loginHref}
-                  className={`${styles.mobileLink} ${pathname === '/login' ? styles.mobileLinkActive : ''}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className={styles.mobileLinkTitle}>Sign in</span>
-                </Link>
-              )}
             </div>
           </div>
         </div>

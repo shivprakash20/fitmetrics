@@ -424,18 +424,18 @@ export async function updateProfileAction(formData: FormData) {
 
   const parsed = updateProfileSchema.safeParse(raw);
   if (!parsed.success) {
-    redirect(buildUrl('/profile', { error: getFirstErrorMessage(parsed.error.issues) }));
+    redirect(buildUrl('/profile/settings', { error: getFirstErrorMessage(parsed.error.issues) }));
   }
 
   await updateProfileByUserId(user.id, {
     firstName: parsed.data.firstName,
-    middleName: parsed.data.middleName || undefined,
+    middleName: parsed.data.middleName || null,
     lastName: parsed.data.lastName,
     gender: parsed.data.gender,
     mobile: parsed.data.mobile,
   });
 
-  redirect(buildUrl('/profile', { message: 'Profile updated successfully.' }));
+  redirect(buildUrl('/profile/settings', { message: 'Profile updated successfully.' }));
 }
 
 export async function logoutAction(formData: FormData) {

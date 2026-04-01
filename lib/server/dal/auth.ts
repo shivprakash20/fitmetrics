@@ -136,7 +136,7 @@ export async function updateProfileByUserId(
   userId: string,
   data: {
     firstName: string;
-    middleName?: string;
+    middleName?: string | null;
     lastName: string;
     gender: 'male' | 'female' | 'other' | 'prefer_not_to_say';
     mobile: string;

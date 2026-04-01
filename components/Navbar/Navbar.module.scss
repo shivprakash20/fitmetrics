@@ -186,8 +186,11 @@
 }
 
 .mobileMenuInner {
-  padding-top: 12px;
-  padding-bottom: 14px;
+  padding-top: 14px;
+  padding-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .mobileSectionTitle {
@@ -196,13 +199,17 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-label);
-  margin: 6px 0 8px;
+  margin: 14px 0 8px;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .mobileLinks {
   display: grid;
   gap: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 
   > * {
     opacity: 0;
@@ -215,9 +222,6 @@
   > :nth-child(3) { animation-delay: 0.09s; }
   > :nth-child(4) { animation-delay: 0.12s; }
   > :nth-child(5) { animation-delay: 0.15s; }
-  > :nth-child(6) { animation-delay: 0.18s; }
-  > :nth-child(7) { animation-delay: 0.21s; }
-  > :nth-child(8) { animation-delay: 0.24s; }
 }
 
 .mobileLink {
