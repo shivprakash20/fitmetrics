@@ -92,6 +92,23 @@ export default function Navbar({ user }: NavbarProps) {
     <header className={styles.header} ref={headerRef}>
       <nav className={`${styles.nav} container`}>
 
+        {/* Hamburger — left on mobile, hidden on desktop */}
+        <button
+          className={`${styles.mobileToggle} ${styles.mobileToggleLeft} ${mobileMenuOpen ? styles.mobileToggleActive : ''}`}
+          onClick={() => setMobileMenuOpen(p => !p)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-nav-menu"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            {mobileMenuOpen ? (
+              <path d="M18 6 6 18M6 6l12 12" />
+            ) : (
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            )}
+          </svg>
+        </button>
+
         {/* Logo → home */}
         <Link href="/" className={styles.logo} onClick={() => setMobileMenuOpen(false)}>
           <Image
@@ -176,21 +193,6 @@ export default function Navbar({ user }: NavbarProps) {
 
         {/* Right — theme + user */}
         <div className={styles.right}>
-          <button
-            className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.mobileToggleActive : ''}`}
-            onClick={() => setMobileMenuOpen(p => !p)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-nav-menu"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              {mobileMenuOpen ? (
-                <path d="M18 6 6 18M6 6l12 12" />
-              ) : (
-                <path d="M3 6h18M3 12h18M3 18h18" />
-              )}
-            </svg>
-          </button>
 
           {/* Theme dropdown */}
           <div className={styles.userMenu} ref={themeMenuRef}>
