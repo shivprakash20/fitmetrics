@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Footer.module.scss';
+import FooterDisclaimer from './FooterDisclaimer';
 import footer from '@/data/footer.json';
 import type { FooterLink, SocialLink } from '@/lib/data/types';
 
@@ -124,6 +125,8 @@ export default function Footer() {
 
         </div>
       </div>
+
+      <FooterDisclaimer />
 
       {/* Bottom bar */}
       <div className={styles.bottom}>

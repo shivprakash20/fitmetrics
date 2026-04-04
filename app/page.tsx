@@ -111,17 +111,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <hr className={styles.divider} />
-
-      {/* ── Disclaimer ── */}
-      <div className={styles.disclaimer}>
-        <div className="container">
-          <div className={styles.disclaimerBox}>
-            <p className={styles.disclaimerTitle}>{home.disclaimer.title}</p>
-            <p className={styles.disclaimerText}>{home.disclaimer.text}</p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

@@ -8,13 +8,14 @@
 // ─── Main footer body ─────────────────────────────────────────────────────────
 .body {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  padding: 28px 0 24px;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 20px 0 18px;
 
   @media (min-width: 769px) {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
+    padding: 28px 0 24px;
   }
 }
 
@@ -24,19 +25,15 @@
   border: 1px solid var(--border);
   border-radius: g.$radius;
   padding: 14px 12px;
+  text-align: center;
 
   @media (min-width: 769px) {
     padding: 16px 14px;
+    text-align: left;
   }
 }
 
-.socialCol {
-  grid-column: 1 / -1;
-
-  @media (min-width: 769px) {
-    grid-column: auto;
-  }
-}
+// socialCol inherits .col — no override needed on mobile (single column grid)
 
 // ─── Column heading ───────────────────────────────────────────────────────────
 .colTitle {
@@ -82,6 +79,11 @@
   color: var(--text-muted);
   font-size: 0.88rem;
   overflow-wrap: anywhere;
+  justify-content: center;
+
+  @media (min-width: 769px) {
+    justify-content: flex-start;
+  }
 }
 
 .contactIcon {
@@ -99,12 +101,8 @@
 // ─── Social column ────────────────────────────────────────────────────────────
 .socialList {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-
-  @media (min-width: 400px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
 
 .socialLink {
@@ -125,6 +123,77 @@
     background: var(--primary-a12);
     transform: translateY(-2px);
   }
+}
+
+// ─── Disclaimer bar ───────────────────────────────────────────────────────────
+.disclaimerBar {
+  border-top: 1px solid var(--border);
+  padding: 10px 0;
+  background: color-mix(in srgb, var(--bg-input) 55%, transparent);
+}
+
+.disclaimerRow {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  width: 100%;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  opacity: 0.82;
+}
+
+// Collapsed: one line with ellipsis
+.disclaimerClipped {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6;
+}
+
+// Expanded: wraps to full text
+.disclaimerFull {
+  flex: 1;
+  min-width: 0;
+  white-space: normal;
+  line-height: 1.7;
+}
+
+.disclaimerLabel {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.disclaimerToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 0;
+  flex-shrink: 0;
+  align-self: flex-start;
+
+  &:hover { text-decoration: underline; }
+}
+
+.disclaimerToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+  padding: 0;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 1px;
+  opacity: 1;
+
+  &:hover { text-decoration: underline; }
 }
 
 // ─── Bottom bar ───────────────────────────────────────────────────────────────
