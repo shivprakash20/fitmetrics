@@ -1,99 +1,56 @@
 {
   "metadata": {
     "title": "Contact Us | FitMetrics",
-    "description": "Reach FitMetrics sales or support. Share your requirements and our team will respond within one business day."
+    "description": "Get in touch with the FitMetrics team. We're happy to help with calculator questions, feedback, or partnerships."
   },
   "hero": {
-    "eyebrow": "FitMetrics Support & Sales",
-    "title": "Contact our team",
-    "subtitle": "Whether you need product help, partnership details, or enterprise onboarding, we will route your request to the right specialist quickly."
+    "eyebrow": "Get in Touch",
+    "title": "We'd love to hear from you",
+    "subtitle": "Have a question about our calculators, found a bug, or want to share feedback? Drop us a message and we'll get back to you."
   },
-  "highlights": [
-    {
-      "label": "Average first response",
-      "value": "Under 24 hours"
+  "form": {
+    "title": "Send a Message",
+    "subtitle": "Fill in the details below and we'll get back to you as soon as possible.",
+    "topics": ["General Inquiry", "Calculator Feedback", "Bug Report", "Partnership", "Other"],
+    "fields": {
+      "name": { "label": "Full name", "placeholder": "Your name" },
+      "email": { "label": "Email address", "placeholder": "you@example.com" },
+      "topic": { "label": "Topic" },
+      "message": { "label": "Message", "placeholder": "Tell us how we can help…" }
     },
-    {
-      "label": "Support availability",
-      "value": "Mon - Sat, 9:00-18:00 IST"
-    },
-    {
-      "label": "Customer satisfaction",
-      "value": "98% resolved on first follow-up"
-    }
-  ],
-  "formCard": {
-    "title": "Tell us how we can help",
-    "subtitle": "Share a few details and we will reach out with the best next step.",
-    "responseNote": "For urgent issues, include your account email and calculator name in the message."
+    "submitButton": "Send Message",
+    "successMessage": "Thanks for reaching out! We'll get back to you soon.",
+    "note": "We typically respond within one business day."
   },
-  "channels": {
-    "title": "Prefer a direct channel?",
-    "subtitle": "Choose the fastest way to reach the right team.",
+  "info": {
+    "title": "Contact Information",
     "items": [
       {
-        "title": "General Support",
-        "description": "Questions about calculators, account access, or saved reports.",
+        "type": "email",
+        "label": "Email",
         "value": "support@fitmetrics.app",
-        "ctaLabel": "Email support",
-        "ctaHref": "mailto:support@fitmetrics.app"
+        "href": "mailto:support@fitmetrics.app"
       },
       {
-        "title": "Phone Assistance",
-        "description": "Speak with our team during business hours for quick clarification.",
+        "type": "phone",
+        "label": "Phone",
         "value": "+91 97424 80601",
-        "ctaLabel": "Call now",
-        "ctaHref": "tel:+919742480601"
+        "href": "tel:+919742480601"
       },
       {
-        "title": "Partnerships",
-        "description": "Discuss integrations, B2B plans, and organization-wide onboarding.",
-        "value": "support@fitmetrics.app",
-        "ctaLabel": "Discuss partnership",
-        "ctaHref": "mailto:support@fitmetrics.app?subject=Partnership%20Inquiry"
+        "type": "location",
+        "label": "Location",
+        "value": "Varanasi, Uttar Pradesh, India",
+        "href": "https://maps.google.com/?q=Varanasi,India"
+      },
+      {
+        "type": "hours",
+        "label": "Working Hours",
+        "value": "Mon – Sat, 9:00 AM – 6:00 PM IST",
+        "href": null
       }
-    ]
-  },
-  "office": {
-    "title": "Location",
-    "subtitle": "We support customers across India and remote teams globally.",
-    "locationLabel": "Primary operations",
-    "locationValue": "India",
-    "addressLines": [
-      "FitMetrics Team",
-      "India"
     ],
-    "mapEmbedUrl": "https://maps.google.com/maps?q=India&z=4&output=embed",
-    "mapExternalUrl": "https://maps.google.com/?q=India"
-  },
-  "faq": {
-    "title": "Before you submit",
-    "items": [
-      {
-        "q": "How quickly will I hear back?",
-        "a": "Most enquiries receive a first response within one business day."
-      },
-      {
-        "q": "What should I include in my message?",
-        "a": "Mention your goal, timeline, and any relevant screenshots or calculator names for faster resolution."
-      },
-      {
-        "q": "Do you support enterprise teams?",
-        "a": "Yes. We offer onboarding guidance and custom support workflows for organizations."
-      }
-    ]
-  },
-  "successMessage": "Thanks for reaching out. Our team has received your message and will get back to you soon.",
-  "fields": {
-    "name": {
-      "label": "Full name"
-    },
-    "email": {
-      "label": "Work email"
-    },
-    "message": {
-      "label": "How can we help?"
-    }
-  },
-  "submitButton": "Send Enquiry"
+    "mapEmbedUrl": "https://maps.google.com/maps?q=Varanasi,Uttar+Pradesh,India&z=13&output=embed",
+    "mapExternalUrl": "https://maps.google.com/?q=Varanasi,India"
+  }
 }
