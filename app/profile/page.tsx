@@ -79,7 +79,7 @@ export default async function ProfilePage() {
   if (!profileData) redirect('/login');
 
   const { latest, recent } = await getReadingsForProfile(profileData.id);
-  const initials = `${profileData.firstName[0]}${profileData.lastName[0]}`.toUpperCase();
+  const initials = `${profileData.firstName[0]}${(profileData.lastName?.[0] ?? '')}`.toUpperCase();
   const fullName = [profileData.firstName, profileData.middleName, profileData.lastName].filter(Boolean).join(' ');
 
   return (

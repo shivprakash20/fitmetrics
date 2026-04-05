@@ -6,8 +6,8 @@ export interface RegistrationInput {
   email: string;
   passwordHash: string;
   firstName: string;
-  middleName?: string;
-  lastName: string;
+  middleName: string | null;
+  lastName: string | null;
   gender: 'male' | 'female' | 'other' | 'prefer_not_to_say';
   mobile: string;
 }
@@ -136,8 +136,8 @@ export async function updateProfileByUserId(
   userId: string,
   data: {
     firstName: string;
-    middleName?: string | null;
-    lastName: string;
+    middleName: string | null;
+    lastName: string | null;
     gender: 'male' | 'female' | 'other' | 'prefer_not_to_say';
     mobile: string;
   },

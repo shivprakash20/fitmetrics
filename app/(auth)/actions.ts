@@ -25,7 +25,7 @@ import { sendOtpEmail } from '@/lib/server/email/otp-email';
 const registerSchema = z.object({
   firstName: z.string().trim().min(2, 'First name must be at least 2 characters.'),
   middleName: z.string().trim().optional(),
-  lastName: z.string().trim().min(2, 'Last name must be at least 2 characters.'),
+  lastName: z.string().trim().optional(),
   gender: z.enum(['male', 'female', 'other', 'prefer_not_to_say']),
   mobile: z
     .string()
@@ -76,7 +76,7 @@ const resetPasswordSchema = z
 const updateProfileSchema = z.object({
   firstName: z.string().trim().min(2, 'First name must be at least 2 characters.'),
   middleName: z.string().trim().optional(),
-  lastName: z.string().trim().min(2, 'Last name must be at least 2 characters.'),
+  lastName: z.string().trim().optional(),
   gender: z.enum(['male', 'female', 'other', 'prefer_not_to_say']),
   mobile: z
     .string()
@@ -193,11 +193,11 @@ export async function registerAction(formData: FormData) {
     email: input.email,
     passwordHash,
     firstName: input.firstName,
-    middleName: input.middleName || undefined,
-    lastName: input.lastName,
+    middleName: input.middleName || null,
+    lastName: input.lastName || null,
     gender: input.gender,
     mobile: input.mobile,
-  } as const;
+  };
 
   let userId: string;
 
@@ -250,6 +250,11 @@ export async function loginAction(formData: FormData) {
         next,
       }),
     );
+  }
+
+  if (!user.passwordHash) {
+    // OAuth-only account — no password set
+    redirect(buildUrl('/login', { error: 'This account uses Google or GitHub sign-in. Please use one of those options.', email: input.email, next }));
   }
 
   const isValidPassword = await verifyPassword(input.password, user.passwordHash);
@@ -431,7 +436,7 @@ export async function updateProfileAction(formData: FormData) {
   await updateProfileByUserId(user.id, {
     firstName: parsed.data.firstName,
     middleName: parsed.data.middleName || null,
-    lastName: parsed.data.lastName,
+    lastName: parsed.data.lastName || null,
     gender: parsed.data.gender,
     mobile: parsed.data.mobile,
   });

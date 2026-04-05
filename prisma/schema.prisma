@@ -21,18 +21,31 @@ enum OtpPurpose {
 model User {
   id              String               @id @default(cuid())
   email           String               @unique
-  passwordHash    String
+  passwordHash    String?
   firstName       String
   middleName      String?
-  lastName        String
-  gender          Gender
-  mobile          String               @unique
+  lastName        String?
+  gender          Gender               @default(prefer_not_to_say)
+  mobile          String?              @unique
   emailVerifiedAt DateTime?
   createdAt       DateTime             @default(now())
   updatedAt       DateTime             @updatedAt
   otpCodes        OtpCode[]
   sessions        Session[]
   readings        CalculatorReading[]
+  oauthAccounts   OAuthAccount[]
+}
+
+model OAuthAccount {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  provider   String
+  providerId String
+  createdAt  DateTime @default(now())
+
+  @@unique([provider, providerId])
+  @@index([userId])
 }
 
 model CalculatorReading {

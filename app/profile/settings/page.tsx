@@ -27,7 +27,7 @@ export default async function ProfileSettingsPage({
   const message = getQueryValue(params, 'message');
   const error   = getQueryValue(params, 'error');
 
-  const initials = `${profileData.firstName[0]}${profileData.lastName[0]}`.toUpperCase();
+  const initials = `${profileData.firstName[0]}${(profileData.lastName?.[0] ?? '')}`.toUpperCase();
   const fullName = [profileData.firstName, profileData.middleName, profileData.lastName].filter(Boolean).join(' ');
 
   return (
@@ -96,7 +96,7 @@ export default async function ProfileSettingsPage({
             </div>
             <div className={styles.row}>
               <label htmlFor="lastName" className={styles.label}>{profile.fields.lastName.label}</label>
-              <input id="lastName" name="lastName" defaultValue={profileData.lastName} className={styles.input} required />
+              <input id="lastName" name="lastName" defaultValue={profileData.lastName ?? ''} className={styles.input} />
             </div>
             <div className={styles.gridTwo}>
               <div className={styles.row}>
@@ -109,7 +109,7 @@ export default async function ProfileSettingsPage({
               </div>
               <div className={styles.row}>
                 <label htmlFor="mobile" className={styles.label}>{profile.fields.mobile.label}</label>
-                <input id="mobile" name="mobile" defaultValue={profileData.mobile} className={styles.input} required />
+                <input id="mobile" name="mobile" defaultValue={profileData.mobile ?? ''} className={styles.input} required />
               </div>
             </div>
 

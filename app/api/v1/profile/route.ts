@@ -47,8 +47,8 @@ export async function PUT(request: Request) {
 
     const profile = await updateProfileByUserId(user.id, {
       firstName: parsed.data.firstName,
-      middleName: parsed.data.middleName || undefined,
-      lastName: parsed.data.lastName,
+      middleName: parsed.data.middleName || null,
+      lastName: parsed.data.lastName || null,
       gender: parsed.data.gender,
       mobile: parsed.data.mobile,
     });
