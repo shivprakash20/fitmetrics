@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { prisma } from '@/lib/server/db/prisma';
+import { queueAnalyticsEvent } from '@/lib/server/analytics/event-cookie';
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, 'Name must be at least 2 characters.'),
@@ -35,5 +36,6 @@ export async function contactAction(formData: FormData) {
     create: { email, name, message: fullMessage },
   });
 
+  await queueAnalyticsEvent({ name: 'contact_form_submitted', params: { topic: topic || 'general' } });
   redirect('/contact?success=true');
 }

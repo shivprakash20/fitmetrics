@@ -21,6 +21,7 @@ import { createSession, clearSession, getCurrentUser } from '@/lib/server/auth/s
 import { generateOtpCode, getOtpExpiryDate, hashOtpCode } from '@/lib/server/auth/otp';
 import { hashPassword, verifyPassword } from '@/lib/server/auth/password';
 import { sendOtpEmail } from '@/lib/server/email/otp-email';
+import { queueAnalyticsEvent } from '@/lib/server/analytics/event-cookie';
 
 const registerSchema = z.object({
   firstName: z.string().trim().min(2, 'First name must be at least 2 characters.'),
@@ -279,6 +280,7 @@ export async function loginAction(formData: FormData) {
   }
 
   await createSession(user.id);
+  await queueAnalyticsEvent({ name: 'login', params: { method: 'email' } });
   redirect(next ?? '/profile');
 }
 
@@ -311,11 +313,16 @@ export async function verifyEmailOtpAction(formData: FormData) {
     redirect(buildUrl('/verify-email', { email: input.email, error: 'Invalid or expired OTP.', next }));
   }
 
-  if (!user.emailVerifiedAt) {
+  const isNewUser = !user.emailVerifiedAt;
+  if (isNewUser) {
     await markUserEmailVerified(user.id);
   }
 
   await createSession(user.id);
+  await queueAnalyticsEvent(isNewUser
+    ? { name: 'sign_up', params: { method: 'email' } }
+    : { name: 'login',   params: { method: 'email' } },
+  );
   redirect(next ?? '/profile');
 }
 
@@ -442,6 +449,7 @@ export async function updateProfileAction(formData: FormData) {
   });
 
   revalidatePath('/profile');
+  await queueAnalyticsEvent({ name: 'profile_updated' });
   redirect(buildUrl('/profile/settings', { message: 'Profile updated successfully.' }));
 }
 
@@ -449,6 +457,7 @@ export async function logoutAction(formData: FormData) {
   const from = String(formData.get('from') ?? '');
   const redirectTo = sanitizeLogoutReturnPath(from) ?? '/';
   await clearSession();
+  await queueAnalyticsEvent({ name: 'logout' });
   redirect(redirectTo);
 }
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './auth.module.scss';
 
 interface Flash {
@@ -8,29 +8,30 @@ interface Flash {
   message: string;
 }
 
+function readAndClearFlash(): Flash | null {
+  if (typeof document === 'undefined') return null;
+  const match = document.cookie.match(/(?:^|;\s*)oauth_flash=([^;]+)/);
+  if (!match) return null;
+  document.cookie = 'oauth_flash=; max-age=0; path=/';
+  try {
+    return JSON.parse(decodeURIComponent(match[1])) as Flash;
+  } catch {
+    return null;
+  }
+}
+
 export default function OAuthFlash() {
-  const [flash, setFlash] = useState<Flash | null>(null);
+  const [flash] = useState<Flash | null>(readAndClearFlash);
 
-  useEffect(() => {
-    const match = document.cookie.match(/(?:^|;\s*)oauth_flash=([^;]+)/);
-    if (!match) return;
-
-    try {
-      const parsed: Flash = JSON.parse(decodeURIComponent(match[1]));
-      setFlash(parsed);
-    } catch {
-      // malformed cookie — ignore
-    }
-
-    // Clear immediately so it never shows twice
-    document.cookie = 'oauth_flash=; max-age=0; path=/';
-  }, []);
-
-  if (!flash) return null;
-
+  // suppressHydrationWarning: server always renders empty (no document),
+  // client may render the flash message — React skips the mismatch check.
   return (
-    <p className={`${styles.message} ${flash.type === 'error' ? styles.messageError : styles.messageInfo}`}>
-      {flash.message}
-    </p>
+    <div suppressHydrationWarning>
+      {flash && (
+        <p className={`${styles.message} ${flash.type === 'error' ? styles.messageError : styles.messageInfo}`}>
+          {flash.message}
+        </p>
+      )}
+    </div>
   );
 }

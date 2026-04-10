@@ -17,7 +17,12 @@ export interface OAuthUserInput {
  * 2. Existing User with the same email → link the OAuthAccount, return that user
  * 3. No match → create new User + OAuthAccount
  */
-export async function upsertOAuthUser(input: OAuthUserInput): Promise<string> {
+export interface OAuthUserResult {
+  userId: string;
+  isNewUser: boolean;
+}
+
+export async function upsertOAuthUser(input: OAuthUserInput): Promise<OAuthUserResult> {
   const { provider, providerId, email, firstName, lastName } = input;
 
   // 1. Already connected
@@ -27,7 +32,7 @@ export async function upsertOAuthUser(input: OAuthUserInput): Promise<string> {
   });
 
   if (existing) {
-    return existing.userId;
+    return { userId: existing.userId, isNewUser: false };
   }
 
   // 2. Email already registered — link the OAuth account
@@ -46,7 +51,7 @@ export async function upsertOAuthUser(input: OAuthUserInput): Promise<string> {
         data: { userId: userByEmail.id, provider, providerId },
       }),
     ]);
-    return userByEmail.id;
+    return { userId: userByEmail.id, isNewUser: false };
   }
 
   // 3. New user
@@ -63,5 +68,5 @@ export async function upsertOAuthUser(input: OAuthUserInput): Promise<string> {
     select: { id: true },
   });
 
-  return user.id;
+  return { userId: user.id, isNewUser: true };
 }

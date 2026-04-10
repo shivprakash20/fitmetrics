@@ -4,6 +4,7 @@ import { exchangeGitHubCode } from '@/lib/server/oauth/github';
 import { upsertOAuthUser } from '@/lib/server/dal/oauth';
 import { createSession } from '@/lib/server/auth/session';
 import { redirectWithFlash } from '@/lib/server/oauth/flash';
+import { queueAnalyticsEvent } from '@/lib/server/analytics/event-cookie';
 
 function sanitizeNext(value: string): string {
   const next = value.trim();
@@ -56,7 +57,7 @@ export async function GET(req: NextRequest) {
     const firstName = nameParts[0] ?? 'User';
     const lastName = nameParts.slice(1).join(' ') || null;
 
-    const userId = await upsertOAuthUser({
+    const { userId, isNewUser } = await upsertOAuthUser({
       provider: 'github',
       providerId: String(profile.id),
       email: profile.email,
@@ -65,6 +66,10 @@ export async function GET(req: NextRequest) {
     });
 
     await createSession(userId);
+    await queueAnalyticsEvent(isNewUser
+      ? { name: 'sign_up', params: { method: 'github' } }
+      : { name: 'login',   params: { method: 'github' } },
+    );
     return NextResponse.redirect(new URL(next, req.url));
   } catch (err) {
     console.error('[GitHub OAuth callback]', err);

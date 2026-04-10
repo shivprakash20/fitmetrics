@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { saveReadingAction } from '@/app/calculator/actions';
+import { Analytics } from '@/lib/analytics';
 import type {
   CalculatorType, Gender, UnitSystem, ActivityLevel, WeightGoal, CaloriesBurnedActivity, ProteinGoal, GainPace, LossPace,
 } from '@/types';
@@ -128,7 +129,9 @@ export default function CalculatorWidget({ type, userId }: Props) {
       }
     } catch {
       setError('Something went wrong. Please check your inputs.');
+      return;
     }
+    Analytics.calculatorUsed(type, unit);
   }
 
   async function handleSave() {
@@ -150,6 +153,7 @@ export default function CalculatorWidget({ type, userId }: Props) {
     if (type === 'weightloss') inputs.targetWeight = +targetWeight;
     const res = await saveReadingAction(type, inputs, result);
     setSaveState(res.success ? 'saved' : 'error');
+    if (res.success) Analytics.readingSaved(type);
   }
 
   const showUnitToggle   = true;

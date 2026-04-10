@@ -4,6 +4,7 @@ import { exchangeGoogleCode } from '@/lib/server/oauth/google';
 import { upsertOAuthUser } from '@/lib/server/dal/oauth';
 import { createSession } from '@/lib/server/auth/session';
 import { redirectWithFlash } from '@/lib/server/oauth/flash';
+import { queueAnalyticsEvent } from '@/lib/server/analytics/event-cookie';
 
 function sanitizeNext(value: string): string {
   const next = value.trim();
@@ -51,7 +52,7 @@ export async function GET(req: NextRequest) {
     const firstName = profile.given_name ?? nameParts[0] ?? 'User';
     const lastName = profile.family_name ?? (nameParts.slice(1).join(' ') || null);
 
-    const userId = await upsertOAuthUser({
+    const { userId, isNewUser } = await upsertOAuthUser({
       provider: 'google',
       providerId: String(profile.sub),
       email: profile.email,
@@ -60,6 +61,10 @@ export async function GET(req: NextRequest) {
     });
 
     await createSession(userId);
+    await queueAnalyticsEvent(isNewUser
+      ? { name: 'sign_up', params: { method: 'google' } }
+      : { name: 'login',   params: { method: 'google' } },
+    );
     return NextResponse.redirect(new URL(next, req.url));
   } catch (err) {
     console.error('[Google OAuth callback]', err);
