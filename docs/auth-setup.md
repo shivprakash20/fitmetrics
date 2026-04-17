@@ -11,10 +11,11 @@ This implementation includes:
 
 ## 1. Environment variables
 
-Copy `.env.example` to `.env` and fill the values:
+Set environment variables in `apps/web/.env` (or copy your root `.env` there) and fill the values:
 
 - `POSTGRES_PRISMA_URL`
 - `AUTH_SESSION_SECRET`
+- `AUTH_MOBILE_TOKEN_SECRET` (recommended, falls back to `AUTH_SESSION_SECRET`)
 - `AUTH_OTP_SECRET`
 - `SMTP_HOST`
 - `SMTP_PORT`
@@ -27,6 +28,7 @@ Copy `.env.example` to `.env` and fill the values:
 Run Prisma migration once your DB credentials are ready:
 
 ```bash
+cd apps/web
 npx prisma migrate dev --name init_auth
 ```
 
@@ -43,6 +45,7 @@ Current implementation uses SMTP via Nodemailer for portability.
 
 - OTPs are stored hashed in DB, not plain text.
 - Session token is random and stored hashed in DB.
+- Mobile access and refresh tokens are random, stored hashed in DB, and can be revoked.
 - Session cookie is `httpOnly`, `sameSite=lax`, and `secure` in production.
 - Password is stored as hashed value (scrypt).
 

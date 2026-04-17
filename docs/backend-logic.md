@@ -1,11 +1,11 @@
 # FitMetrics Backend Logic (Next.js App Router)
 
-This project now uses a backend-for-frontend structure inside the Next.js app.
+This project now uses a backend-for-frontend structure inside `apps/web` (Next.js app).
 
 ## Folder layout
 
 ```txt
-app/
+apps/web/app/
   (auth)/
     actions.ts                    # Server Actions for register/login/OTP/reset/logout
     register/page.tsx             # Registration page
@@ -18,9 +18,10 @@ app/
     v1/
       analytics/route.ts          # Analytics event intake
       profile/route.ts            # Protected profile read/update example
+      auth/mobile/*               # Mobile token login/refresh/logout
   profile/page.tsx                # Protected profile page
 
-lib/
+apps/web/lib/
   server/
     analytics/events.ts           # Analytics event schema validation
     auth/constants.ts             # Auth constants (cookie names, OTP/session TTL)
@@ -34,13 +35,13 @@ lib/
     email/otp-email.ts            # SMTP OTP sender
     http/errors.ts                # API error model + normalization
     http/response.ts              # Consistent API response helpers
-proxy.ts                          # Next.js Proxy route protection
+apps/web/proxy.ts                 # Next.js Proxy route protection
 ```
 
 ## Why this structure
 
-- `app/api/*` handles transport concerns: HTTP methods, parsing request/response, status codes.
-- `lib/server/*` holds reusable backend logic that can be shared across routes and server actions.
+- `apps/web/app/api/*` handles transport concerns: HTTP methods, parsing request/response, status codes.
+- `apps/web/lib/server/*` holds reusable backend logic that can be shared across routes and server actions.
 - `v1` namespace in API routes allows non-breaking iteration when APIs evolve.
 
 ## Next build steps

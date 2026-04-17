@@ -1,26 +1,15 @@
-import { z } from 'zod';
+import { updateProfileSchema } from '@fitmetrics/contracts';
 import { requireUser } from '@/lib/server/auth/guards';
 import { getProfileByUserId, updateProfileByUserId } from '@/lib/server/dal/auth';
 import { ApiError } from '@/lib/server/http/errors';
 import { fail, ok } from '@/lib/server/http/response';
 
-const updateProfileSchema = z.object({
-  firstName: z.string().trim().min(2, 'First name must be at least 2 characters.'),
-  middleName: z.string().trim().optional(),
-  lastName: z.string().trim().min(2, 'Last name must be at least 2 characters.'),
-  gender: z.enum(['male', 'female', 'other', 'prefer_not_to_say']),
-  mobile: z
-    .string()
-    .trim()
-    .regex(/^\+?[0-9]{8,15}$/, 'Enter a valid mobile number with 8-15 digits.'),
-});
-
 /**
  * Protected profile read endpoint.
  */
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const user = await requireUser();
+    const user = await requireUser(request);
     const profile = await getProfileByUserId(user.id);
 
     if (!profile) {
@@ -38,7 +27,7 @@ export async function GET() {
  */
 export async function PUT(request: Request) {
   try {
-    const user = await requireUser();
+    const user = await requireUser(request);
     const parsed = updateProfileSchema.safeParse(await request.json());
 
     if (!parsed.success) {

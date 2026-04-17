@@ -18,6 +18,11 @@ enum OtpPurpose {
   RESET_PASSWORD
 }
 
+enum AuthTokenType {
+  mobile_access
+  mobile_refresh
+}
+
 model User {
   id              String               @id @default(cuid())
   email           String               @unique
@@ -32,6 +37,7 @@ model User {
   updatedAt       DateTime             @updatedAt
   otpCodes        OtpCode[]
   sessions        Session[]
+  authTokens      AuthToken[]
   readings        CalculatorReading[]
   oauthAccounts   OAuthAccount[]
 }
@@ -82,6 +88,20 @@ model Session {
   createdAt DateTime @default(now())
 
   @@index([userId, expiresAt])
+}
+
+model AuthToken {
+  id        String        @id @default(cuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      AuthTokenType
+  tokenHash String        @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([userId, type, expiresAt, revokedAt])
 }
 
 model ContactSubmission {

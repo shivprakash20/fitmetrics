@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@fitmetrics/contracts": ["../../packages/contracts/src/index.ts"],
+      "@fitmetrics/contracts/*": ["../../packages/contracts/src/*"]
     }
   },
   "include": [
